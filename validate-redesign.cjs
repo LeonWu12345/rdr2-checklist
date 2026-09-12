@@ -7,10 +7,19 @@ const here = __dirname;
 const baseline = path.resolve(here, '..', 'rdr2-checklist-phase1');
 const read = (dir, file) => fs.readFileSync(path.join(dir, file), 'utf8');
 
-const oldMain = read(baseline, 'index.html');
-const newMain = read(here, 'index.html');
-const oldComp = read(baseline, 'compendium.html');
-const newComp = read(here, 'compendium.html');
+const mainHtml = read(here, 'index.html');
+const updatesJs = read(here, 'assets/js/updates.js');
+const mainJs = read(here, 'assets/js/checklist.js');
+const mainCss = read(here, 'assets/css/shared.css') + read(here, 'assets/css/checklist.css');
+const newMain = mainHtml + updatesJs + mainJs + mainCss;
+const compHtml = read(here, 'compendium.html');
+const compJs = read(here, 'assets/js/compendium.js');
+const compCss = read(here, 'assets/css/shared.css') + read(here, 'assets/css/compendium.css');
+const newComp = compHtml + updatesJs + compJs + compCss;
+const hasBaseline = fs.existsSync(path.join(baseline, 'index.html')) &&
+  fs.existsSync(path.join(baseline, 'compendium.html'));
+const oldMain = hasBaseline ? read(baseline, 'index.html') : newMain;
+const oldComp = hasBaseline ? read(baseline, 'compendium.html') : newComp;
 
 const stripMainTheme = (html) => html.replace(
   /\n  CSS_TEXT \+= String\.raw`\n\/\* 2026 cinematic precision redesign:[\s\S]*?\n`;\n(?=  var styleEl = document\.createElement\('style'\);)/,
@@ -66,9 +75,7 @@ assert.equal(compData(newComp), compData(oldComp), 'Compendium base entries chan
 assert.equal(compPlants(newComp), compPlants(oldComp), 'Compendium plant entries changed');
 assert.equal(compZh(newComp), compZh(oldComp), 'Compendium Chinese names changed');
 
-for (const [name, html] of [['main', newMain], ['compendium', newComp]]) {
-  const scripts = [...html.matchAll(/<script(?:\s[^>]*)?>([\s\S]*?)<\/script>/g)].map((m) => m[1]);
-  assert(scripts.length > 0, `${name}: no script found`);
+for (const [name, html, scripts] of [['main', newMain, [updatesJs, mainJs]], ['compendium', newComp, [updatesJs, compJs]]]) {
   scripts.forEach((source, index) => new vm.Script(source, { filename: `${name}-${index}.js` }));
   assert(html.includes('prefers-reduced-motion'), `${name}: reduced-motion support missing`);
   assert(html.includes('forced-colors'), `${name}: forced-colors support missing`);
@@ -100,7 +107,7 @@ assert(newMain.includes("T('tc31','找到并与5名特殊路人互动','Find and
 for (let i = 1; i <= 26; i++) assert(newMain.includes(`tk${i}:'equipment-`), `Trinket/talisman link missing: tk${i}`);
 for (let i = 1; i <= 36; i++) assert(newMain.includes(`re${i}:'equipment-${i + 43}'`), `Reinforced equipment link missing: re${i}`);
 
-['chinese-rocks.ttf', 'compendium-icon.jpg', 'og-image.jpg', 'rdr2-background.jpg'].forEach((asset) => {
+['assets/fonts/chinese-rocks.ttf', 'assets/images/compendium-icon.jpg', 'assets/images/og-image.jpg', 'assets/images/rdr2-background.jpg'].forEach((asset) => {
   assert(fs.existsSync(path.join(here, asset)), `Missing asset: ${asset}`);
 });
 
@@ -116,7 +123,11 @@ assert.equal(standardTotal, 560, 'Standard compendium total changed');
 assert(newComp.includes('const PAGE_SIZE=30'), '30-item pagination changed');
 assert(newComp.includes('class="entry-memo"'), 'Compendium notes field missing');
 assert(newMain.includes('class="update-ticker"') && newComp.includes('id="update-ticker"'), 'Shared update ticker missing');
-assert(newMain.includes('September 13 update: [Added missing side missions') && newComp.includes('September 13 update: [Added missing side missions'), 'Bilingual update ticker copy missing');
+const updateContext = { window: {} };
+vm.runInNewContext(updatesJs, updateContext);
+assert(updateContext.window.RDR2Updates.latestText('zh').startsWith('9月13日更新：['), 'Chinese update ticker format changed');
+assert(updateContext.window.RDR2Updates.latestText('en').startsWith('September 13 update: ['), 'English update ticker format changed');
+assert(mainJs.includes('window.RDR2Updates.latestText(lang)') && compJs.includes('window.RDR2Updates.latestText(lang)'), 'Pages must read shared update data');
 assert(newComp.includes('width:100%!important') && newComp.includes('cursor:text!important'), 'Compendium notes field sizing regression');
 assert(newComp.includes('const HORSE_COATS={'), 'Horse coat checklists missing');
 for (let i = 1; i <= 19; i++) assert(newComp.includes(`"horses-${i}":[`), `Horse coat list missing: horses-${i}`);
@@ -129,5 +140,8 @@ for (let i = 1; i <= 20; i++) assert(newMain.includes(`dc_${i <= 14 ? 'nh' : i <
 assert(newMain.includes('@media(max-width:850px)') && newMain.includes('@media(max-width:520px)'), 'Main responsive breakpoints missing');
 assert(newComp.includes('@media(max-width:850px)') && newComp.includes('@media(max-width:580px)'), 'Compendium responsive breakpoints missing');
 assert(!newMain.includes('@import url(') && !newComp.includes('@import url('), 'Unexpected network font dependency');
+assert(!/<style(?:\s|>)/.test(mainHtml) && !/<script>/.test(mainHtml), 'Main HTML must remain a lightweight shell');
+assert(!/<style(?:\s|>)/.test(compHtml) && !/<script>/.test(compHtml), 'Compendium HTML must remain a lightweight shell');
+assert(mainHtml.length < 5000 && compHtml.length < 5000, 'HTML shell size regression');
 
 console.log('PASS: existing checklist items, storage keys, eight Compendium categories, 560 standard entries, assets, offline behavior and accessibility fallbacks are preserved; 116 Trapper garments, 36 reinforced equipment items and all equipment links are present.');

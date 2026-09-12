@@ -1,8 +1,12 @@
 const fs=require('node:fs');
+const path=require('node:path');
 const vm=require('node:vm');
 const assert=require('node:assert/strict');
 const html=fs.readFileSync(__dirname+'/index.html','utf8');
-const script=html.match(/<script>([\s\S]*)<\/script>/)[1];
+const updatesScript=fs.readFileSync(path.join(__dirname,'assets/js/updates.js'),'utf8');
+const script=fs.readFileSync(path.join(__dirname,'assets/js/checklist.js'),'utf8');
+const css=fs.readFileSync(path.join(__dirname,'assets/css/shared.css'),'utf8')+fs.readFileSync(path.join(__dirname,'assets/css/checklist.css'),'utf8');
+new vm.Script(updatesScript);
 new vm.Script(script);
 function app(storage={}){
   const handlers={}, windowHandlers={};
@@ -14,6 +18,7 @@ function app(storage={}){
   const window={innerWidth:1280,matchMedia:()=>({matches:false,addEventListener:noop,addListener:noop}),addEventListener:(key,fn)=>windowHandlers[key]=fn};
   const localStorage={getItem:key=>storage[key]??null,setItem:(key,val)=>storage[key]=val,removeItem:key=>delete storage[key]};
   const ctx={document,window,localStorage,setTimeout:()=>1,clearTimeout:noop,requestAnimationFrame:noop,console};
+  vm.runInNewContext(updatesScript,ctx);
   vm.runInNewContext(script,ctx);
   return {root,handlers,windowHandlers,storage,classes};
 }
@@ -112,8 +117,8 @@ const linkedReload=app(linked.storage);
 assert(linkedReload.root.innerHTML.includes('cb-tk1" data-id="tk1" checked'));
 assert(linkedReload.root.innerHTML.includes('cb-re36" data-id="re36" checked'));
 
-assert(!html.includes('@import url('),'Offline file must not require external fonts');
-assert(html.includes('prefers-reduced-motion'));
-assert(html.includes('prefers-reduced-transparency'));
+assert(!css.includes('@import url('),'Offline file must not require external fonts');
+assert(css.includes('prefers-reduced-motion'));
+assert(css.includes('prefers-reduced-transparency'));
 console.log('PASS: JavaScript, 7 checklist sections, unique IDs, bilingual rendering, saved progress and notes, Trapper parent/child state, Compendium links, reload recovery, search state and accessibility fallbacks.');
 console.log('Validation uses an isolated DOM stub; no browser interaction or visual QA was performed.');

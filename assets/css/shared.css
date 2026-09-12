@@ -1,0 +1,10 @@
+@font-face{font-family:"Chinese Rocks";src:url("../fonts/chinese-rocks.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"Redemption";src:url("../fonts/redemption.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+@font-face{font-family:"RDR Lino";src:url("../fonts/rdr-lino.ttf") format("truetype");font-weight:400;font-style:normal;font-display:swap}
+.update-ticker{position:relative;display:flex;align-items:center;min-height:38px;margin:0 0 12px;overflow:hidden;border:1px solid var(--ticker-border,var(--line));border-left:3px solid var(--ticker-accent,var(--accent2));border-radius:var(--ticker-radius,4px);background:var(--panel);color:var(--ticker-accent,var(--accent2));box-shadow:0 12px 28px -26px #000;white-space:nowrap}
+.update-ticker-track{display:flex;width:max-content;will-change:transform;animation:update-ticker-scroll 38s linear infinite}
+.update-ticker-copy{display:block;padding:0 64px 0 18px;font-size:12px;font-weight:700;line-height:36px;letter-spacing:.045em;text-transform:uppercase}
+.update-ticker:hover .update-ticker-track,.update-ticker:focus-within .update-ticker-track{animation-play-state:paused}
+@keyframes update-ticker-scroll{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+@media(max-width:520px){.update-ticker{min-height:34px;margin-bottom:8px}.update-ticker-copy{padding-right:44px;font-size:11px;line-height:32px}}
+@media(prefers-reduced-motion:reduce){.update-ticker{overflow-x:auto}.update-ticker-track{animation:none}.update-ticker-copy:nth-child(2){display:none}}
