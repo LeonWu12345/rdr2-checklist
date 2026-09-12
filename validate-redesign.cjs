@@ -116,7 +116,7 @@ assert.equal(standardTotal, 560, 'Standard compendium total changed');
 assert(newComp.includes('const PAGE_SIZE=30'), '30-item pagination changed');
 assert(newComp.includes('class="entry-memo"'), 'Compendium notes field missing');
 assert(newMain.includes('class="update-ticker"') && newComp.includes('id="update-ticker"'), 'Shared update ticker missing');
-assert(newMain.includes('Latest update | Added missing side missions') && newComp.includes('Latest update | Added missing side missions'), 'Bilingual update ticker copy missing');
+assert(newMain.includes('September 13 update: [Added missing side missions') && newComp.includes('September 13 update: [Added missing side missions'), 'Bilingual update ticker copy missing');
 assert(newComp.includes('width:100%!important') && newComp.includes('cursor:text!important'), 'Compendium notes field sizing regression');
 assert(newComp.includes('const HORSE_COATS={'), 'Horse coat checklists missing');
 for (let i = 1; i <= 19; i++) assert(newComp.includes(`"horses-${i}":[`), `Horse coat list missing: horses-${i}`);
