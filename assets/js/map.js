@@ -16,8 +16,7 @@
   var view = { scale: 1, fit: 1, x: 0, y: 0 };
   var pointers = {};
   var drag = null;
-  var currentTileZoom = -1;
-  var tileElements = {};
+  var renderer = null;
 
   function readSetting(key, fallback) {
     try { return localStorage.getItem(key) || fallback; } catch (error) { return fallback; }
@@ -69,8 +68,9 @@
 
   function render() {
     applyPreferences();
-    currentTileZoom = -1;
-    tileElements = {};
+    if (renderer) renderer.destroy();
+    pointers = {};
+    drag = null;
     var update = escapeHtml(latestUpdate());
     var done = DATA.markers.filter(function (marker) { return saved.visited[marker.id]; }).length;
     root.innerHTML =
@@ -83,12 +83,13 @@
             '<div class="map-tools"><input class="map-search" id="map-search" type="search" autocomplete="off" placeholder="' + L("搜索地点或区域", "Search places or regions") + '" aria-label="' + L("搜索地图", "Search map") + '" value="' + escapeHtml(query) + '">' +
               '<div class="map-segments" aria-label="' + L("到访状态", "Visit status") + '"><button type="button" data-status="all" class="' + (statusFilter === "all" ? "is-active" : "") + '">' + L("全部", "All") + '</button><button type="button" data-status="unvisited" class="' + (statusFilter === "unvisited" ? "is-active" : "") + '">' + L("未到访", "Unvisited") + '</button><button type="button" data-status="visited" class="' + (statusFilter === "visited" ? "is-active" : "") + '">' + L("已到访", "Visited") + '</button></div></div>' +
             '<div class="map-categories" id="map-categories"></div><div class="map-list" id="map-list"></div></aside>' +
-          '<section class="map-stage"><div class="map-viewport" id="map-viewport" tabindex="0" aria-label="' + L("可拖动和缩放的高清游戏地图", "Draggable high-resolution game map") + '"><div class="map-canvas" id="map-canvas" style="width:' + DATA.image.width + 'px;height:' + DATA.image.height + 'px"><img class="map-overview" src="' + DATA.image.overview + '?v=' + DATA.version + '" width="' + DATA.image.width + '" height="' + DATA.image.height + '" alt=""><div class="map-tile-layer" id="map-tile-layer" aria-hidden="true"></div><div class="marker-layer" id="marker-layer"></div></div></div>' +
+          '<section class="map-stage"><div class="map-viewport" id="map-viewport" tabindex="0" aria-label="' + L("可拖动和缩放的高清游戏地图", "Draggable high-resolution game map") + '"><canvas class="map-canvas" id="map-canvas" aria-hidden="true"></canvas><div class="marker-layer" id="marker-layer"></div></div>' +
             '<div class="map-controls" aria-label="' + L("地图缩放", "Map zoom") + '"><button id="zoom-in" type="button" aria-label="' + L("放大", "Zoom in") + '">+</button><button id="zoom-out" type="button" aria-label="' + L("缩小", "Zoom out") + '">−</button><button id="reset-view" type="button" aria-label="' + L("重置视图", "Reset view") + '">⌂</button></div>' +
             '<article class="map-detail" id="map-detail" hidden></article></section>' +
         '</section>' +
         '<footer class="map-foot"><p>' + L("坐标标记暂时关闭，核对显示稳定性后再分批加入。", "Map markers are temporarily disabled and will return after display stability is verified.") + '</p><p>' + L("底图来源：", "Base map: ") + '<a href="' + DATA.image.sourceUrl + '" target="_blank" rel="noopener">' + DATA.image.credit + '</a> · © ' + new Date().getFullYear() + ' Jam8ee</p></footer>' +
       '</main>';
+    renderer = window.RDR2MapRenderer.create(document.getElementById("map-canvas"), DATA.image, DATA.version);
     bindControls();
     renderCategories();
     renderMarkerViews();
@@ -115,10 +116,10 @@
       return '<button class="map-list-item' + (saved.visited[marker.id] ? ' is-visited' : '') + (selectedId === marker.id ? ' is-selected' : '') + '" type="button" data-marker-id="' + marker.id + '"><span class="map-list-pin">' + (index + 1) + '</span><span class="map-list-copy"><strong class="map-list-title">' + escapeHtml(markerName(marker)) + '</strong><small class="map-list-detail">' + escapeHtml(markerDetail(marker)) + '</small></span><span class="map-list-state">' + (saved.visited[marker.id] ? "✓" : "") + '</span></button>';
     }).join("");
     layer.innerHTML = markers.map(function (marker, index) {
-      return '<button class="marker' + (saved.visited[marker.id] ? ' is-visited' : '') + (selectedId === marker.id ? ' is-selected' : '') + '" style="left:' + marker.x + '%;top:' + marker.y + '%" type="button" data-marker-id="' + marker.id + '" aria-label="' + escapeHtml(markerName(marker)) + '">' + (index + 1) + '</button>';
+      return '<button class="marker' + (saved.visited[marker.id] ? ' is-visited' : '') + (selectedId === marker.id ? ' is-selected' : '') + '" type="button" data-marker-id="' + marker.id + '" aria-label="' + escapeHtml(markerName(marker)) + '">' + (index + 1) + '</button>';
     }).join("");
     document.querySelectorAll("[data-marker-id]").forEach(function (button) { button.addEventListener("click", function () { selectMarker(button.dataset.markerId, button.classList.contains("marker")); }); });
-    updateMarkerScale();
+    updateMarkerPositions();
     renderDetail();
   }
 
@@ -241,81 +242,23 @@
   }
 
   function applyView() {
-    var canvas = document.getElementById("map-canvas");
-    if (!canvas) return;
-    canvas.style.transform = "translate3d(" + view.x + "px," + view.y + "px,0) scale(" + view.scale + ")";
-    updateMarkerScale();
-    renderTiles();
-  }
-
-  function updateMarkerScale() {
-    var inverse = Math.min(64, Math.max(.45, 1 / view.scale));
-    document.querySelectorAll(".marker").forEach(function (marker) { marker.style.setProperty("--marker-zoom", inverse); });
-  }
-
-  function tileUrl(zoom, x, y) {
-    var tiles = DATA.image.tiles;
-    return tiles.root + "/" + zoom + "/" + y + "/" + x + "." + tiles.extension + "?v=" + DATA.version;
-  }
-
-  function tileZoomForScale() {
-    var tiles = DATA.image.tiles;
-    var zoom = Math.ceil(tiles.maxZoom + Math.log(Math.max(view.scale, .0001)) / Math.LN2);
-    return Math.max(tiles.minZoom, Math.min(tiles.maxZoom, zoom));
-  }
-
-  function renderTiles() {
     var viewport = document.getElementById("map-viewport");
-    var layer = document.getElementById("map-tile-layer");
-    if (!viewport || !layer || !view.scale) return;
-    var tiles = DATA.image.tiles;
-    var zoom = tileZoomForScale();
-    if (zoom !== currentTileZoom) {
-      currentTileZoom = zoom;
-      tileElements = {};
-      layer.innerHTML = "";
-    }
-    if (zoom < tiles.detailMinZoom) return;
+    if (!viewport || !renderer) return;
+    renderer.update(view, viewport.clientWidth, viewport.clientHeight);
+    updateMarkerPositions();
+  }
 
-    var factor = Math.pow(2, tiles.maxZoom - zoom);
-    var span = tiles.tileSize * factor;
-    var columns = Math.ceil(DATA.image.width / span);
-    var rows = Math.ceil(DATA.image.height / span);
-    var left = Math.max(0, -view.x / view.scale - span);
-    var top = Math.max(0, -view.y / view.scale - span);
-    var right = Math.min(DATA.image.width, (viewport.clientWidth - view.x) / view.scale + span);
-    var bottom = Math.min(DATA.image.height, (viewport.clientHeight - view.y) / view.scale + span);
-    var minX = Math.max(0, Math.floor(left / span));
-    var maxX = Math.min(columns - 1, Math.floor(Math.max(0, right - 1) / span));
-    var minY = Math.max(0, Math.floor(top / span));
-    var maxY = Math.min(rows - 1, Math.floor(Math.max(0, bottom - 1) / span));
-    var wanted = {};
-
-    for (var y = minY; y <= maxY; y += 1) {
-      for (var x = minX; x <= maxX; x += 1) {
-        var key = zoom + ":" + x + ":" + y;
-        wanted[key] = true;
-        if (tileElements[key]) continue;
-        var image = document.createElement("img");
-        image.className = "map-tile";
-        image.alt = "";
-        image.decoding = "async";
-        image.draggable = false;
-        image.style.left = (x * span) + "px";
-        image.style.top = (y * span) + "px";
-        image.style.width = span + "px";
-        image.style.height = span + "px";
-        image.addEventListener("load", function () { this.classList.add("is-loaded"); });
-        image.src = tileUrl(zoom, x, y);
-        tileElements[key] = image;
-        layer.appendChild(image);
-      }
-    }
-
-    Object.keys(tileElements).forEach(function (key) {
-      if (wanted[key]) return;
-      tileElements[key].remove();
-      delete tileElements[key];
+  function updateMarkerPositions() {
+    var viewport = document.getElementById("map-viewport");
+    if (!viewport) return;
+    document.querySelectorAll(".marker").forEach(function (button) {
+      var marker = markerById(button.dataset.markerId);
+      var x = view.x + DATA.image.width * marker.x / 100 * view.scale;
+      var y = view.y + DATA.image.height * marker.y / 100 * view.scale;
+      button.hidden = x < -22 || y < -22 || x > viewport.clientWidth + 22 || y > viewport.clientHeight + 22;
+      // Off-screen markers must not expand the overlay's paintable bounds.
+      button.style.left = (button.hidden ? 0 : x) + "px";
+      button.style.top = (button.hidden ? 0 : y) + "px";
     });
   }
 

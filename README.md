@@ -40,14 +40,16 @@ assets/
     checklist.js                 主清单数据、渲染与交互
     compendium.js                图鉴数据、渲染与交互
     map-data.js                  可独立扩展和校准的地图标记数据
-    map.js                       地图渲染、拖动、缩放与筛选逻辑
+    map.js                       地图界面、拖动、缩放与筛选逻辑
+    map-renderer.js              视口大小的 2D 绘图、瓦片缓存与加载
   fonts/                         本地字体
   images/                        图标、背景和社交分享图片
   map-tiles/                     多缩放等级的本地高清地图瓦片
 tests/
   functional-check.cjs           页面行为与存档兼容性检查
   validate-redesign.cjs          内容、数量、联动与结构回归检查
-  map-check.cjs                  地图资源、数据与交互回归检查
+  map-check.cjs                  地图资源与静态集成检查，包含渲染器测试
+  map-renderer-check.cjs         缩放/拖动几何、异步加载与资源上限测试
 tools/
   preview-server.cjs             无依赖的本地预览服务器
 ```
@@ -74,7 +76,7 @@ node tests/validate-redesign.cjs
 node tests/map-check.cjs
 ```
 
-两项检查均通过后，再在主清单和图鉴页中手动验证中文/英文、深色/浅色主题、搜索、筛选、备注、分页及跨页面联动。
+三项检查均通过后，再在主清单和图鉴页中手动验证中文/英文、深色/浅色主题、搜索、筛选、备注、分页及跨页面联动。地图需要在目标浏览器中反复放大、缩小、拖动和重置，同时观察标题栏与侧栏；本地文件与 HTTP 预览都应检查。自动渲染器测试验证绘图计算和异步行为，不能代替实际浏览器/显卡的视觉检查。
 
 ## 分支与发布流程
 
@@ -100,6 +102,8 @@ Netlify 的 Production branch 保持为 `main`。日常修改只推送到 `devel
 ## 数据说明
 
 互动地图底图由 Jotrius / J10 Railroad Engineer 制作，项目按作者许可署名使用。原始资源见 [Nexus Mods](https://www.nexusmods.com/reddeadredemption2/mods/676)。网页使用本地瓦片金字塔，不会在初次打开时下载完整的 21617×16785 图片。
+
+地图仅在视口大小的 2D 画布内绘制可见裁片，不创建或缩放原图大小的 DOM 图层。画布上限为 4 百万像素、单边 4096 像素，最多保留 48 张瓦片、并行加载 6 张。每次重绘先铺完整缩略底图，高清瓦片未加载成功时仍保留底图；地图标记目前保持关闭。
 
 条目内容根据游戏内信息及多个攻略来源交叉整理。由于不同版本、平台和翻译之间可能存在差异，游戏内实际显示始终具有最高优先级。发现遗漏或错误时，欢迎通过 GitHub Issue 提交具体条目与可靠来源。
 

@@ -9,10 +9,12 @@ const html = read('map.html');
 const css = read('assets/css/shared.css') + read('assets/css/map.css');
 const dataSource = read('assets/js/map-data.js');
 const appSource = read('assets/js/map.js');
+const rendererSource = read('assets/js/map-renderer.js');
 const checklistSource = read('assets/js/checklist.js');
 
 new vm.Script(dataSource, { filename: 'map-data.js' });
 new vm.Script(appSource, { filename: 'map.js' });
+new vm.Script(rendererSource, { filename: 'map-renderer.js' });
 
 const sandbox = { window: {} };
 vm.createContext(sandbox);
@@ -52,11 +54,13 @@ data.markers.forEach((marker) => {
 assert(html.includes('assets/js/map-data.js') && html.includes('assets/js/map.js'), 'Map scripts missing from page');
 assert(appSource.includes('rdr2-interactive-map-v1'), 'Map persistence key missing');
 assert(appSource.includes('pointerdown') && appSource.includes('wheel'), 'Pan or zoom interaction missing');
-assert(appSource.includes('renderTiles') && appSource.includes('tileZoomForScale'), 'Viewport tile loading missing');
-assert(appSource.includes('?v=" + DATA.version'), 'Map tile cache busting missing');
-assert(appSource.includes('zoom < tiles.detailMinZoom'), 'Low-zoom compositor safeguard missing');
+assert(html.indexOf('assets/js/map-renderer.js') < html.indexOf('assets/js/map.js') && html.includes('assets/js/map-renderer.js'), 'Renderer must load before app');
+assert(appSource.includes('<canvas class="map-canvas"') && !appSource.includes('translate3d('), 'World-sized transformed map must not return');
+assert(!read('assets/css/map.css').includes('will-change:transform'), 'Map must not force an oversized GPU layer');
+assert(rendererSource.includes('?v=" + version'), 'Map tile cache version missing');
 assert(appSource.includes('data-status') && appSource.includes('map-search'), 'Map filtering controls missing');
 assert(checklistSource.includes('href="map.html"'), 'Checklist map entry missing');
 assert(css.includes('prefers-reduced-motion') && css.includes('forced-colors'), 'Map accessibility fallbacks missing');
 
-console.log(`PASS: ${expectedTiles} high-resolution map tiles, town markers disabled, viewport loading, persistence, search, filters, pan, zoom and accessibility fallbacks.`);
+require('./map-renderer-check.cjs');
+console.log(`PASS: ${expectedTiles} map tile paths and static integration checks (scripts, storage keys, controls and accessibility rules).`);
