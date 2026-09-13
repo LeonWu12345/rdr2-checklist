@@ -2668,7 +2668,7 @@ function mainApp(initialState){
       });
     } catch (e) {}
     return '<a class="cat glass compendium-card' + (done === 560 ? ' cat-complete' : '') + '" href="compendium.html">' +
-      '<span class="cat-icon" aria-hidden="true"><img class="compendium-icon" src="compendium-icon.jpg" alt=""></span>' +
+      '<span class="cat-icon" aria-hidden="true"><img class="compendium-icon" src="assets/images/compendium-icon.jpg" alt=""></span>' +
       '<span class="cat-titlewrap"><h2>' + L('图鉴', 'Compendium') + '</h2><span class="cat-desc">' + L('动物、植物、装备与收藏记录', 'Animals, plants, equipment and collectibles') + '</span></span>' +
       '<span class="chev" aria-hidden="true"></span>' +
       renderRingBlock(pctFor(done, 560), done + ' / 560') + '</a>';

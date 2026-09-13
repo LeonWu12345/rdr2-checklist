@@ -110,6 +110,7 @@ for (let i = 1; i <= 36; i++) assert(newMain.includes(`re${i}:'equipment-${i + 4
 ['assets/fonts/chinese-rocks.ttf', 'assets/images/compendium-icon.jpg', 'assets/images/og-image.jpg', 'assets/images/rdr2-background.jpg'].forEach((asset) => {
   assert(fs.existsSync(path.join(here, asset)), `Missing asset: ${asset}`);
 });
+assert(newMain.includes('src="assets/images/compendium-icon.jpg"'), 'Checklist Compendium entry icon path is invalid');
 
 const dataMatch = newComp.match(/const DATA=(\{[\s\S]*?\});\nconst META=/);
 assert(dataMatch, 'Compendium data block not found');
