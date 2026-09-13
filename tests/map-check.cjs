@@ -19,7 +19,7 @@ vm.createContext(sandbox);
 new vm.Script(dataSource).runInContext(sandbox);
 const data = sandbox.window.RDR2MapData;
 
-assert(data && data.version === 3, 'Map data version missing');
+assert(data && data.version === 4, 'Map data version missing');
 assert.equal(data.image.width, 21617, 'Map image width changed');
 assert.equal(data.image.height, 16785, 'Map image height changed');
 assert.equal(data.image.overview, 'assets/images/rdr2-map-overview.jpg', 'Map overview path changed');
@@ -43,7 +43,7 @@ for (let zoom = data.image.tiles.minZoom; zoom <= data.image.tiles.maxZoom; zoom
 }
 const tileFiles = fs.readdirSync(tileRoot, { recursive: true, withFileTypes: true }).filter((entry) => entry.isFile() && entry.name.endsWith('.jpg'));
 assert.equal(tileFiles.length, expectedTiles, 'Unexpected map tile count');
-assert(data.markers.length >= 9, 'Initial verified marker set is incomplete');
+assert.equal(data.markers.length, 0, 'Town markers must stay disabled while compositor issue is isolated');
 assert.equal(new Set(data.markers.map((marker) => marker.id)).size, data.markers.length, 'Duplicate map marker ID');
 data.markers.forEach((marker) => {
   assert(marker.id && marker.zh && marker.en, `Incomplete marker: ${marker.id || 'unknown'}`);
@@ -59,4 +59,4 @@ assert(appSource.includes('data-status') && appSource.includes('map-search'), 'M
 assert(checklistSource.includes('href="map.html"'), 'Checklist map entry missing');
 assert(css.includes('prefers-reduced-motion') && css.includes('forced-colors'), 'Map accessibility fallbacks missing');
 
-console.log(`PASS: ${expectedTiles} high-resolution map tiles, ${data.markers.length} calibrated town markers, viewport loading, persistence, search, filters, pan, zoom and accessibility fallbacks.`);
+console.log(`PASS: ${expectedTiles} high-resolution map tiles, town markers disabled, viewport loading, persistence, search, filters, pan, zoom and accessibility fallbacks.`);

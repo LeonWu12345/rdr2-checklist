@@ -87,7 +87,7 @@
             '<div class="map-controls" aria-label="' + L("地图缩放", "Map zoom") + '"><button id="zoom-in" type="button" aria-label="' + L("放大", "Zoom in") + '">+</button><button id="zoom-out" type="button" aria-label="' + L("缩小", "Zoom out") + '">−</button><button id="reset-view" type="button" aria-label="' + L("重置视图", "Reset view") + '">⌂</button></div>' +
             '<article class="map-detail" id="map-detail" hidden></article></section>' +
         '</section>' +
-        '<footer class="map-foot"><p>' + L("初版仅收录可直接核对的主要城镇，收集品坐标将在校准后分批加入。", "This first edition includes verified major towns; collectible coordinates will be added after calibration.") + '</p><p>' + L("底图来源：", "Base map: ") + '<a href="' + DATA.image.sourceUrl + '" target="_blank" rel="noopener">' + DATA.image.credit + '</a> · © ' + new Date().getFullYear() + ' Jam8ee</p></footer>' +
+        '<footer class="map-foot"><p>' + L("坐标标记暂时关闭，核对显示稳定性后再分批加入。", "Map markers are temporarily disabled and will return after display stability is verified.") + '</p><p>' + L("底图来源：", "Base map: ") + '<a href="' + DATA.image.sourceUrl + '" target="_blank" rel="noopener">' + DATA.image.credit + '</a> · © ' + new Date().getFullYear() + ' Jam8ee</p></footer>' +
       '</main>';
     bindControls();
     renderCategories();

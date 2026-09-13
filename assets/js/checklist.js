@@ -2679,18 +2679,10 @@ function mainApp(initialState){
   }
 
   function renderMapCard() {
-    var total = 9;
-    var done = 0;
-    try {
-      var mapSaved = JSON.parse(localStorage.getItem('rdr2-interactive-map-v1') || '{}') || {};
-      var visited = mapSaved.visited || {};
-      done = Object.keys(visited).filter(function (id) { return visited[id]; }).length;
-    } catch (e) {}
     return '<a class="cat glass compendium-card map-entry-card" href="map.html">' +
       '<span class="cat-icon" aria-hidden="true">' + uiIcon('MAP') + '</span>' +
-      '<span class="cat-titlewrap"><h2>' + L('互动地图', 'Interactive Map') + '</h2><span class="cat-desc">' + L('缩放、筛选与地点记录', 'Explore, filter and log locations') + '</span></span>' +
-      '<span class="chev" aria-hidden="true"></span>' +
-      renderRingBlock(pctFor(done, total), done + ' / ' + total) + '</a>';
+      '<span class="cat-titlewrap"><h2>' + L('互动地图', 'Interactive Map') + '</h2><span class="cat-desc">' + L('高清地图浏览', 'High-resolution map viewer') + '</span></span>' +
+      '<span class="chev" aria-hidden="true"></span></a>';
   }
 
   function renderUpdateTicker() {
