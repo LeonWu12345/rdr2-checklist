@@ -16,6 +16,8 @@
   var view = { scale: 1, fit: 1, x: 0, y: 0 };
   var pointers = {};
   var drag = null;
+  var currentTileZoom = -1;
+  var tileElements = {};
 
   function readSetting(key, fallback) {
     try { return localStorage.getItem(key) || fallback; } catch (error) { return fallback; }
@@ -67,8 +69,11 @@
 
   function render() {
     applyPreferences();
+    currentTileZoom = -1;
+    tileElements = {};
     var update = escapeHtml(latestUpdate());
     var done = DATA.markers.filter(function (marker) { return saved.visited[marker.id]; }).length;
+    var overviewSpan = DATA.image.tiles.tileSize * Math.pow(2, DATA.image.tiles.maxZoom);
     root.innerHTML =
       '<main class="map-page">' +
         '<aside class="update-ticker" aria-label="' + update + '"><div class="update-ticker-track" aria-hidden="true"><span class="update-ticker-copy">' + update + '</span><span class="update-ticker-copy">' + update + '</span></div></aside>' +
@@ -79,7 +84,7 @@
             '<div class="map-tools"><input class="map-search" id="map-search" type="search" autocomplete="off" placeholder="' + L("搜索地点或区域", "Search places or regions") + '" aria-label="' + L("搜索地图", "Search map") + '" value="' + escapeHtml(query) + '">' +
               '<div class="map-segments" aria-label="' + L("到访状态", "Visit status") + '"><button type="button" data-status="all" class="' + (statusFilter === "all" ? "is-active" : "") + '">' + L("全部", "All") + '</button><button type="button" data-status="unvisited" class="' + (statusFilter === "unvisited" ? "is-active" : "") + '">' + L("未到访", "Unvisited") + '</button><button type="button" data-status="visited" class="' + (statusFilter === "visited" ? "is-active" : "") + '">' + L("已到访", "Visited") + '</button></div></div>' +
             '<div class="map-categories" id="map-categories"></div><div class="map-list" id="map-list"></div></aside>' +
-          '<section class="map-stage"><div class="map-viewport" id="map-viewport" tabindex="0" aria-label="' + L("可拖动和缩放的游戏地图", "Draggable and zoomable game map") + '"><div class="map-canvas" id="map-canvas"><img class="map-image" id="map-image" src="' + DATA.image.src + '" width="' + DATA.image.width + '" height="' + DATA.image.height + '" alt=""><div class="marker-layer" id="marker-layer"></div></div></div>' +
+          '<section class="map-stage"><div class="map-viewport" id="map-viewport" tabindex="0" aria-label="' + L("可拖动和缩放的高清游戏地图", "Draggable high-resolution game map") + '"><div class="map-canvas" id="map-canvas" style="width:' + DATA.image.width + 'px;height:' + DATA.image.height + 'px"><img class="map-overview" src="' + tileUrl(0, 0, 0) + '" width="' + overviewSpan + '" height="' + overviewSpan + '" alt=""><div class="map-tile-layer" id="map-tile-layer" aria-hidden="true"></div><div class="marker-layer" id="marker-layer"></div></div></div>' +
             '<div class="map-controls" aria-label="' + L("地图缩放", "Map zoom") + '"><button id="zoom-in" type="button" aria-label="' + L("放大", "Zoom in") + '">+</button><button id="zoom-out" type="button" aria-label="' + L("缩小", "Zoom out") + '">−</button><button id="reset-view" type="button" aria-label="' + L("重置视图", "Reset view") + '">⌂</button></div>' +
             '<article class="map-detail" id="map-detail" hidden></article></section>' +
         '</section>' +
@@ -208,7 +213,7 @@
     pointX = pointX == null ? viewport.clientWidth / 2 : pointX;
     pointY = pointY == null ? viewport.clientHeight / 2 : pointY;
     var oldScale = view.scale;
-    var next = Math.max(view.fit, Math.min(view.fit * 7, oldScale * factor));
+    var next = Math.max(view.fit, Math.min(view.fit * Math.pow(2, DATA.image.tiles.maxZoom), oldScale * factor));
     var mapX = (pointX - view.x) / oldScale;
     var mapY = (pointY - view.y) / oldScale;
     view.scale = next;
@@ -219,8 +224,8 @@
 
   function centerMarker(marker) {
     var viewport = document.getElementById("map-viewport");
-    var targetScale = Math.max(view.scale, view.fit * 2.4);
-    view.scale = Math.min(view.fit * 7, targetScale);
+    var targetScale = Math.max(view.scale, view.fit * 4);
+    view.scale = Math.min(view.fit * Math.pow(2, DATA.image.tiles.maxZoom), targetScale);
     view.x = viewport.clientWidth / 2 - DATA.image.width * marker.x / 100 * view.scale;
     view.y = viewport.clientHeight / 2 - DATA.image.height * marker.y / 100 * view.scale;
     clampView(); applyView();
@@ -241,11 +246,78 @@
     if (!canvas) return;
     canvas.style.transform = "translate3d(" + view.x + "px," + view.y + "px,0) scale(" + view.scale + ")";
     updateMarkerScale();
+    renderTiles();
   }
 
   function updateMarkerScale() {
-    var inverse = Math.min(12, Math.max(.45, 1 / view.scale));
+    var inverse = Math.min(64, Math.max(.45, 1 / view.scale));
     document.querySelectorAll(".marker").forEach(function (marker) { marker.style.setProperty("--marker-zoom", inverse); });
+  }
+
+  function tileUrl(zoom, x, y) {
+    var tiles = DATA.image.tiles;
+    return tiles.root + "/" + zoom + "/" + y + "/" + x + "." + tiles.extension;
+  }
+
+  function tileZoomForScale() {
+    var tiles = DATA.image.tiles;
+    var zoom = Math.ceil(tiles.maxZoom + Math.log(Math.max(view.scale, .0001)) / Math.LN2);
+    return Math.max(tiles.minZoom, Math.min(tiles.maxZoom, zoom));
+  }
+
+  function renderTiles() {
+    var viewport = document.getElementById("map-viewport");
+    var layer = document.getElementById("map-tile-layer");
+    if (!viewport || !layer || !view.scale) return;
+    var tiles = DATA.image.tiles;
+    var zoom = tileZoomForScale();
+    if (zoom !== currentTileZoom) {
+      currentTileZoom = zoom;
+      tileElements = {};
+      layer.innerHTML = "";
+    }
+    if (zoom === tiles.minZoom) return;
+
+    var factor = Math.pow(2, tiles.maxZoom - zoom);
+    var span = tiles.tileSize * factor;
+    var columns = Math.ceil(DATA.image.width / span);
+    var rows = Math.ceil(DATA.image.height / span);
+    var left = Math.max(0, -view.x / view.scale - span);
+    var top = Math.max(0, -view.y / view.scale - span);
+    var right = Math.min(DATA.image.width, (viewport.clientWidth - view.x) / view.scale + span);
+    var bottom = Math.min(DATA.image.height, (viewport.clientHeight - view.y) / view.scale + span);
+    var minX = Math.max(0, Math.floor(left / span));
+    var maxX = Math.min(columns - 1, Math.floor(Math.max(0, right - 1) / span));
+    var minY = Math.max(0, Math.floor(top / span));
+    var maxY = Math.min(rows - 1, Math.floor(Math.max(0, bottom - 1) / span));
+    var wanted = {};
+
+    for (var y = minY; y <= maxY; y += 1) {
+      for (var x = minX; x <= maxX; x += 1) {
+        var key = zoom + ":" + x + ":" + y;
+        wanted[key] = true;
+        if (tileElements[key]) continue;
+        var image = document.createElement("img");
+        image.className = "map-tile";
+        image.alt = "";
+        image.decoding = "async";
+        image.draggable = false;
+        image.style.left = (x * span) + "px";
+        image.style.top = (y * span) + "px";
+        image.style.width = span + "px";
+        image.style.height = span + "px";
+        image.addEventListener("load", function () { this.classList.add("is-loaded"); });
+        image.src = tileUrl(zoom, x, y);
+        tileElements[key] = image;
+        layer.appendChild(image);
+      }
+    }
+
+    Object.keys(tileElements).forEach(function (key) {
+      if (wanted[key]) return;
+      tileElements[key].remove();
+      delete tileElements[key];
+    });
   }
 
   render();
