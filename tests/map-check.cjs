@@ -21,7 +21,7 @@ vm.createContext(sandbox);
 new vm.Script(dataSource).runInContext(sandbox);
 const data = sandbox.window.RDR2MapData;
 
-assert(data && data.version === 4, 'Map data version missing');
+assert(data && data.version === 5, 'Map data version missing');
 assert.equal(data.image.width, 21617, 'Map image width changed');
 assert.equal(data.image.height, 16785, 'Map image height changed');
 assert.equal(data.image.overview, 'assets/images/rdr2-map-overview.jpg', 'Map overview path changed');

@@ -5,7 +5,7 @@
   // separate from the renderer lets future verified collections be added without
   // changing pan, zoom, filtering or persistence code.
   window.RDR2MapData = {
-    version: 4,
+    version: 5,
     image: {
       width: 21617,
       height: 16785,
