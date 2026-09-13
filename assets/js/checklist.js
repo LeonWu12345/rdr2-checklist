@@ -2657,6 +2657,7 @@ function mainApp(initialState){
       BOUNTY:'<rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="9" r="3"/><path d="M8 17h8M9 20h6"/>',
       SAT:'<rect x="4" y="7" width="16" height="15" rx="4"/><path d="M8 7V5a4 4 0 0 1 8 0v2M4 13h16m-10 0v3h4v-3"/>',
       D:'<circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5z"/>',
+      MAP:'<path d="m3 6 5-3 8 3 5-3v15l-5 3-8-3-5 3z"/><path d="M8 3v15M16 6v15"/>',
       TC:'<circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/>'
     };
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(paths[name]||paths.list)+'</svg>';
@@ -2675,6 +2676,21 @@ function mainApp(initialState){
       '<span class="cat-titlewrap"><h2>' + L('图鉴', 'Compendium') + '</h2><span class="cat-desc">' + L('动物、植物、装备与收藏记录', 'Animals, plants, equipment and collectibles') + '</span></span>' +
       '<span class="chev" aria-hidden="true"></span>' +
       renderRingBlock(pctFor(done, 560), done + ' / 560') + '</a>';
+  }
+
+  function renderMapCard() {
+    var total = 9;
+    var done = 0;
+    try {
+      var mapSaved = JSON.parse(localStorage.getItem('rdr2-interactive-map-v1') || '{}') || {};
+      var visited = mapSaved.visited || {};
+      done = Object.keys(visited).filter(function (id) { return visited[id]; }).length;
+    } catch (e) {}
+    return '<a class="cat glass compendium-card map-entry-card" href="map.html">' +
+      '<span class="cat-icon" aria-hidden="true">' + uiIcon('MAP') + '</span>' +
+      '<span class="cat-titlewrap"><h2>' + L('互动地图', 'Interactive Map') + '</h2><span class="cat-desc">' + L('缩放、筛选与地点记录', 'Explore, filter and log locations') + '</span></span>' +
+      '<span class="chev" aria-hidden="true"></span>' +
+      renderRingBlock(pctFor(done, total), done + ' / ' + total) + '</a>';
   }
 
   function renderUpdateTicker() {
@@ -3025,7 +3041,7 @@ function mainApp(initialState){
         renderLangMenu() +
         '<div id="alert-slot">' + renderAlert() + '</div>' +
         '<div class="split">' +
-          '<div class="col-tc">' + (tcCat ? renderCategory(tcCat) : '') + renderCompendiumCard() + '</div>' +
+          '<div class="col-tc">' + (tcCat ? renderCategory(tcCat) : '') + renderCompendiumCard() + renderMapCard() + '</div>' +
           '<div class="col-main">' + mainCats.map(renderCategory).join('') + '</div>' +
         '</div>' +
         '<p class="footnote">' + L(

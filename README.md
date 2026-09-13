@@ -16,6 +16,7 @@
 - 独立的 560 项游戏图鉴，包含动物、装备、鱼类、帮派、植物、马匹、武器和香烟卡
 - 图鉴分页、香烟卡套组、马匹花色及图鉴备注
 - 主清单与图鉴之间的相关条目双向联动
+- 初版互动地图，支持拖动、缩放、搜索、筛选、到访记录和地点备注
 - 捕兽人服装、强化装备、饰品与护身符等材料清单
 - 响应式布局、键盘焦点、高对比度和减少动态效果支持
 
@@ -26,24 +27,30 @@
 ```text
 index.html                       主清单页面骨架
 compendium.html                  图鉴页面骨架
+map.html                         互动地图页面骨架
 assets/
   css/
     shared.css                   两页共用的字体与更新公告样式
     checklist.css                主清单样式
     compendium.css               图鉴样式
+    map.css                      互动地图样式
   js/
     updates.js                   两页共用的更新公告数据
     checklist.js                 主清单数据、渲染与交互
     compendium.js                图鉴数据、渲染与交互
+    map-data.js                  可独立扩展和校准的地图标记数据
+    map.js                       地图渲染、拖动、缩放与筛选逻辑
   fonts/                         本地字体
   images/                        图标、背景和社交分享图片
 functional-check.cjs             页面行为与存档兼容性检查
 validate-redesign.cjs            内容、数量、联动与结构回归检查
+map-check.cjs                    地图资源、数据与交互回归检查
+preview-server.cjs               无依赖的本地预览服务器
 ```
 
 ## 本地使用
 
-直接打开 `index.html` 即可使用。为了获得与线上部署更接近的效果，也可以在项目根目录启动任意静态文件服务器。
+直接打开 `index.html` 即可使用。为了获得与线上部署更接近的效果，也可以在项目根目录运行 `node preview-server.cjs`，再访问 `http://127.0.0.1:4173/`。
 
 本项目没有安装步骤，也不需要执行构建命令。
 
@@ -60,6 +67,7 @@ validate-redesign.cjs            内容、数量、联动与结构回归检查
 ```powershell
 node functional-check.cjs
 node validate-redesign.cjs
+node map-check.cjs
 ```
 
 两项检查均通过后，再在主清单和图鉴页中手动验证中文/英文、深色/浅色主题、搜索、筛选、备注、分页及跨页面联动。
@@ -83,6 +91,7 @@ Netlify 的 Production branch 保持为 `main`。日常修改只推送到 `devel
 - `rdr2-compendium-category`
 - `rdr2-compendium-notes-v1`
 - `rdr2-compendium-horse-coats-v1`
+- `rdr2-interactive-map-v1`
 
 ## 数据说明
 

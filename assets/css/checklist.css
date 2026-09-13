@@ -248,6 +248,7 @@ body::before {content:none}
 .compendium-card:hover{border-color:var(--accent);transform:translateY(-1px)}
 .compendium-card .cat-icon{grid-column:1;grid-row:1;width:36px;height:36px;padding:0;background:none;border-radius:9px;overflow:hidden}
 .compendium-card .compendium-icon{display:block;width:100%;height:100%;object-fit:cover;object-position:50% 38%;filter:grayscale(1) contrast(1.08)}
+.map-entry-card .cat-icon{color:var(--accent-strong);display:grid;place-items:center}.map-entry-card .cat-icon svg{width:27px;height:27px}
 .compendium-card .cat-titlewrap{grid-column:2;grid-row:1;min-width:0}.compendium-card h2{margin:0;font-size:18px;font-weight:680;letter-spacing:-.025em;line-height:1.4}:root[data-lang="en"] .compendium-card h2{letter-spacing:.07em}.compendium-card .cat-desc{display:block}.compendium-card .chev{grid-column:3;grid-row:1;margin:0;transform:rotate(-45deg)}
 .compendium-card>.progress-block{grid-column:2/4;grid-row:2;width:auto;padding:2px 0 0;flex-direction:row;justify-content:flex-start;gap:12px}.compendium-card .ring-wrap{width:38px;height:38px}.compendium-card .ring-pct{font-size:13px}.compendium-card .overall-sub{font-size:13px}
 @media(max-width:850px){.compendium-card{margin-bottom:14px}}
