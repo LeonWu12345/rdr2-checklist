@@ -19,10 +19,13 @@ vm.createContext(sandbox);
 new vm.Script(dataSource).runInContext(sandbox);
 const data = sandbox.window.RDR2MapData;
 
-assert(data && data.version === 2, 'Map data version missing');
+assert(data && data.version === 3, 'Map data version missing');
 assert.equal(data.image.width, 21617, 'Map image width changed');
 assert.equal(data.image.height, 16785, 'Map image height changed');
+assert.equal(data.image.overview, 'assets/images/rdr2-map-overview.jpg', 'Map overview path changed');
+assert(fs.existsSync(path.join(here, data.image.overview)), 'Map overview image missing');
 assert(data.image.tiles && data.image.tiles.tileSize === 1024, 'Map tile metadata missing');
+assert.equal(data.image.tiles.detailMinZoom, 3, 'Safe detail tile threshold changed');
 assert.equal(data.image.tiles.maxZoom, 5, 'Map tile pyramid depth changed');
 const tileRoot = path.join(here, data.image.tiles.root);
 assert(fs.existsSync(tileRoot), 'Map tile directory missing');
@@ -51,6 +54,7 @@ assert(appSource.includes('rdr2-interactive-map-v1'), 'Map persistence key missi
 assert(appSource.includes('pointerdown') && appSource.includes('wheel'), 'Pan or zoom interaction missing');
 assert(appSource.includes('renderTiles') && appSource.includes('tileZoomForScale'), 'Viewport tile loading missing');
 assert(appSource.includes('?v=" + DATA.version'), 'Map tile cache busting missing');
+assert(appSource.includes('zoom < tiles.detailMinZoom'), 'Low-zoom compositor safeguard missing');
 assert(appSource.includes('data-status') && appSource.includes('map-search'), 'Map filtering controls missing');
 assert(checklistSource.includes('href="map.html"'), 'Checklist map entry missing');
 assert(css.includes('prefers-reduced-motion') && css.includes('forced-colors'), 'Map accessibility fallbacks missing');

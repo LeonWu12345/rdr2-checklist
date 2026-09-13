@@ -73,7 +73,6 @@
     tileElements = {};
     var update = escapeHtml(latestUpdate());
     var done = DATA.markers.filter(function (marker) { return saved.visited[marker.id]; }).length;
-    var overviewSpan = DATA.image.tiles.tileSize * Math.pow(2, DATA.image.tiles.maxZoom);
     root.innerHTML =
       '<main class="map-page">' +
         '<aside class="update-ticker" aria-label="' + update + '"><div class="update-ticker-track" aria-hidden="true"><span class="update-ticker-copy">' + update + '</span><span class="update-ticker-copy">' + update + '</span></div></aside>' +
@@ -84,7 +83,7 @@
             '<div class="map-tools"><input class="map-search" id="map-search" type="search" autocomplete="off" placeholder="' + L("搜索地点或区域", "Search places or regions") + '" aria-label="' + L("搜索地图", "Search map") + '" value="' + escapeHtml(query) + '">' +
               '<div class="map-segments" aria-label="' + L("到访状态", "Visit status") + '"><button type="button" data-status="all" class="' + (statusFilter === "all" ? "is-active" : "") + '">' + L("全部", "All") + '</button><button type="button" data-status="unvisited" class="' + (statusFilter === "unvisited" ? "is-active" : "") + '">' + L("未到访", "Unvisited") + '</button><button type="button" data-status="visited" class="' + (statusFilter === "visited" ? "is-active" : "") + '">' + L("已到访", "Visited") + '</button></div></div>' +
             '<div class="map-categories" id="map-categories"></div><div class="map-list" id="map-list"></div></aside>' +
-          '<section class="map-stage"><div class="map-viewport" id="map-viewport" tabindex="0" aria-label="' + L("可拖动和缩放的高清游戏地图", "Draggable high-resolution game map") + '"><div class="map-canvas" id="map-canvas" style="width:' + DATA.image.width + 'px;height:' + DATA.image.height + 'px"><img class="map-overview" src="' + tileUrl(0, 0, 0) + '" width="' + overviewSpan + '" height="' + overviewSpan + '" alt=""><div class="map-tile-layer" id="map-tile-layer" aria-hidden="true"></div><div class="marker-layer" id="marker-layer"></div></div></div>' +
+          '<section class="map-stage"><div class="map-viewport" id="map-viewport" tabindex="0" aria-label="' + L("可拖动和缩放的高清游戏地图", "Draggable high-resolution game map") + '"><div class="map-canvas" id="map-canvas" style="width:' + DATA.image.width + 'px;height:' + DATA.image.height + 'px"><img class="map-overview" src="' + DATA.image.overview + '?v=' + DATA.version + '" width="' + DATA.image.width + '" height="' + DATA.image.height + '" alt=""><div class="map-tile-layer" id="map-tile-layer" aria-hidden="true"></div><div class="marker-layer" id="marker-layer"></div></div></div>' +
             '<div class="map-controls" aria-label="' + L("地图缩放", "Map zoom") + '"><button id="zoom-in" type="button" aria-label="' + L("放大", "Zoom in") + '">+</button><button id="zoom-out" type="button" aria-label="' + L("缩小", "Zoom out") + '">−</button><button id="reset-view" type="button" aria-label="' + L("重置视图", "Reset view") + '">⌂</button></div>' +
             '<article class="map-detail" id="map-detail" hidden></article></section>' +
         '</section>' +
@@ -276,7 +275,7 @@
       tileElements = {};
       layer.innerHTML = "";
     }
-    if (zoom === tiles.minZoom) return;
+    if (zoom < tiles.detailMinZoom) return;
 
     var factor = Math.pow(2, tiles.maxZoom - zoom);
     var span = tiles.tileSize * factor;
