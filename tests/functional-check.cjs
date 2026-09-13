@@ -2,10 +2,11 @@ const fs=require('node:fs');
 const path=require('node:path');
 const vm=require('node:vm');
 const assert=require('node:assert/strict');
-const html=fs.readFileSync(__dirname+'/index.html','utf8');
-const updatesScript=fs.readFileSync(path.join(__dirname,'assets/js/updates.js'),'utf8');
-const script=fs.readFileSync(path.join(__dirname,'assets/js/checklist.js'),'utf8');
-const css=fs.readFileSync(path.join(__dirname,'assets/css/shared.css'),'utf8')+fs.readFileSync(path.join(__dirname,'assets/css/checklist.css'),'utf8');
+const projectRoot=path.resolve(__dirname,'..');
+const html=fs.readFileSync(path.join(projectRoot,'index.html'),'utf8');
+const updatesScript=fs.readFileSync(path.join(projectRoot,'assets/js/updates.js'),'utf8');
+const script=fs.readFileSync(path.join(projectRoot,'assets/js/checklist.js'),'utf8');
+const css=fs.readFileSync(path.join(projectRoot,'assets/css/shared.css'),'utf8')+fs.readFileSync(path.join(projectRoot,'assets/css/checklist.css'),'utf8');
 new vm.Script(updatesScript);
 new vm.Script(script);
 function app(storage={}){

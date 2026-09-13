@@ -3,7 +3,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
 
-const here = __dirname;
+const here = path.resolve(__dirname, '..');
 const baseline = path.resolve(here, '..', 'rdr2-checklist-phase1');
 const read = (dir, file) => fs.readFileSync(path.join(dir, file), 'utf8');
 

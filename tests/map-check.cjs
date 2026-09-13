@@ -3,7 +3,7 @@ const path = require('node:path');
 const vm = require('node:vm');
 const assert = require('node:assert/strict');
 
-const here = __dirname;
+const here = path.resolve(__dirname, '..');
 const read = (file) => fs.readFileSync(path.join(here, file), 'utf8');
 const html = read('map.html');
 const css = read('assets/css/shared.css') + read('assets/css/map.css');

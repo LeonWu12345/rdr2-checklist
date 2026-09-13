@@ -42,15 +42,17 @@ assets/
     map.js                       地图渲染、拖动、缩放与筛选逻辑
   fonts/                         本地字体
   images/                        图标、背景和社交分享图片
-functional-check.cjs             页面行为与存档兼容性检查
-validate-redesign.cjs            内容、数量、联动与结构回归检查
-map-check.cjs                    地图资源、数据与交互回归检查
-preview-server.cjs               无依赖的本地预览服务器
+tests/
+  functional-check.cjs           页面行为与存档兼容性检查
+  validate-redesign.cjs          内容、数量、联动与结构回归检查
+  map-check.cjs                  地图资源、数据与交互回归检查
+tools/
+  preview-server.cjs             无依赖的本地预览服务器
 ```
 
 ## 本地使用
 
-直接打开 `index.html` 即可使用。为了获得与线上部署更接近的效果，也可以在项目根目录运行 `node preview-server.cjs`，再访问 `http://127.0.0.1:4173/`。
+直接打开 `index.html` 即可使用。为了获得与线上部署更接近的效果，也可以在项目根目录运行 `node tools/preview-server.cjs`，再访问 `http://127.0.0.1:4173/`。
 
 本项目没有安装步骤，也不需要执行构建命令。
 
@@ -65,9 +67,9 @@ preview-server.cjs               无依赖的本地预览服务器
 提交改动前，在项目根目录运行：
 
 ```powershell
-node functional-check.cjs
-node validate-redesign.cjs
-node map-check.cjs
+node tests/functional-check.cjs
+node tests/validate-redesign.cjs
+node tests/map-check.cjs
 ```
 
 两项检查均通过后，再在主清单和图鉴页中手动验证中文/英文、深色/浅色主题、搜索、筛选、备注、分页及跨页面联动。
