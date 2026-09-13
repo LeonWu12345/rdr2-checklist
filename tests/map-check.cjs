@@ -50,6 +50,7 @@ assert(html.includes('assets/js/map-data.js') && html.includes('assets/js/map.js
 assert(appSource.includes('rdr2-interactive-map-v1'), 'Map persistence key missing');
 assert(appSource.includes('pointerdown') && appSource.includes('wheel'), 'Pan or zoom interaction missing');
 assert(appSource.includes('renderTiles') && appSource.includes('tileZoomForScale'), 'Viewport tile loading missing');
+assert(appSource.includes('?v=" + DATA.version'), 'Map tile cache busting missing');
 assert(appSource.includes('data-status') && appSource.includes('map-search'), 'Map filtering controls missing');
 assert(checklistSource.includes('href="map.html"'), 'Checklist map entry missing');
 assert(css.includes('prefers-reduced-motion') && css.includes('forced-colors'), 'Map accessibility fallbacks missing');

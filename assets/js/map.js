@@ -256,7 +256,7 @@
 
   function tileUrl(zoom, x, y) {
     var tiles = DATA.image.tiles;
-    return tiles.root + "/" + zoom + "/" + y + "/" + x + "." + tiles.extension;
+    return tiles.root + "/" + zoom + "/" + y + "/" + x + "." + tiles.extension + "?v=" + DATA.version;
   }
 
   function tileZoomForScale() {
