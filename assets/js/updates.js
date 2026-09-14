@@ -1,10 +1,10 @@
 (() => {
   const entries = Object.freeze([
     Object.freeze({
-      date: Object.freeze({ zh: '9月13日', en: 'September 13' }),
+      date: Object.freeze({ zh: '9月15日', en: 'September 15' }),
       content: Object.freeze({
-        zh: '新增缺失支线任务与 14 项营地同伴活动 · “营地请求”更名为“营地请求&活动” · 完善石雕、恐龙骨与捕梦网位置 · 优化英文版字体、地名翻译及标点显示 · 完善图鉴备注与挑战明细',
-        en: 'Added missing side missions and 14 camp companion activities - Renamed Camp Requests to Camp Requests & Activities - Improved rock carving, dinosaur bone and dreamcatcher locations - Refined English typography, place names and punctuation - Improved Compendium notes and challenge details'
+        zh: '新增可互动地图',
+        en: 'Added: Interactive map'
       })
     })
   ]);

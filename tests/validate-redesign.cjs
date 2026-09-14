@@ -126,8 +126,8 @@ assert(newComp.includes('class="entry-memo"'), 'Compendium notes field missing')
 assert(newMain.includes('class="update-ticker"') && newComp.includes('id="update-ticker"'), 'Shared update ticker missing');
 const updateContext = { window: {} };
 vm.runInNewContext(updatesJs, updateContext);
-assert(updateContext.window.RDR2Updates.latestText('zh').startsWith('9月13日更新：['), 'Chinese update ticker format changed');
-assert(updateContext.window.RDR2Updates.latestText('en').startsWith('September 13 update: ['), 'English update ticker format changed');
+assert(/^\d{1,2}月\d{1,2}日更新：\[.+\]$/.test(updateContext.window.RDR2Updates.latestText('zh')), 'Chinese update ticker format changed');
+assert(/^[A-Z][a-z]+ \d{1,2} update: \[.+\]$/.test(updateContext.window.RDR2Updates.latestText('en')), 'English update ticker format changed');
 assert(mainJs.includes('window.RDR2Updates.latestText(lang)') && compJs.includes('window.RDR2Updates.latestText(lang)'), 'Pages must read shared update data');
 assert(newComp.includes('width:100%!important') && newComp.includes('cursor:text!important'), 'Compendium notes field sizing regression');
 assert(newComp.includes('const HORSE_COATS={'), 'Horse coat checklists missing');
