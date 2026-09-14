@@ -60,6 +60,28 @@ assert(!read('assets/css/map.css').includes('will-change:transform'), 'Map must 
 assert(rendererSource.includes('?v=" + version'), 'Map tile cache version missing');
 assert(appSource.includes('data-status') && appSource.includes('map-search'), 'Map filtering controls missing');
 assert(checklistSource.includes('href="map.html"'), 'Checklist map entry missing');
+assert(checklistSource.includes('id="map-preview-expand"'), 'Checklist map preview expansion control missing');
+assert(checklistSource.includes("'collapse' : 'expand'") && checklistSource.includes('-50.png'), 'State-aware Icons8 map expansion assets missing from control');
+assert(fs.existsSync(path.join(here, 'assets/images/icons8-expand-50.png')), 'Icons8 map expansion asset file missing');
+assert(fs.existsSync(path.join(here, 'assets/images/icons8-collapse-50.png')), 'Icons8 map collapse asset file missing');
+assert(!checklistSource.includes('位置辅助') && !checklistSource.includes('Location Guide'), 'Obsolete map preview badge remains');
+assert(checklistSource.includes('src="map.html?embed=1&amp;compact=1"'), 'Checklist compact embedded map source missing');
+assert(checklistSource.includes('rdr2-map-layout') && checklistSource.includes('rdr2-map-focus'), 'Checklist map preview messaging hooks missing');
+assert(checklistSource.includes("L('地图', 'Map')") && checklistSource.includes("L('在清单中查找地点', 'Locate checklist activities')"), 'Compact map title or description copy is stale');
+assert(checklistSource.includes("L('进入地图页', 'Open Map Page')"), 'Map page button copy is stale');
+assert(checklistSource.includes('animateMapPreview') && checklistSource.includes('prefers-reduced-motion: reduce'), 'Map expansion animation or reduced-motion fallback missing');
+assert(!checklistSource.includes('renderMapDialog'), 'Expanded map must reuse the compact map instead of rendering a second window');
+assert(appSource.includes('dataset.embed') && appSource.includes('URLSearchParams'), 'Map embedded mode detection missing');
+assert(appSource.includes('rdr2-map-layout') && appSource.includes('rdr2-map-focus'), 'Embedded map message handlers missing');
+assert(appSource.includes('mapIsInteractive()') && appSource.includes('syncEmbeddedInteractionState'), 'Compact map interaction lock missing');
+const checklistCss = read('assets/css/checklist.css');
+assert(checklistCss.includes('.map-preview-card.is-expanded') && checklistCss.includes('body.map-preview-lock .split'), 'In-flow map expansion styles missing');
+assert(checklistCss.includes('body.map-preview-lock .col-tc>.cat{width:310px;margin-left:auto}'), 'Total completion and Compendium cards must stay compact and align against the checklist');
+assert(!checklistCss.includes('100vmax') && !checklistCss.includes('.map-preview-card.is-expanded{position:fixed'), 'Expanded map must not create a fullscreen overlay');
+assert(read('assets/css/map.css').includes(':root[data-embed="true"]'), 'Map embedded layout styles missing');
+assert(read('assets/css/map.css').includes(':root[data-embed="true"] .map-panel{display:none}'), 'Embedded map must hide the location panel');
+assert(read('assets/css/map.css').includes(':root[data-embed-view="compact"] .map-viewport{pointer-events:none'), 'Compact map must be non-interactive');
+assert(checklistCss.includes('.map-preview-card:not(.is-expanded) .map-preview-media iframe{pointer-events:none}'), 'Checklist must prevent compact iframe pointer interaction');
 assert(css.includes('prefers-reduced-motion') && css.includes('forced-colors'), 'Map accessibility fallbacks missing');
 
 require('./map-renderer-check.cjs');

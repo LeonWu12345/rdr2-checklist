@@ -40,3 +40,13 @@ button{color:inherit}
 @media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;transition:none!important}}
 @media(prefers-reduced-transparency:reduce){.map-topbar,.map-detail{backdrop-filter:none;background:var(--map-panel)}}
 @media(forced-colors:active){.marker,.map-segments button.is-active,.map-visited.is-active{forced-color-adjust:none}.map-shell,.map-topbar,.map-detail{border-color:CanvasText}}
+
+/* Embedded mode is a map-only surface. The checklist owns all surrounding UI. */
+:root[data-embed="true"] body{overflow:hidden}
+:root[data-embed="true"] .map-page{height:100dvh;min-height:0;padding:0;grid-template-rows:minmax(0,1fr)}
+:root[data-embed="true"] .update-ticker,:root[data-embed="true"] .map-topbar,:root[data-embed="true"] .map-foot,:root[data-embed="true"] .map-panel{display:none}
+:root[data-embed="true"] .map-shell{max-width:none;height:100%;margin:0;border:0;grid-template-columns:1fr;grid-template-rows:1fr}
+:root[data-embed="true"] .map-stage{grid-row:1}
+:root[data-embed-view="compact"] .map-viewport{pointer-events:none;touch-action:auto;cursor:default}
+:root[data-embed-view="compact"] .map-controls,:root[data-embed-view="compact"] .map-detail{display:none}
+:root[data-embed-view="compact"] .marker{pointer-events:none}

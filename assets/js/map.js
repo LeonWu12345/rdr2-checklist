@@ -2,6 +2,9 @@
   "use strict";
 
   var DATA = window.RDR2MapData;
+  var embedded = new URLSearchParams(window.location.search).get("embed") === "1";
+  var compact = new URLSearchParams(window.location.search).get("compact") === "1";
+  var embedExpanded = !compact;
   var STORAGE_KEY = "rdr2-interactive-map-v1";
   var LANG_KEY = "rdr2-full-checklist-lang";
   var THEME_KEY = "rdr2-full-checklist-theme";
@@ -42,6 +45,10 @@
   function applyPreferences() {
     document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
     document.documentElement.dataset.lang = lang;
+    if (embedded) document.documentElement.dataset.embed = "true";
+    else document.documentElement.removeAttribute("data-embed");
+    if (embedded) document.documentElement.dataset.embedView = embedExpanded ? "expanded" : "compact";
+    else document.documentElement.removeAttribute("data-embed-view");
     if (theme === "light" || theme === "dark") document.documentElement.dataset.theme = theme;
     else document.documentElement.removeAttribute("data-theme");
     document.title = L("RDR2 互动地图", "RDR2 Interactive Map");
@@ -49,6 +56,20 @@
 
   function latestUpdate() {
     return window.RDR2Updates && window.RDR2Updates.latestText ? window.RDR2Updates.latestText(lang) : "";
+  }
+
+  function mapIsInteractive() {
+    return !embedded || embedExpanded;
+  }
+
+  function syncEmbeddedInteractionState() {
+    if (!embedded) return;
+    var viewport = document.getElementById("map-viewport");
+    if (!viewport) return;
+    viewport.tabIndex = embedExpanded ? 0 : -1;
+    viewport.setAttribute("aria-label", embedExpanded
+      ? L("可拖动和缩放的高清游戏地图", "Draggable high-resolution game map")
+      : L("地图位置缩略图", "Map location preview"));
   }
 
   function visibleMarkers() {
@@ -91,6 +112,7 @@
       '</main>';
     renderer = window.RDR2MapRenderer.create(document.getElementById("map-canvas"), DATA.image, DATA.version);
     bindControls();
+    syncEmbeddedInteractionState();
     renderCategories();
     renderMarkerViews();
     requestAnimationFrame(resetView);
@@ -118,7 +140,10 @@
     layer.innerHTML = markers.map(function (marker, index) {
       return '<button class="marker' + (saved.visited[marker.id] ? ' is-visited' : '') + (selectedId === marker.id ? ' is-selected' : '') + '" type="button" data-marker-id="' + marker.id + '" aria-label="' + escapeHtml(markerName(marker)) + '">' + (index + 1) + '</button>';
     }).join("");
-    document.querySelectorAll("[data-marker-id]").forEach(function (button) { button.addEventListener("click", function () { selectMarker(button.dataset.markerId, button.classList.contains("marker")); }); });
+    document.querySelectorAll("[data-marker-id]").forEach(function (button) { button.addEventListener("click", function () {
+      if (embedded && !mapIsInteractive()) return;
+      selectMarker(button.dataset.markerId, button.classList.contains("marker"));
+    }); });
     updateMarkerPositions();
     renderDetail();
   }
@@ -155,24 +180,50 @@
     document.getElementById("lang-toggle").addEventListener("click", function () { lang = lang === "en" ? "zh" : "en"; try { localStorage.setItem(LANG_KEY, lang); } catch (error) {} render(); });
     document.getElementById("map-search").addEventListener("input", function (event) { query = event.target.value; renderMarkerViews(); });
     document.querySelectorAll("[data-status]").forEach(function (button) { button.addEventListener("click", function () { statusFilter = button.dataset.status; document.querySelectorAll("[data-status]").forEach(function (item) { item.classList.toggle("is-active", item === button); }); renderMarkerViews(); }); });
-    document.getElementById("zoom-in").addEventListener("click", function () { zoomAt(1.32); });
-    document.getElementById("zoom-out").addEventListener("click", function () { zoomAt(1 / 1.32); });
-    document.getElementById("reset-view").addEventListener("click", resetView);
+    document.getElementById("zoom-in").addEventListener("click", function () { if (mapIsInteractive()) zoomAt(1.32); });
+    document.getElementById("zoom-out").addEventListener("click", function () { if (mapIsInteractive()) zoomAt(1 / 1.32); });
+    document.getElementById("reset-view").addEventListener("click", function () { if (mapIsInteractive()) resetView(); });
     var viewport = document.getElementById("map-viewport");
-    viewport.addEventListener("wheel", function (event) { event.preventDefault(); var rect = viewport.getBoundingClientRect(); zoomAt(event.deltaY < 0 ? 1.18 : 1 / 1.18, event.clientX - rect.left, event.clientY - rect.top); }, { passive: false });
+    viewport.addEventListener("wheel", function (event) { if (!mapIsInteractive()) return; event.preventDefault(); var rect = viewport.getBoundingClientRect(); zoomAt(event.deltaY < 0 ? 1.18 : 1 / 1.18, event.clientX - rect.left, event.clientY - rect.top); }, { passive: false });
     viewport.addEventListener("pointerdown", pointerDown);
     viewport.addEventListener("pointermove", pointerMove);
     viewport.addEventListener("pointerup", pointerUp);
     viewport.addEventListener("pointercancel", pointerUp);
-    viewport.addEventListener("dblclick", function (event) { var rect = viewport.getBoundingClientRect(); zoomAt(1.45, event.clientX - rect.left, event.clientY - rect.top); });
-    viewport.addEventListener("keydown", function (event) { var step = 44; if (event.key === "+" || event.key === "=") zoomAt(1.25); else if (event.key === "-") zoomAt(.8); else if (event.key === "0") resetView(); else if (event.key === "ArrowLeft") view.x += step; else if (event.key === "ArrowRight") view.x -= step; else if (event.key === "ArrowUp") view.y += step; else if (event.key === "ArrowDown") view.y -= step; else return; event.preventDefault(); clampView(); applyView(); });
+    viewport.addEventListener("dblclick", function (event) { if (!mapIsInteractive()) return; var rect = viewport.getBoundingClientRect(); zoomAt(1.45, event.clientX - rect.left, event.clientY - rect.top); });
+    viewport.addEventListener("keydown", function (event) { if (!mapIsInteractive()) return; var step = 44; if (event.key === "+" || event.key === "=") zoomAt(1.25); else if (event.key === "-") zoomAt(.8); else if (event.key === "0") resetView(); else if (event.key === "ArrowLeft") view.x += step; else if (event.key === "ArrowRight") view.x -= step; else if (event.key === "ArrowUp") view.y += step; else if (event.key === "ArrowDown") view.y -= step; else return; event.preventDefault(); clampView(); applyView(); });
     window.removeEventListener("resize", handleResize);
     window.addEventListener("resize", handleResize);
   }
 
   function handleResize() { resetView(); }
 
+  window.addEventListener("message", function (event) {
+    var message = event.data || {};
+    if (!embedded || typeof message !== "object") return;
+    if (message.type === "rdr2-map-layout") {
+      embedExpanded = !!message.expanded;
+      document.documentElement.dataset.embedView = embedExpanded ? "expanded" : "compact";
+      syncEmbeddedInteractionState();
+      requestAnimationFrame(function () {
+        var marker = markerById(selectedId);
+        if (marker) centerMarker(marker);
+        else resetView();
+      });
+      return;
+    }
+    if (message.type === "rdr2-map-focus" && message.markerId) {
+      var marker = DATA.markers.find(function (item) { return item.id === message.markerId; });
+      if (!marker) return;
+      selectedId = marker.id;
+      filter = marker.category;
+      renderCategories();
+      renderMarkerViews();
+      requestAnimationFrame(function () { centerMarker(marker); });
+    }
+  });
+
   function pointerDown(event) {
+    if (!mapIsInteractive()) return;
     if (event.target.closest(".marker")) return;
     var viewport = document.getElementById("map-viewport");
     viewport.setPointerCapture(event.pointerId);
@@ -182,6 +233,7 @@
   }
 
   function pointerMove(event) {
+    if (!mapIsInteractive()) return;
     if (!pointers[event.pointerId] || !drag) return;
     pointers[event.pointerId] = { x: event.clientX, y: event.clientY };
     view.x = drag.mapX + event.clientX - drag.x;

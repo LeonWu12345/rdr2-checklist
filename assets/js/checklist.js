@@ -1910,6 +1910,9 @@ function mainApp(initialState){
   var resetConfirmTimer = null;
   var themeMenuOpen = false;
   var langMenuOpen = false;
+  var mapPreviewOpen = false;
+  var mapPreviewMarkerId = '';
+  var mapPreviewAnimation = null;
   var filterInlineOpen = false;
   var filterDrag = null; // in-progress drag state; see startFilterDrag()
   var suppressNextFilterClick = false; // set when a drag actually moved, so the browser's
@@ -2679,11 +2682,121 @@ function mainApp(initialState){
   }
 
   function renderMapCard() {
-    return '<a class="cat glass compendium-card map-entry-card" href="map.html">' +
-      '<span class="cat-icon" aria-hidden="true">' + uiIcon('MAP') + '</span>' +
-      '<span class="cat-titlewrap"><h2>' + L('互动地图', 'Interactive Map') + '</h2><span class="cat-desc">' + L('高清地图浏览', 'High-resolution map viewer') + '</span></span>' +
-      '<span class="chev" aria-hidden="true"></span></a>';
+    return '<section class="glass map-preview-card' + (mapPreviewOpen ? ' is-expanded' : '') + '" id="map-preview-card" aria-labelledby="map-preview-title">' +
+      '<div class="map-preview-media">' +
+        '<iframe id="map-preview-frame" title="' + L('RDR2 互动地图', 'RDR2 interactive map') + '" src="map.html?embed=1&amp;compact=1" loading="lazy"></iframe>' +
+        '<button type="button" class="map-preview-expand-icon" id="map-preview-expand" aria-expanded="' + String(mapPreviewOpen) + '" aria-controls="map-preview-frame" aria-label="' + (mapPreviewOpen ? L('收起地图', 'Collapse Map') : L('展开地图', 'Expand Map')) + '" title="' + (mapPreviewOpen ? L('收起地图', 'Collapse Map') : L('展开地图', 'Expand Map')) + '"><img src="assets/images/icons8-' + (mapPreviewOpen ? 'collapse' : 'expand') + '-50.png" alt=""></button>' +
+      '</div>' +
+      '<div class="map-preview-content">' +
+        '<div class="map-preview-heading"><span class="map-preview-icon" aria-hidden="true">' + uiIcon('MAP') + '</span>' +
+          '<span><h2 id="map-preview-title">' + L('地图', 'Map') + '</h2><span class="map-preview-desc">' + L('在清单中查找地点', 'Locate checklist activities') + '</span></span></div>' +
+        '<div class="map-preview-actions">' +
+          '<a class="map-preview-button" href="map.html">' + L('进入地图页', 'Open Map Page') + '</a>' +
+        '</div>' +
+      '</div>' +
+    '</section>';
   }
+
+  function sendMapPreviewMessage(message) {
+    var frame = document.getElementById('map-preview-frame');
+    if (!frame || !frame.contentWindow) return;
+    try { frame.contentWindow.postMessage(message, '*'); } catch (e) {}
+  }
+
+  function attachMapFrameEscape(frame) {
+    if (!frame || frame.dataset.escapeBound === 'true') return;
+    frame.dataset.escapeBound = 'true';
+    frame.addEventListener('load', function () {
+      sendMapPreviewMessage({ type: 'rdr2-map-layout', expanded: mapPreviewOpen });
+      if (mapPreviewMarkerId) sendMapPreviewMessage({ type: 'rdr2-map-focus', markerId: mapPreviewMarkerId });
+      try {
+        frame.contentWindow.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') closeMapPreview();
+        });
+      } catch (e) {}
+    });
+  }
+
+  function syncMapPreview() {
+    var card = document.getElementById('map-preview-card');
+    var frame = document.getElementById('map-preview-frame');
+    document.body.classList.toggle('map-preview-lock', mapPreviewOpen);
+    if (!card) return;
+    card.classList.toggle('is-expanded', mapPreviewOpen);
+    var toggle = document.getElementById('map-preview-expand');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', String(mapPreviewOpen));
+      var toggleLabel = mapPreviewOpen ? L('收起地图', 'Collapse Map') : L('展开地图', 'Expand Map');
+      toggle.setAttribute('aria-label', toggleLabel);
+      toggle.setAttribute('title', toggleLabel);
+      var toggleIcon = toggle.querySelector('img');
+      if (toggleIcon) toggleIcon.src = 'assets/images/icons8-' + (mapPreviewOpen ? 'collapse' : 'expand') + '-50.png';
+    }
+    attachMapFrameEscape(frame);
+    sendMapPreviewMessage({ type: 'rdr2-map-layout', expanded: mapPreviewOpen });
+  }
+
+  function collapsedMapPreviewHeight(card) {
+    if (window.innerWidth <= 850) return card.getBoundingClientRect().height;
+    var clone = card.cloneNode(true);
+    clone.classList.remove('is-expanded');
+    clone.removeAttribute('id');
+    clone.querySelectorAll('[id]').forEach(function (node) { node.removeAttribute('id'); });
+    var frame = clone.querySelector('iframe');
+    if (frame) frame.remove();
+    clone.style.cssText = 'position:absolute;visibility:hidden;pointer-events:none;left:-10000px;top:0;width:310px;height:auto;min-height:0;margin:0;transition:none;';
+    document.body.appendChild(clone);
+    var height = clone.getBoundingClientRect().height;
+    clone.remove();
+    return height;
+  }
+
+  function animateMapPreview(expanded) {
+    var card = document.getElementById('map-preview-card');
+    if (!card || mapPreviewOpen === expanded) return;
+    if (mapPreviewAnimation) mapPreviewAnimation.finish();
+    var startHeight = card.getBoundingClientRect().height;
+    mapPreviewOpen = expanded;
+    syncMapPreview();
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+    var targetHeight = expanded ? card.getBoundingClientRect().height : collapsedMapPreviewHeight(card);
+    card.style.height = startHeight + 'px';
+    void card.offsetHeight;
+    var finished = false;
+    var finish = function () {
+      if (finished) return;
+      finished = true;
+      card.removeEventListener('transitionend', onEnd);
+      clearTimeout(timer);
+      card.style.removeProperty('height');
+      if (mapPreviewAnimation && mapPreviewAnimation.finish === finish) mapPreviewAnimation = null;
+    };
+    var onEnd = function (event) { if (event.target === card && event.propertyName === 'height') finish(); };
+    var timer = setTimeout(finish, 460);
+    mapPreviewAnimation = { finish:finish };
+    card.addEventListener('transitionend', onEnd);
+    requestAnimationFrame(function () { card.style.height = targetHeight + 'px'; });
+  }
+
+  function openMapPreview() {
+    animateMapPreview(true);
+  }
+
+  function closeMapPreview() {
+    if (!mapPreviewOpen) return;
+    animateMapPreview(false);
+  }
+
+  function focusMapPreviewMarker(markerId) {
+    if (!markerId) return;
+    mapPreviewMarkerId = markerId;
+    sendMapPreviewMessage({ type: 'rdr2-map-focus', markerId: markerId });
+    var card = document.getElementById('map-preview-card');
+    if (card) card.scrollIntoView({ behavior: window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+  }
+
+  window.RDR2MapPreview = { focusMarker: focusMapPreviewMarker };
 
   function renderUpdateTicker() {
     var text = window.RDR2Updates.latestText(lang);
@@ -3053,6 +3166,7 @@ function mainApp(initialState){
     // Doing the height/filter sync first means scroll is restored against the final layout.
     applyFilter();
     syncOpenHeights();
+    syncMapPreview();
     if (prevTcScrollTop) {
       var newTcBody = document.querySelector('.col-tc .cat-body');
       if (newTcBody) newTcBody.scrollTop = prevTcScrollTop;
@@ -3164,6 +3278,7 @@ function doSave() {
     var head = e.target.closest && e.target.closest('.cat-head,.group-head');
     if (head && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); head.click(); }
     if (e.key === 'Escape') {
+      if (mapPreviewOpen) { closeMapPreview(); return; }
       if (themeMenuOpen) { themeMenuOpen=false; document.getElementById('theme-picker-menu').hidden=true; var tb=document.getElementById('theme-picker-btn'); tb.setAttribute('aria-expanded','false'); tb.focus(); }
       if (langMenuOpen) { langMenuOpen=false; document.getElementById('lang-picker-menu').hidden=true; var lb=document.getElementById('lang-picker-btn'); lb.setAttribute('aria-expanded','false'); lb.focus(); }
       if (filterInlineOpen) closeFilterInline();
@@ -3268,6 +3383,10 @@ function doSave() {
       var insideFilterSlot = e.target.closest && e.target.closest('#filter-slot');
       if (!insideFilterSlot) { closeFilterInline(); }
     }
+    var mapLocationLink = e.target.closest ? e.target.closest('[data-map-marker]') : null;
+    if (mapLocationLink) { e.preventDefault(); focusMapPreviewMarker(mapLocationLink.dataset.mapMarker); return; }
+    var mapPreviewExpand = e.target.closest ? e.target.closest('#map-preview-expand') : null;
+    if (mapPreviewExpand) { if (mapPreviewOpen) closeMapPreview(); else openMapPreview(); return; }
     var themePickerBtn = e.target.closest ? e.target.closest('#theme-picker-btn') : null;
     if (themePickerBtn) {
       themeMenuOpen = !themeMenuOpen;
