@@ -4,6 +4,7 @@
   // Positions use percentages of the 21617 x 16785 base image. Keeping map content
   // separate from the renderer lets future verified collections be added without
   // changing pan, zoom, filtering or persistence code.
+  var verified = window.RDR2VerifiedMapMarkers || { categories: [], markers: [] };
   window.RDR2MapData = {
     version: 5,
     image: {
@@ -21,7 +22,7 @@
         extension: "jpg"
       }
     },
-    categories: [],
-    markers: []
+    categories: verified.categories,
+    markers: verified.markers
   };
 })();

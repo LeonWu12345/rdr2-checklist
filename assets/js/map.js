@@ -5,35 +5,38 @@
   var embedded = new URLSearchParams(window.location.search).get("embed") === "1";
   var compact = new URLSearchParams(window.location.search).get("compact") === "1";
   var embedExpanded = !compact;
-  var STORAGE_KEY = "rdr2-interactive-map-v1";
   var LANG_KEY = "rdr2-full-checklist-lang";
   var THEME_KEY = "rdr2-full-checklist-theme";
+  var CHECKLIST_KEY = "rdr2-full-checklist-v2";
+  var COMPENDIUM_KEY = "rdr2-compendium-v1";
   var root = document.getElementById("map-root");
   var lang = readSetting(LANG_KEY, "zh") === "en" ? "en" : "zh";
   var theme = readSetting(THEME_KEY, "");
-  var filter = "all";
-  var statusFilter = "all";
+  var filter = "";
   var query = "";
   var selectedId = "";
-  var saved = loadSaved();
   var view = { scale: 1, fit: 1, x: 0, y: 0 };
   var pointers = {};
   var drag = null;
   var renderer = null;
+  var checklistState = readJson(CHECKLIST_KEY);
+  var compendiumState = readJson(COMPENDIUM_KEY);
+  var COMPENDIUM_LINKS = {
+    la1:"animals-165",la2:"animals-164",la3:"animals-177",la4:"animals-168",la5:"animals-169",la6:"animals-171",la7:"animals-173",la8:"animals-172",la9:"animals-174",la10:"animals-166",la11:"animals-178",la12:"animals-175",la13:"animals-163",la14:"animals-170",la15:"animals-176",la16:"animals-167",
+    lf1:"fish-25",lf2:"fish-22",lf3:"fish-27",lf4:"fish-28",lf5:"fish-18",lf6:"fish-23",lf7:"fish-16",lf8:"fish-17",lf9:"fish-30",lf10:"fish-21",lf11:"fish-20",lf12:"fish-19",lf13:"fish-24",lf14:"fish-26",
+    tk1:"equipment-23",tk2:"equipment-24",tk3:"equipment-25",tk4:"equipment-26",tk5:"equipment-27",tk6:"equipment-28",tk7:"equipment-29",tk8:"equipment-38",tk9:"equipment-31",tk10:"equipment-32",tk11:"equipment-22",tk12:"equipment-36",tk13:"equipment-18",tk14:"equipment-21",tk15:"equipment-19",tk16:"equipment-20",tk17:"equipment-34",tk18:"equipment-40",tk19:"equipment-41",tk20:"equipment-43",tk21:"equipment-39",tk22:"equipment-42",tk23:"equipment-37",tk24:"equipment-30",tk25:"equipment-35",tk26:"equipment-33"
+  };
 
   function readSetting(key, fallback) {
     try { return localStorage.getItem(key) || fallback; } catch (error) { return fallback; }
   }
 
-  function loadSaved() {
-    try {
-      var value = JSON.parse(localStorage.getItem(STORAGE_KEY) || "{}");
-      return { visited: value.visited || {}, notes: value.notes || {} };
-    } catch (error) { return { visited: {}, notes: {} }; }
+  function readJson(key) {
+    try { return JSON.parse(localStorage.getItem(key) || "{}"); } catch (error) { return {}; }
   }
 
-  function persist() {
-    try { localStorage.setItem(STORAGE_KEY, JSON.stringify(saved)); } catch (error) {}
+  function writeJson(key, value) {
+    try { localStorage.setItem(key, JSON.stringify(value)); } catch (error) {}
   }
 
   function L(zh, en) { return lang === "en" ? en : zh; }
@@ -41,6 +44,32 @@
   function markerDetail(marker) { return lang === "en" ? marker.detailEn : marker.detailZh; }
   function categoryName(category) { return lang === "en" ? category.en : category.zh; }
   function escapeHtml(value) { return String(value).replace(/[&<>"']/g, function (char) { return ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" })[char]; }); }
+
+  function flagIcon(code) {
+    if (code === "cn") return '<svg class="map-flag" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" rx="1" fill="#de2910"/><path d="m5 3 .7 2.1h2.2L6.1 6.4l.7 2.1L5 7.2 3.2 8.5l.7-2.1-1.8-1.3h2.2z" fill="#ffde00"/></svg>';
+    return '<svg class="map-flag" viewBox="0 0 30 20" aria-hidden="true"><rect width="30" height="20" rx="1" fill="#012169"/><path d="M0 0 30 20M30 0 0 20" stroke="#fff" stroke-width="4"/><path d="M0 0 30 20M30 0 0 20" stroke="#c8102e" stroke-width="2"/><path d="M15 0v20M0 10h30" stroke="#fff" stroke-width="6"/><path d="M15 0v20M0 10h30" stroke="#c8102e" stroke-width="3.2"/></svg>';
+  }
+
+  function checklistId(marker) { return (marker.sourceIds && marker.sourceIds[0]) || marker.groupId || marker.id; }
+
+  function isComplete(marker) {
+    var id = checklistId(marker);
+    var linked = COMPENDIUM_LINKS[id];
+    return linked ? !!compendiumState[linked] : !!(checklistState[id] && checklistState[id].c);
+  }
+
+  function setComplete(marker, complete) {
+    var id = checklistId(marker);
+    var previous = checklistState[id] || {};
+    checklistState[id] = { c: !!complete, m: typeof previous.m === "string" ? previous.m : "" };
+    writeJson(CHECKLIST_KEY, checklistState);
+    var linked = COMPENDIUM_LINKS[id];
+    if (linked) {
+      if (complete) compendiumState[linked] = true;
+      else delete compendiumState[linked];
+      writeJson(COMPENDIUM_KEY, compendiumState);
+    }
+  }
 
   function applyPreferences() {
     document.documentElement.lang = lang === "en" ? "en" : "zh-CN";
@@ -73,13 +102,16 @@
   }
 
   function visibleMarkers() {
+    if (embedded) {
+      var selectedMarker = markerById(selectedId);
+      return selectedMarker ? [selectedMarker] : [];
+    }
+    if (!filter) return [];
     var normalized = query.trim().toLocaleLowerCase();
     return DATA.markers.filter(function (marker) {
-      var categoryMatch = filter === "all" || marker.category === filter;
-      var visited = !!saved.visited[marker.id];
-      var statusMatch = statusFilter === "all" || (statusFilter === "visited" ? visited : !visited);
+      var categoryMatch = marker.category === filter;
       var haystack = [marker.zh, marker.en, marker.detailZh, marker.detailEn].join(" ").toLocaleLowerCase();
-      return categoryMatch && statusMatch && (!normalized || haystack.indexOf(normalized) !== -1);
+      return categoryMatch && (!normalized || haystack.indexOf(normalized) !== -1);
     });
   }
 
@@ -93,22 +125,20 @@
     pointers = {};
     drag = null;
     var update = escapeHtml(latestUpdate());
-    var done = DATA.markers.filter(function (marker) { return saved.visited[marker.id]; }).length;
     root.innerHTML =
       '<main class="map-page">' +
         '<aside class="update-ticker" aria-label="' + update + '"><div class="update-ticker-track" aria-hidden="true"><span class="update-ticker-copy">' + update + '</span><span class="update-ticker-copy">' + update + '</span></div></aside>' +
-        '<header class="map-topbar"><div class="map-brand">' + icon() + '<h1>' + L("互动地图", "Interactive Map") + '</h1><span>' + L("初版", "First Edition") + '</span></div>' +
-          '<div class="map-actions"><button class="map-button" id="theme-toggle" type="button">' + (theme === "light" ? L("深色", "Dark") : L("明亮", "Light")) + '</button><button class="map-button" id="lang-toggle" type="button">' + (lang === "en" ? "中文" : "EN") + '</button><a class="map-back" href="index.html">' + L("返回清单", "Checklist") + '</a></div></header>' +
+        '<header class="map-topbar"><div class="map-brand">' + icon() + '<h1>' + L("互动地图", "Interactive Map") + '</h1></div>' +
+          '<div class="map-actions"><button class="map-button map-icon-button" id="theme-toggle" type="button" title="' + (theme === "light" ? L("切换至深色模式", "Switch to dark mode") : L("切换至浅色模式", "Switch to light mode")) + '" aria-label="' + (theme === "light" ? L("切换至深色模式", "Switch to dark mode") : L("切换至浅色模式", "Switch to light mode")) + '">' + (theme === "light" ? "🌙" : "☀️") + '</button><button class="map-button map-icon-button" id="lang-toggle" type="button" title="' + (lang === "en" ? "切换至中文" : "Switch to English") + '" aria-label="' + (lang === "en" ? "切换至中文" : "Switch to English") + '">' + flagIcon(lang === "en" ? "cn" : "gb") + '</button><a class="map-back" href="index.html">' + L("返回", "Back") + '</a></div></header>' +
         '<section class="map-shell">' +
-          '<aside class="map-panel"><div class="map-panel-head"><p class="map-kicker">' + L("地点记录", "Location Log") + '</p><h2>' + L("西部世界", "The Frontier") + '</h2><p class="map-progress" id="map-progress">' + L("已到访 ", "Visited ") + done + ' / ' + DATA.markers.length + '</p></div>' +
-            '<div class="map-tools"><input class="map-search" id="map-search" type="search" autocomplete="off" placeholder="' + L("搜索地点或区域", "Search places or regions") + '" aria-label="' + L("搜索地图", "Search map") + '" value="' + escapeHtml(query) + '">' +
-              '<div class="map-segments" aria-label="' + L("到访状态", "Visit status") + '"><button type="button" data-status="all" class="' + (statusFilter === "all" ? "is-active" : "") + '">' + L("全部", "All") + '</button><button type="button" data-status="unvisited" class="' + (statusFilter === "unvisited" ? "is-active" : "") + '">' + L("未到访", "Unvisited") + '</button><button type="button" data-status="visited" class="' + (statusFilter === "visited" ? "is-active" : "") + '">' + L("已到访", "Visited") + '</button></div></div>' +
+          '<aside class="map-panel"><div class="map-panel-head"><h2>' + L("西部世界", "The Frontier") + '</h2></div>' +
+            '<div class="map-tools"><input class="map-search" id="map-search" type="search" autocomplete="off" placeholder="' + L("搜索地点或物品", "Search locations or items") + '" aria-label="' + L("搜索地图", "Search map") + '" value="' + escapeHtml(query) + '"></div>' +
             '<div class="map-categories" id="map-categories"></div><div class="map-list" id="map-list"></div></aside>' +
           '<section class="map-stage"><div class="map-viewport" id="map-viewport" tabindex="0" aria-label="' + L("可拖动和缩放的高清游戏地图", "Draggable high-resolution game map") + '"><canvas class="map-canvas" id="map-canvas" aria-hidden="true"></canvas><div class="marker-layer" id="marker-layer"></div></div>' +
             '<div class="map-controls" aria-label="' + L("地图缩放", "Map zoom") + '"><button id="zoom-in" type="button" aria-label="' + L("放大", "Zoom in") + '">+</button><button id="zoom-out" type="button" aria-label="' + L("缩小", "Zoom out") + '">−</button><button id="reset-view" type="button" aria-label="' + L("重置视图", "Reset view") + '">⌂</button></div>' +
             '<article class="map-detail" id="map-detail" hidden></article></section>' +
         '</section>' +
-        '<footer class="map-foot"><p>' + L("坐标标记暂时关闭，核对显示稳定性后再分批加入。", "Map markers are temporarily disabled and will return after display stability is verified.") + '</p><p>' + L("底图来源：", "Base map: ") + '<a href="' + DATA.image.sourceUrl + '" target="_blank" rel="noopener">' + DATA.image.credit + '</a> · © ' + new Date().getFullYear() + ' Jam8ee</p></footer>' +
+        '<footer class="map-foot"><p>' + L("从左侧选择类别或地点，地图会自动定位对应标记。", "Choose a category or location from the left to focus its marker.") + '</p><p>' + L("底图来源：", "Base map: ") + '<a href="' + DATA.image.sourceUrl + '" target="_blank" rel="noopener">' + DATA.image.credit + '</a> · © ' + new Date().getFullYear() + ' Jam8ee</p></footer>' +
       '</main>';
     renderer = window.RDR2MapRenderer.create(document.getElementById("map-canvas"), DATA.image, DATA.version);
     bindControls();
@@ -120,35 +150,53 @@
 
   function renderCategories() {
     var host = document.getElementById("map-categories");
-    var html = '<button class="category-chip ' + (filter === "all" ? "is-active" : "") + '" type="button" data-category="all">' + L("全部类别", "All categories") + '</button>';
+    var html = "";
     DATA.categories.forEach(function (category) {
       var count = DATA.markers.filter(function (marker) { return marker.category === category.id; }).length;
-      html += '<button class="category-chip ' + (filter === category.id ? "is-active" : "") + '" type="button" data-category="' + category.id + '">' + escapeHtml(categoryName(category)) + ' ' + count + '</button>';
+      html += '<button class="category-chip ' + (filter === category.id ? "is-active" : "") + '" type="button" data-category="' + category.id + '" aria-pressed="' + (filter === category.id ? "true" : "false") + '">' + escapeHtml(categoryName(category)) + ' ' + count + '</button>';
     });
     host.innerHTML = html;
-    host.querySelectorAll("[data-category]").forEach(function (button) { button.addEventListener("click", function () { filter = button.dataset.category; renderMarkerViews(); renderCategories(); }); });
+    host.querySelectorAll("[data-category]").forEach(function (button) { button.addEventListener("click", function () {
+      filter = filter === button.dataset.category ? "" : button.dataset.category;
+      selectedId = "";
+      query = "";
+      var search = document.getElementById("map-search");
+      if (search) search.value = "";
+      renderMarkerViews();
+      renderCategories();
+      resetView();
+    }); });
   }
 
   function renderMarkerViews() {
     var markers = visibleMarkers();
     var list = document.getElementById("map-list");
     var layer = document.getElementById("marker-layer");
-    if (!markers.length) list.innerHTML = '<div class="map-empty">' + L("没有符合条件的地点", "No matching locations") + '</div>';
+    if (!markers.length) list.innerHTML = '<div class="map-empty">' + (!embedded && !filter
+      ? L("请选择一个类别以显示标点", "Choose a category to show its markers")
+      : L("没有符合条件的地点", "No matching locations")) + '</div>';
     else list.innerHTML = markers.map(function (marker, index) {
-      return '<button class="map-list-item' + (saved.visited[marker.id] ? ' is-visited' : '') + (selectedId === marker.id ? ' is-selected' : '') + '" type="button" data-marker-id="' + marker.id + '"><span class="map-list-pin">' + (index + 1) + '</span><span class="map-list-copy"><strong class="map-list-title">' + escapeHtml(markerName(marker)) + '</strong><small class="map-list-detail">' + escapeHtml(markerDetail(marker)) + '</small></span><span class="map-list-state">' + (saved.visited[marker.id] ? "✓" : "") + '</span></button>';
+      var complete = isComplete(marker);
+      return '<div class="map-list-item' + (selectedId === marker.id ? ' is-selected' : '') + (complete ? ' is-complete' : '') + '"><input class="map-list-check" type="checkbox" data-checklist-id="' + escapeHtml(checklistId(marker)) + '" data-checklist-marker="' + escapeHtml(marker.id) + '" aria-label="' + escapeHtml(L("标记为已完成：", "Mark complete: ") + markerName(marker)) + '"' + (complete ? ' checked' : '') + '><button class="map-list-focus" type="button" data-marker-id="' + marker.id + '"><span class="map-list-pin">' + (index + 1) + '</span><span class="map-list-copy"><strong class="map-list-title">' + escapeHtml(markerName(marker)) + '</strong><small class="map-list-detail">' + escapeHtml(markerDetail(marker)) + '</small></span></button></div>';
     }).join("");
     layer.innerHTML = markers.map(function (marker, index) {
-      return '<button class="marker' + (saved.visited[marker.id] ? ' is-visited' : '') + (selectedId === marker.id ? ' is-selected' : '') + '" type="button" data-marker-id="' + marker.id + '" aria-label="' + escapeHtml(markerName(marker)) + '">' + (index + 1) + '</button>';
+      return '<button class="marker' + (selectedId === marker.id ? ' is-selected' : '') + (isComplete(marker) ? ' is-complete' : '') + '" type="button" data-marker-id="' + marker.id + '" aria-label="' + escapeHtml(markerName(marker)) + '">' + (index + 1) + '</button>';
     }).join("");
     document.querySelectorAll("[data-marker-id]").forEach(function (button) { button.addEventListener("click", function () {
       if (embedded && !mapIsInteractive()) return;
-      selectMarker(button.dataset.markerId, button.classList.contains("marker"));
+      selectMarker(button.dataset.markerId, true);
+    }); });
+    document.querySelectorAll("[data-checklist-marker]").forEach(function (checkbox) { checkbox.addEventListener("change", function () {
+      var marker = markerById(checkbox.dataset.checklistMarker);
+      if (!marker) return;
+      setComplete(marker, checkbox.checked);
+      renderMarkerViews();
     }); });
     updateMarkerPositions();
     renderDetail();
   }
 
-  function markerById(id) { return DATA.markers.find(function (marker) { return marker.id === id; }); }
+  function markerById(id) { return DATA.markers.find(function (marker) { return marker.id === id || (marker.sourceIds || []).indexOf(id) !== -1; }); }
 
   function selectMarker(id, center) {
     selectedId = id;
@@ -162,24 +210,15 @@
     var marker = markerById(selectedId);
     if (!marker) { detail.hidden = true; detail.innerHTML = ""; return; }
     var category = DATA.categories.find(function (item) { return item.id === marker.category; });
-    var visited = !!saved.visited[marker.id];
     detail.hidden = false;
-    detail.innerHTML = '<button class="map-detail-close" id="detail-close" type="button" aria-label="' + L("关闭", "Close") + '">×</button><p class="map-detail-type">' + escapeHtml(categoryName(category)) + '</p><h3>' + escapeHtml(markerName(marker)) + '</h3><p class="map-detail-location">' + escapeHtml(markerDetail(marker)) + '</p><div class="map-detail-actions"><button class="map-visited' + (visited ? ' is-active' : '') + '" id="visit-toggle" type="button">' + (visited ? L("✓ 已到访", "✓ Visited") : L("标记到访", "Mark visited")) + '</button><input class="map-note" id="map-note" type="text" maxlength="160" placeholder="' + L("我的备注…", "My notes...") + '" aria-label="' + L("地点备注", "Location notes") + '" value="' + escapeHtml(saved.notes[marker.id] || "") + '"></div>';
+    detail.innerHTML = '<button class="map-detail-close" id="detail-close" type="button" aria-label="' + L("关闭", "Close") + '">×</button><p class="map-detail-type">' + escapeHtml(categoryName(category)) + '</p><h3>' + escapeHtml(markerName(marker)) + '</h3><p class="map-detail-location">' + escapeHtml(markerDetail(marker)) + '</p>';
     document.getElementById("detail-close").addEventListener("click", function () { selectedId = ""; renderMarkerViews(); });
-    document.getElementById("visit-toggle").addEventListener("click", function () { saved.visited[marker.id] = !visited; persist(); renderMarkerViews(); updateProgress(); });
-    document.getElementById("map-note").addEventListener("input", function (event) { saved.notes[marker.id] = event.target.value; persist(); });
-  }
-
-  function updateProgress() {
-    var done = DATA.markers.filter(function (marker) { return saved.visited[marker.id]; }).length;
-    document.getElementById("map-progress").textContent = L("已到访 ", "Visited ") + done + " / " + DATA.markers.length;
   }
 
   function bindControls() {
     document.getElementById("theme-toggle").addEventListener("click", function () { theme = theme === "light" ? "dark" : "light"; try { localStorage.setItem(THEME_KEY, theme); } catch (error) {} render(); });
     document.getElementById("lang-toggle").addEventListener("click", function () { lang = lang === "en" ? "zh" : "en"; try { localStorage.setItem(LANG_KEY, lang); } catch (error) {} render(); });
     document.getElementById("map-search").addEventListener("input", function (event) { query = event.target.value; renderMarkerViews(); });
-    document.querySelectorAll("[data-status]").forEach(function (button) { button.addEventListener("click", function () { statusFilter = button.dataset.status; document.querySelectorAll("[data-status]").forEach(function (item) { item.classList.toggle("is-active", item === button); }); renderMarkerViews(); }); });
     document.getElementById("zoom-in").addEventListener("click", function () { if (mapIsInteractive()) zoomAt(1.32); });
     document.getElementById("zoom-out").addEventListener("click", function () { if (mapIsInteractive()) zoomAt(1 / 1.32); });
     document.getElementById("reset-view").addEventListener("click", function () { if (mapIsInteractive()) resetView(); });
@@ -195,7 +234,11 @@
     window.addEventListener("resize", handleResize);
   }
 
-  function handleResize() { resetView(); }
+  function handleResize() {
+    var marker = markerById(selectedId);
+    resetView();
+    if (marker) centerMarker(marker);
+  }
 
   window.addEventListener("message", function (event) {
     var message = event.data || {};
@@ -204,19 +247,13 @@
       embedExpanded = !!message.expanded;
       document.documentElement.dataset.embedView = embedExpanded ? "expanded" : "compact";
       syncEmbeddedInteractionState();
-      requestAnimationFrame(function () {
-        var marker = markerById(selectedId);
-        if (marker) centerMarker(marker);
-        else resetView();
-      });
+      requestAnimationFrame(handleResize);
       return;
     }
     if (message.type === "rdr2-map-focus" && message.markerId) {
-      var marker = DATA.markers.find(function (item) { return item.id === message.markerId; });
+      var marker = markerById(message.markerId);
       if (!marker) return;
       selectedId = marker.id;
-      filter = marker.category;
-      renderCategories();
       renderMarkerViews();
       requestAnimationFrame(function () { centerMarker(marker); });
     }
@@ -276,11 +313,11 @@
 
   function centerMarker(marker) {
     var viewport = document.getElementById("map-viewport");
-    var targetScale = Math.max(view.scale, view.fit * 4);
-    view.scale = Math.min(view.fit * Math.pow(2, DATA.image.tiles.maxZoom), targetScale);
+    if (!viewport) return;
+    view.scale = view.fit * Math.pow(2, DATA.image.tiles.maxZoom);
     view.x = viewport.clientWidth / 2 - DATA.image.width * marker.x / 100 * view.scale;
     view.y = viewport.clientHeight / 2 - DATA.image.height * marker.y / 100 * view.scale;
-    clampView(); applyView();
+    applyView();
   }
 
   function clampView() {
@@ -313,6 +350,18 @@
       button.style.top = (button.hidden ? 0 : y) + "px";
     });
   }
+
+  function refreshCompletionState() {
+    checklistState = readJson(CHECKLIST_KEY);
+    compendiumState = readJson(COMPENDIUM_KEY);
+    renderMarkerViews();
+  }
+
+  window.addEventListener("storage", function (event) {
+    if (!event.key || event.key === CHECKLIST_KEY || event.key === COMPENDIUM_KEY) refreshCompletionState();
+  });
+  window.addEventListener("pageshow", refreshCompletionState);
+  window.addEventListener("focus", refreshCompletionState);
 
   render();
 })();

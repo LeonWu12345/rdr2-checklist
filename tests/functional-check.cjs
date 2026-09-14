@@ -9,6 +9,9 @@ const script=fs.readFileSync(path.join(projectRoot,'assets/js/checklist.js'),'ut
 const css=fs.readFileSync(path.join(projectRoot,'assets/css/shared.css'),'utf8')+fs.readFileSync(path.join(projectRoot,'assets/css/checklist.css'),'utf8');
 new vm.Script(updatesScript);
 new vm.Script(script);
+const checkboxHandlerSource=script.slice(script.indexOf("addEventListener('change'"),script.indexOf("addEventListener('input'"));
+assert(checkboxHandlerSource.includes('refreshProgressUI();'),'Checkboxes must use the non-destructive progress updater');
+assert(!checkboxHandlerSource.includes('paint();'),'Checkboxes must not rebuild the page or reload the embedded map');
 function app(storage={}){
   const handlers={}, windowHandlers={};
   const classes=new Set();

@@ -1,0 +1,2653 @@
+{
+  "schema": "rdr2-map-markers-v1",
+  "baseImage": {
+    "width": 21617,
+    "height": 16785
+  },
+  "exportedAt": "2026-09-14T20:45:22.489Z",
+  "entries": [
+    {
+      "markerId": "rc1",
+      "sourceIds": [
+        "rc1"
+      ],
+      "category": "rock-carvings",
+      "nameZh": "一号石雕",
+      "nameEn": "Rock Carving #1",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 48.500279,
+          "y": 24.772906
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "rc2",
+      "sourceIds": [
+        "rc2"
+      ],
+      "category": "rock-carvings",
+      "nameZh": "二号石雕",
+      "nameEn": "Rock Carving #2",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 61.404758,
+          "y": 19.036336
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "rc3",
+      "sourceIds": [
+        "rc3"
+      ],
+      "category": "rock-carvings",
+      "nameZh": "三号石雕",
+      "nameEn": "Rock Carving #3",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 67.469224,
+          "y": 21.104418
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "rc4",
+      "sourceIds": [
+        "rc4"
+      ],
+      "category": "rock-carvings",
+      "nameZh": "四号石雕",
+      "nameEn": "Rock Carving #4",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 61.364482,
+          "y": 24.499035
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "rc5",
+      "sourceIds": [
+        "rc5"
+      ],
+      "category": "rock-carvings",
+      "nameZh": "五号石雕",
+      "nameEn": "Rock Carving #5",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 39.751134,
+          "y": 45.405395
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "rc6",
+      "sourceIds": [
+        "rc6"
+      ],
+      "category": "rock-carvings",
+      "nameZh": "六号石雕",
+      "nameEn": "Rock Carving #6",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 46.086875,
+          "y": 40.670489
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "rc7",
+      "sourceIds": [
+        "rc7"
+      ],
+      "category": "rock-carvings",
+      "nameZh": "七号石雕",
+      "nameEn": "Rock Carving #7",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 59.674313,
+          "y": 43.068556
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "rc8",
+      "sourceIds": [
+        "rc8"
+      ],
+      "category": "rock-carvings",
+      "nameZh": "八号石雕",
+      "nameEn": "Rock Carving #8",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.543406,
+          "y": 28.815878
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "rc9",
+      "sourceIds": [
+        "rc9"
+      ],
+      "category": "rock-carvings",
+      "nameZh": "九号石雕",
+      "nameEn": "Rock Carving #9",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.048951,
+          "y": 20.045169
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "rc10",
+      "sourceIds": [
+        "rc10"
+      ],
+      "category": "rock-carvings",
+      "nameZh": "十号石雕",
+      "nameEn": "Rock Carving #10",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.0439,
+          "y": 28.802649
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh01",
+      "sourceIds": [
+        "dc_nh01"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "一号捕梦网",
+      "nameEn": "Dreamcatcher #1",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.833726,
+          "y": 21.011315
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh02",
+      "sourceIds": [
+        "dc_nh02"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "二号捕梦网",
+      "nameEn": "Dreamcatcher #2",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.304077,
+          "y": 23.863623
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh03",
+      "sourceIds": [
+        "dc_nh03"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "三号捕梦网",
+      "nameEn": "Dreamcatcher #3",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 87.848557,
+          "y": 24.98483
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh04",
+      "sourceIds": [
+        "dc_nh04"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "四号捕梦网",
+      "nameEn": "Dreamcatcher #4",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.961652,
+          "y": 26.329009
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh05",
+      "sourceIds": [
+        "dc_nh05"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "五号捕梦网",
+      "nameEn": "Dreamcatcher #5",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 84.947513,
+          "y": 30.176729
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh06",
+      "sourceIds": [
+        "dc_nh06"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "六号捕梦网",
+      "nameEn": "Dreamcatcher #6",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 78.928643,
+          "y": 31.885077
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh07",
+      "sourceIds": [
+        "dc_nh07"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "七号捕梦网",
+      "nameEn": "Dreamcatcher #7",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 58.443807,
+          "y": 33.681171
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh08",
+      "sourceIds": [
+        "dc_nh08"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "八号捕梦网",
+      "nameEn": "Dreamcatcher #8",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 58.43206,
+          "y": 37.149622
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh09",
+      "sourceIds": [
+        "dc_nh09"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "九号捕梦网",
+      "nameEn": "Dreamcatcher #9",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 58.662967,
+          "y": 43.47718
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh10",
+      "sourceIds": [
+        "dc_nh10"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "十号捕梦网",
+      "nameEn": "Dreamcatcher #10",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 64.250148,
+          "y": 32.44194
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh11",
+      "sourceIds": [
+        "dc_nh11"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "十一号捕梦网",
+      "nameEn": "Dreamcatcher #11",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 63.223677,
+          "y": 37.460893
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh12",
+      "sourceIds": [
+        "dc_nh12"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "十二号捕梦网",
+      "nameEn": "Dreamcatcher #12",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 70.273911,
+          "y": 39.965578
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh13",
+      "sourceIds": [
+        "dc_nh13"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "十三号捕梦网",
+      "nameEn": "Dreamcatcher #13",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.105259,
+          "y": 33.826996
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_nh14",
+      "sourceIds": [
+        "dc_nh14"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "十四号捕梦网",
+      "nameEn": "Dreamcatcher #14",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 81.58695,
+          "y": 42.784971
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_le01",
+      "sourceIds": [
+        "dc_le01"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "十五号捕梦网",
+      "nameEn": "Dreamcatcher #15",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 78.531202,
+          "y": 39.812396
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_le02",
+      "sourceIds": [
+        "dc_le02"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "十六号捕梦网",
+      "nameEn": "Dreamcatcher #16",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 77.778791,
+          "y": 42.886756
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_am01",
+      "sourceIds": [
+        "dc_am01"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "十七号捕梦网",
+      "nameEn": "Dreamcatcher #17",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 54.842752,
+          "y": 28.206567
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_am02",
+      "sourceIds": [
+        "dc_am02"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "十八号捕梦网",
+      "nameEn": "Dreamcatcher #18",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 58.870705,
+          "y": 24.075255
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_am03",
+      "sourceIds": [
+        "dc_am03"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "十九号捕梦网",
+      "nameEn": "Dreamcatcher #19",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 66.136484,
+          "y": 19.061108
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "dc_am04",
+      "sourceIds": [
+        "dc_am04"
+      ],
+      "category": "dreamcatchers",
+      "nameZh": "二十号捕梦网",
+      "nameEn": "Dreamcatcher #20",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 80.875355,
+          "y": 17.524435
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db1",
+      "sourceIds": [
+        "db1"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "一号骨",
+      "nameEn": "Dinosaur Bone #1",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 58.280165,
+          "y": 28.985426
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db2",
+      "sourceIds": [
+        "db2"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "二号骨",
+      "nameEn": "Dinosaur Bone #2",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 64.894362,
+          "y": 21.557676
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db3",
+      "sourceIds": [
+        "db3"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "三号骨",
+      "nameEn": "Dinosaur Bone #3",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 78.035249,
+          "y": 16.265091
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db4",
+      "sourceIds": [
+        "db4"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "四号骨",
+      "nameEn": "Dinosaur Bone #4",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 70.110777,
+          "y": 16.435266
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db5",
+      "sourceIds": [
+        "db5"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "五号骨",
+      "nameEn": "Dinosaur Bone #5",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.837349,
+          "y": 23.33048
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db6",
+      "sourceIds": [
+        "db6"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "六号骨",
+      "nameEn": "Dinosaur Bone #6",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 82.432165,
+          "y": 20.272857
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db7",
+      "sourceIds": [
+        "db7"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "七号骨",
+      "nameEn": "Dinosaur Bone #7",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 67.585336,
+          "y": 21.134474
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db8",
+      "sourceIds": [
+        "db8"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "八号骨",
+      "nameEn": "Dinosaur Bone #8",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 62.179396,
+          "y": 26.526791
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db9",
+      "sourceIds": [
+        "db9"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "九号骨",
+      "nameEn": "Dinosaur Bone #9",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 57.997592,
+          "y": 30.272082
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db10",
+      "sourceIds": [
+        "db10"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "十号骨",
+      "nameEn": "Dinosaur Bone #10",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 54.67721,
+          "y": 38.77213
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db11",
+      "sourceIds": [
+        "db11"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "十一号骨",
+      "nameEn": "Dinosaur Bone #11",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 66.789205,
+          "y": 40.37358
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db12",
+      "sourceIds": [
+        "db12"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "十二号骨",
+      "nameEn": "Dinosaur Bone #12",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 67.40256,
+          "y": 41.95793
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db13",
+      "sourceIds": [
+        "db13"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "十三号骨",
+      "nameEn": "Dinosaur Bone #13",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 66.102912,
+          "y": 45.288865
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db14",
+      "sourceIds": [
+        "db14"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "十四号骨",
+      "nameEn": "Dinosaur Bone #14",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 89.043525,
+          "y": 18.475582
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db15",
+      "sourceIds": [
+        "db15"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "十五号骨",
+      "nameEn": "Dinosaur Bone #15",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 89.084828,
+          "y": 31.414563
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db16",
+      "sourceIds": [
+        "db16"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "十六号骨",
+      "nameEn": "Dinosaur Bone #16",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 84.898725,
+          "y": 27.214705
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db17",
+      "sourceIds": [
+        "db17"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "十七号骨",
+      "nameEn": "Dinosaur Bone #17",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 78.525694,
+          "y": 30.601894
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db18",
+      "sourceIds": [
+        "db18"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "十八号骨",
+      "nameEn": "Dinosaur Bone #18",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 71.35224,
+          "y": 45.302764
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db19",
+      "sourceIds": [
+        "db19"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "十九号骨",
+      "nameEn": "Dinosaur Bone #19",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 71.920811,
+          "y": 43.013563
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db20",
+      "sourceIds": [
+        "db20"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "二十号骨",
+      "nameEn": "Dinosaur Bone #20",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 49.529456,
+          "y": 31.799559
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db21",
+      "sourceIds": [
+        "db21"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "二十一号骨",
+      "nameEn": "Dinosaur Bone #21",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 41.587416,
+          "y": 36.333042
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db22",
+      "sourceIds": [
+        "db22"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "二十二号骨",
+      "nameEn": "Dinosaur Bone #22",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 42.301578,
+          "y": 40.312706
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db23",
+      "sourceIds": [
+        "db23"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "二十三号骨",
+      "nameEn": "Dinosaur Bone #23",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 35.633096,
+          "y": 67.197665
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db24",
+      "sourceIds": [
+        "db24"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "二十四号骨",
+      "nameEn": "Dinosaur Bone #24",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 38.801757,
+          "y": 77.857414
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db25",
+      "sourceIds": [
+        "db25"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "二十五号骨",
+      "nameEn": "Dinosaur Bone #25",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 30.749199,
+          "y": 82.708411
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db26",
+      "sourceIds": [
+        "db26"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "二十六号骨",
+      "nameEn": "Dinosaur Bone #26",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 22.817885,
+          "y": 83.427577
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db27",
+      "sourceIds": [
+        "db27"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "二十七号骨",
+      "nameEn": "Dinosaur Bone #27",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 24.934245,
+          "y": 74.201757
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db28",
+      "sourceIds": [
+        "db28"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "二十八号骨",
+      "nameEn": "Dinosaur Bone #28",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 22.85571,
+          "y": 66.358993
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db29",
+      "sourceIds": [
+        "db29"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "二十九号骨",
+      "nameEn": "Dinosaur Bone #29",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 15.173081,
+          "y": 71.939488
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "db30",
+      "sourceIds": [
+        "db30"
+      ],
+      "category": "dinosaur-bones",
+      "nameZh": "三十号骨",
+      "nameEn": "Dinosaur Bone #30",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 14.103783,
+          "y": 76.30418
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la1",
+      "sourceIds": [
+        "la1",
+        "tk1"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说海狸 Malia",
+      "nameEn": "Legendary Beaver",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.729932,
+          "y": 32.781632
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la2",
+      "sourceIds": [
+        "la2"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说灰熊 Bharati",
+      "nameEn": "Legendary Bharati Grizzly Bear",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 77.153086,
+          "y": 20.231183
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la3",
+      "sourceIds": [
+        "la3",
+        "tk10"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说大角羊",
+      "nameEn": "Legendary Bighorn Ram",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 55.380257,
+          "y": 30.395663
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la4",
+      "sourceIds": [
+        "la4"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说野猪 Oryx",
+      "nameEn": "Legendary Boar",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.741075,
+          "y": 43.223282
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la5",
+      "sourceIds": [
+        "la5",
+        "tk2"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说公鹿 Obie",
+      "nameEn": "Legendary Buck",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 40.20625,
+          "y": 39.998736
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la6",
+      "sourceIds": [
+        "la6",
+        "tk4"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说郊狼 Suki",
+      "nameEn": "Legendary Coyote",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 71.936558,
+          "y": 47.413094
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la7",
+      "sourceIds": [
+        "la7",
+        "tk5"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说麋鹿 Enyeto",
+      "nameEn": "Legendary Elk",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 69.059851,
+          "y": 22.982924
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la8",
+      "sourceIds": [
+        "la8",
+        "tk6"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说狐狸 Layla",
+      "nameEn": "Legendary Fox",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.321764,
+          "y": 51.752049
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la9",
+      "sourceIds": [
+        "la9",
+        "tk7"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说驼鹿 Anoki",
+      "nameEn": "Legendary Moose",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.817735,
+          "y": 12.944504
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la10",
+      "sourceIds": [
+        "la10"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说白野牛",
+      "nameEn": "Legendary White Bison",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 47.987847,
+          "y": 19.079194
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la11",
+      "sourceIds": [
+        "la11",
+        "tk12"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说狼 Hotah",
+      "nameEn": "Legendary Wolf",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 65.497149,
+          "y": 19.122462
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la12",
+      "sourceIds": [
+        "la12",
+        "mh10",
+        "tk8"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说黑豹 Giaguaro",
+      "nameEn": "Legendary Giaguaro Panther",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 77.592803,
+          "y": 61.653737
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la13",
+      "sourceIds": [
+        "la13"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说短吻鳄 Lacartus",
+      "nameEn": "Legendary Bullgator",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 83.235414,
+          "y": 49.257749
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la14",
+      "sourceIds": [
+        "la14",
+        "tk3"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说美洲狮",
+      "nameEn": "Legendary Cougar",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 9.043902,
+          "y": 75.698478
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la15",
+      "sourceIds": [
+        "la15",
+        "tk9"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说叉角羚 Ira",
+      "nameEn": "Legendary Pronghorn",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 28.189456,
+          "y": 82.703926
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "la16",
+      "sourceIds": [
+        "la16",
+        "tk11"
+      ],
+      "category": "legendary-animals",
+      "nameZh": "传说野牛 Tatanka",
+      "nameEn": "Legendary Tatanka Bison",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 46.640496,
+          "y": 71.737774
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf1",
+      "sourceIds": [
+        "lf1"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说硬头鳟",
+      "nameEn": "Legendary Steelhead Trout",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 89.852968,
+          "y": 12.846286
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf2",
+      "sourceIds": [
+        "lf2"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说河鲈",
+      "nameEn": "Legendary Perch",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.123186,
+          "y": 29.17438
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf3",
+      "sourceIds": [
+        "lf3"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说长吻雀鳝",
+      "nameEn": "Legendary Longnose Gar",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 83.967286,
+          "y": 48.415238
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf4",
+      "sourceIds": [
+        "lf4"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说北美狗鱼",
+      "nameEn": "Legendary Chain Pickerel",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 91.498173,
+          "y": 35.449548
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf5",
+      "sourceIds": [
+        "lf5"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说大头鲶鱼",
+      "nameEn": "Legendary Bullhead Catfish",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 92.619802,
+          "y": 48.537073
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf6",
+      "sourceIds": [
+        "lf6"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说湖鲟",
+      "nameEn": "Legendary Lake Sturgeon",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 82.939122,
+          "y": 58.616097
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf7",
+      "sourceIds": [
+        "lf7"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说蓝鳃太阳鱼",
+      "nameEn": "Legendary Bluegill",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 70.327621,
+          "y": 58.545218
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf8",
+      "sourceIds": [
+        "lf8"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说暗色狗鱼",
+      "nameEn": "Legendary Pickerel",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 58.804319,
+          "y": 42.014263
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf9",
+      "sourceIds": [
+        "lf9"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说红鲑鱼",
+      "nameEn": "Legendary Sockeye Salmon",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 47.562081,
+          "y": 21.455659
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf10",
+      "sourceIds": [
+        "lf10"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说小口黑鲈",
+      "nameEn": "Legendary Smallmouth Bass",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 41.543372,
+          "y": 45.548944
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf11",
+      "sourceIds": [
+        "lf11"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说岩钝鲈",
+      "nameEn": "Legendary Rock Bass",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 39.877504,
+          "y": 57.300574
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf12",
+      "sourceIds": [
+        "lf12"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说红鳍带纹鱼",
+      "nameEn": "Legendary Redfin Pickerel",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 46.770598,
+          "y": 68.928734
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "lf13",
+      "sourceIds": [
+        "lf13"
+      ],
+      "category": "legendary-fish",
+      "nameZh": "传说大口黑鲈",
+      "nameEn": "Legendary Largemouth Bass",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 35.491669,
+          "y": 80.105097
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tk15_cobalt_wood",
+      "sourceIds": [
+        "tk15"
+      ],
+      "category": "trinkets",
+      "nameZh": "钴化木",
+      "nameEn": "Cobalt Petrified Wood",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 45.635651,
+          "y": 18.320023
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tk16_abalone_shell",
+      "sourceIds": [
+        "tk16"
+      ],
+      "category": "trinkets",
+      "nameZh": "鲍鱼壳碎片",
+      "nameEn": "Abalone Shell Fragment",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.862693,
+          "y": 54.884038
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tk18",
+      "sourceIds": [
+        "tk18"
+      ],
+      "category": "trinkets",
+      "nameZh": "鹰爪饰品",
+      "nameEn": "Hawk Talon Trinket",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 46.47444,
+          "y": 12.777401
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tk19",
+      "sourceIds": [
+        "tk19"
+      ],
+      "category": "trinkets",
+      "nameZh": "猫眼饰品",
+      "nameEn": "Cat Eye Trinket",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 69.543143,
+          "y": 61.867868
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tk20",
+      "sourceIds": [
+        "tk20"
+      ],
+      "category": "trinkets",
+      "nameZh": "鲨鱼牙饰品",
+      "nameEn": "Shark Tooth Trinket",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 96.296833,
+          "y": 23.46188
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tk21",
+      "sourceIds": [
+        "tk21"
+      ],
+      "category": "trinkets",
+      "nameZh": "龟壳饰品",
+      "nameEn": "Turtle Shell Trinket",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 8.836344,
+          "y": 78.184124
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "w_rare_shotgun",
+      "sourceIds": [
+        "w_rare_shotgun"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "稀有霰弹枪",
+      "nameEn": "Rare Shotgun",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 91.120675,
+          "y": 19.259281
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "w_otis",
+      "sourceIds": [
+        "w_otis"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "奥蒂斯·米勒的左轮手枪",
+      "nameEn": "Otis Miller's Revolver",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 23.145476,
+          "y": 66.057297
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "w_micah",
+      "sourceIds": [
+        "w_micah"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "迈卡的左轮手枪",
+      "nameEn": "Micah's Revolver",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 49.667798,
+          "y": 25.503642
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "w_ornate",
+      "sourceIds": [
+        "w_ornate"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "华丽匕首",
+      "nameEn": "Ornate Dagger",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.95512,
+          "y": 55.604842
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "w_ancient",
+      "sourceIds": [
+        "w_ancient"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "古代手斧",
+      "nameEn": "Ancient Tomahawk",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 70.953035,
+          "y": 13.028634
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "w_double_bit",
+      "sourceIds": [
+        "w_double_bit"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "双头短斧",
+      "nameEn": "Double Bit Hatchet",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 49.554354,
+          "y": 34.07187
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "w_rusted_double_bit",
+      "sourceIds": [
+        "w_rusted_double_bit"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "生锈的双头短斧",
+      "nameEn": "Rusted Double Bit Hatchet",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 90.415223,
+          "y": 23.364007
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "w_hunter",
+      "sourceIds": [
+        "w_hunter"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "猎人短斧",
+      "nameEn": "Hunter Hatchet",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 62.076944,
+          "y": 22.656597
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "w_rusted_hunter",
+      "sourceIds": [
+        "w_rusted_hunter"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "生锈的猎人短斧",
+      "nameEn": "Rusted Hunter Hatchet",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 81.694772,
+          "y": 26.180917
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "w_hewing",
+      "sourceIds": [
+        "w_hewing"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "劈砍短斧",
+      "nameEn": "Hewing Hatchet",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 74.906242,
+          "y": 26.586176
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d17",
+      "sourceIds": [
+        "d17"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "鹿角猎刀",
+      "nameEn": "Antler Knife",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 42.124062,
+          "y": 29.566373
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d18",
+      "sourceIds": [
+        "d18"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "破损海盗剑",
+      "nameEn": "Broken Pirate Sword",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 83.164151,
+          "y": 59.639025
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d19",
+      "sourceIds": [
+        "d19"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "南北战争猎刀",
+      "nameEn": "Civil War Knife",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.865892,
+          "y": 36.734404
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d20",
+      "sourceIds": [
+        "d20"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "维京战斧",
+      "nameEn": "Viking Hatchet",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.417911,
+          "y": 20.329692
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d21",
+      "sourceIds": [
+        "d21"
+      ],
+      "category": "unique-weapons",
+      "nameZh": "宽刃猎刀",
+      "nameEn": "Wide-Blade Knife",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 42.153849,
+          "y": 39.224232
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d5",
+      "sourceIds": [
+        "d5"
+      ],
+      "category": "treasures",
+      "nameZh": "杰克霍尔帮藏宝链",
+      "nameEn": "Jack Hall Gang Treasure",
+      "pointType": "multi",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 58.213543,
+          "y": 44.197193
+        },
+        {
+          "x": 60.171938,
+          "y": 36.776112
+        },
+        {
+          "x": 64.648241,
+          "y": 18.549683
+        },
+        {
+          "x": 78.283852,
+          "y": 22.671424
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d6",
+      "sourceIds": [
+        "d6"
+      ],
+      "category": "treasures",
+      "nameZh": "毒药小径藏宝链",
+      "nameEn": "The Poisonous Trail Treasure",
+      "pointType": "multi",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 54.737419,
+          "y": 14.600219
+        },
+        {
+          "x": 73.491714,
+          "y": 47.871353
+        },
+        {
+          "x": 87.993204,
+          "y": 35.173794
+        },
+        {
+          "x": 85.01802,
+          "y": 28.391219
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d7",
+      "sourceIds": [
+        "d7"
+      ],
+      "category": "treasures",
+      "nameZh": "隐士撕裂地图藏宝链",
+      "nameEn": "Torn Treasure Map",
+      "pointType": "multi",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 40.269083,
+          "y": 26.283926
+        },
+        {
+          "x": 91.231845,
+          "y": 19.217381
+        },
+        {
+          "x": 23.147901,
+          "y": 66.07873
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d8",
+      "sourceIds": [
+        "d8"
+      ],
+      "category": "treasures",
+      "nameZh": "高额赌注藏宝链",
+      "nameEn": "High Stakes Treasure",
+      "pointType": "multi",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 53.836323,
+          "y": 35.163723
+        },
+        {
+          "x": 54.775544,
+          "y": 21.052338
+        },
+        {
+          "x": 67.359746,
+          "y": 20.572659
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d9",
+      "sourceIds": [
+        "d9"
+      ],
+      "category": "treasures",
+      "nameZh": "财富地标藏宝链",
+      "nameEn": "Landmarks of Riches Treasure",
+      "pointType": "multi",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 36.508743,
+          "y": 41.838331
+        },
+        {
+          "x": 85.582358,
+          "y": 48.927585
+        },
+        {
+          "x": 70.308284,
+          "y": 18.668443
+        },
+        {
+          "x": 77.227001,
+          "y": 61.983113
+        },
+        {
+          "x": 43.709269,
+          "y": 39.278079
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d15",
+      "sourceIds": [
+        "d15",
+        "tk22"
+      ],
+      "category": "treasures",
+      "nameZh": "元素踪迹藏宝链",
+      "nameEn": "The Elemental Trail Treasure",
+      "pointType": "multi",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 5.54302,
+          "y": 83.494926
+        },
+        {
+          "x": 38.077024,
+          "y": 78.070781
+        },
+        {
+          "x": 15.527741,
+          "y": 81.188356
+        },
+        {
+          "x": 33.159963,
+          "y": 73.904957
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "d16",
+      "sourceIds": [
+        "d16"
+      ],
+      "category": "treasures",
+      "nameZh": "亡者之财藏宝链",
+      "nameEn": "Le Tresor Des Morts",
+      "pointType": "multi",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 60.461619,
+          "y": 41.97674
+        },
+        {
+          "x": 84.959519,
+          "y": 57.79659
+        },
+        {
+          "x": 88.283009,
+          "y": 52.740407
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc13_jenny",
+      "sourceIds": [
+        "tc13_jenny"
+      ],
+      "category": "graves",
+      "nameZh": "珍妮·柯克之墓",
+      "nameEn": "Jenny Kirk's Grave",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 51.785611,
+          "y": 6.079224
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc13_davey",
+      "sourceIds": [
+        "tc13_davey"
+      ],
+      "category": "graves",
+      "nameZh": "戴维·卡兰德之墓",
+      "nameEn": "Davey Callander's Grave",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 51.440819,
+          "y": 11.096129
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc13_eagle_flies",
+      "sourceIds": [
+        "tc13_eagle_flies"
+      ],
+      "category": "graves",
+      "nameZh": "飞鹰之墓",
+      "nameEn": "Eagle Flies' Grave",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 68.048949,
+          "y": 17.459505
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc13_arthur",
+      "sourceIds": [
+        "tc13_arthur"
+      ],
+      "category": "graves",
+      "nameZh": "亚瑟·摩根之墓",
+      "nameEn": "Arthur Morgan's Grave",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 70.622635,
+          "y": 18.990004
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc13_susan",
+      "sourceIds": [
+        "tc13_susan"
+      ],
+      "category": "graves",
+      "nameZh": "苏珊·格里姆肖之墓",
+      "nameEn": "Susan Grimshaw's Grave",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 83.245629,
+          "y": 30.731069
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc13_hosea",
+      "sourceIds": [
+        "tc13_hosea"
+      ],
+      "category": "graves",
+      "nameZh": "何西阿·马修斯之墓",
+      "nameEn": "Hosea Matthews' Grave",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 87.226101,
+          "y": 47.67855
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc13_lenny",
+      "sourceIds": [
+        "tc13_lenny"
+      ],
+      "category": "graves",
+      "nameZh": "蓝尼·萨默斯之墓",
+      "nameEn": "Lenny Summers' Grave",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 87.217486,
+          "y": 47.674852
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc13_kieran",
+      "sourceIds": [
+        "tc13_kieran"
+      ],
+      "category": "graves",
+      "nameZh": "基兰·达菲之墓",
+      "nameEn": "Kieran Duffy's Grave",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 79.308875,
+          "y": 62.616514
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc13_sean",
+      "sourceIds": [
+        "tc13_sean"
+      ],
+      "category": "graves",
+      "nameZh": "西恩·麦奎尔之墓",
+      "nameEn": "Sean MacGuire's Grave",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 69.600923,
+          "y": 51.742997
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc5_six_point",
+      "sourceIds": [
+        "tc5_six_point"
+      ],
+      "category": "hideouts",
+      "nameZh": "六点小屋",
+      "nameEn": "Six Point Cabin",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 62.92397,
+          "y": 25.611884
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc5_shady_belle",
+      "sourceIds": [
+        "tc5_shady_belle"
+      ],
+      "category": "hideouts",
+      "nameZh": "谢迪贝莱",
+      "nameEn": "Shady Belle",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 80.874525,
+          "y": 62.193377
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc5_beaver_hollow",
+      "sourceIds": [
+        "tc5_beaver_hollow"
+      ],
+      "category": "hideouts",
+      "nameZh": "河狸洞窟",
+      "nameEn": "Beaver Hollow",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.077891,
+          "y": 23.227832
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc5_hanging_dog",
+      "sourceIds": [
+        "tc5_hanging_dog"
+      ],
+      "category": "hideouts",
+      "nameZh": "吊狗牧场",
+      "nameEn": "Hanging Dog Ranch",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 43.280745,
+          "y": 31.75501
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc5_thieves_landing",
+      "sourceIds": [
+        "tc5_thieves_landing"
+      ],
+      "category": "hideouts",
+      "nameZh": "盗贼领地",
+      "nameEn": "Thieves Landing",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 50.701511,
+          "y": 67.438846
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "tc5_fort_mercer",
+      "sourceIds": [
+        "tc5_fort_mercer"
+      ],
+      "category": "hideouts",
+      "nameZh": "默瑟堡",
+      "nameEn": "Fort Mercer",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 24.866464,
+          "y": 80.830868
+        }
+      ],
+      "evidence": ""
+    }
+  ]
+}

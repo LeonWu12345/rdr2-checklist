@@ -1750,9 +1750,7 @@ function mainApp(initialState){
   })();
 
   var state = {};
-  (function loadInitial(){
-    var src = initialState || {};
-    for (var k in src) { state[k] = { c: !!src[k].c, m: src[k].m || '' }; }
+  function mergeSavedChecklistState(){
     try {
       var saved = JSON.parse(localStorage.getItem('rdr2-full-checklist-v2') || 'null');
       if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
@@ -1763,6 +1761,11 @@ function mainApp(initialState){
         });
       }
     } catch (e) {}
+  }
+  (function loadInitial(){
+    var src = initialState || {};
+    for (var k in src) { state[k] = { c: !!src[k].c, m: src[k].m || '' }; }
+    mergeSavedChecklistState();
   })();
 
   function st(id){
@@ -1883,6 +1886,24 @@ function mainApp(initialState){
   function rowNote(it){
     if (lang !== 'en' || !it.n) return it.n;
     return englishText(it.nEn || NOTE_EN[it.n] || it.n);
+  }
+  var mapMarkerSourceLookup = (function () {
+    var lookup = Object.create(null);
+    var markerData = window.RDR2VerifiedMapMarkers;
+    if (!markerData || !Array.isArray(markerData.markers)) return lookup;
+    markerData.markers.forEach(function (marker) {
+      lookup[marker.id] = true;
+      if (marker.groupId) lookup[marker.groupId] = true;
+      (marker.sourceIds || []).forEach(function (sourceId) { lookup[sourceId] = true; });
+    });
+    return lookup;
+  })();
+  function hasMapMarker(sourceId){ return !!mapMarkerSourceLookup[sourceId]; }
+  function renderMapLocation(sourceId, location, detail){
+    var copy = '📍 ' + escapeHtml(location);
+    if (!hasMapMarker(sourceId)) return detail ? '<small>' + copy + '</small>' : copy;
+    var label = L('在地图中查看 ', 'Show on map: ') + location;
+    return '<button type="button" class="map-location-link' + (detail ? ' is-detail' : '') + '" data-map-marker="' + escapeAttr(sourceId) + '" aria-label="' + escapeAttr(label) + '">' + copy + '</button>';
   }
   function catName(cat){
     if (lang !== 'en') return cat.name;
@@ -2933,7 +2954,7 @@ function mainApp(initialState){
         return '<label class="row-detail-item' + (childState.c ? ' is-done' : '') + '" for="' + childId + '">' +
           '<input type="checkbox" id="' + childId + '" data-id="' + child.id + '"' + (childState.c ? ' checked' : '') + '>' +
           '<span class="row-detail-copy"><span>' + escapeHtml(rowTitle(child)) + '</span>' +
-            (childLoc ? '<small>📍 ' + escapeHtml(childLoc) + '</small>' : '') +
+            (childLoc ? renderMapLocation(child.id, childLoc, true) : '') +
             (childNote ? '<small class="row-detail-materials">' + escapeHtml(childNote) + '</small>' : '') + '</span>' +
         '</label>';
       }).join('');
@@ -2972,7 +2993,7 @@ function mainApp(initialState){
     var loc = rowLoc(it);
     var note = rowNote(it);
     var metaBits = [];
-    if (loc) metaBits.push('📍 ' + escapeHtml(loc));
+    if (loc) metaBits.push(renderMapLocation(it.id, loc, false));
     // For most items, it.c only ever held chapter/timing info, which the structured chapter
     // badges below already convey in English — so it.c itself was zh-only. A few categories
     // (背包升级/SAT's "解锁:…" unlock conditions, and a handful of kept prerequisite notes
@@ -3180,6 +3201,116 @@ function mainApp(initialState){
     legendToastSeen = nowAllComplete;
   }
 
+  // Checkbox changes are frequent and must not rebuild #root. Replacing root.innerHTML
+  // destroys the embedded map iframe and makes its canvas flash while it reloads. This
+  // updater keeps every existing node alive and patches only completion-related UI.
+  function refreshProgressUI() {
+    syncCompendiumItems();
+    syncComputedItems();
+
+    document.querySelectorAll('input[type=checkbox][data-id]').forEach(function (checkbox) {
+      var complete = !!st(checkbox.dataset.id).c;
+      checkbox.checked = complete;
+      var row = checkbox.closest('.row');
+      if (row) row.classList.toggle('is-done', complete);
+      var detailItem = checkbox.closest('.row-detail-item');
+      if (detailItem) detailItem.classList.toggle('is-done', complete);
+    });
+
+    document.querySelectorAll('.hunting-request').forEach(function (request) {
+      var boxes = request.querySelectorAll('input[type=checkbox][data-id]');
+      var done = 0;
+      boxes.forEach(function (checkbox) { if (checkbox.checked) done += 1; });
+      request.classList.toggle('is-complete', boxes.length > 0 && done === boxes.length);
+      var meta = request.querySelector('.hunting-request-head > span');
+      if (meta) meta.textContent = meta.textContent.replace(/\d+\s*\/\s*\d+\s*$/, done + '/' + boxes.length);
+    });
+
+    document.querySelectorAll('[data-item-detail]').forEach(function (details) {
+      var boxes = details.querySelectorAll('.row-detail-item input[type=checkbox][data-id]');
+      var done = 0;
+      boxes.forEach(function (checkbox) { if (checkbox.checked) done += 1; });
+      var progress = details.querySelector('.row-detail-progress');
+      if (progress) progress.textContent = done + ' / ' + boxes.length;
+    });
+
+    CATS.forEach(function (cat) {
+      if (cat.kind !== 'flat') cat.groups.forEach(function (group) {
+        var groupElement = Array.prototype.find.call(document.querySelectorAll('[data-group]'), function (element) {
+          return element.dataset.group === cat.id + ':' + group.id;
+        });
+        if (!groupElement) return;
+        var count = countItems(group.items);
+        var complete = count.total > 0 && count.done === count.total;
+        var progress = groupElement.querySelector('.group-progress');
+        if (progress) {
+          progress.textContent = count.done + ' / ' + count.total;
+          progress.classList.toggle('group-complete', complete);
+        }
+        var heading = groupElement.querySelector('.group-head h3');
+        var mark = heading && heading.querySelector('.group-complete');
+        if (complete && heading && !mark) heading.insertAdjacentHTML('beforeend', ' <span class="group-complete">✓</span>');
+        else if (!complete && mark) mark.remove();
+      });
+
+      var categoryElement = Array.prototype.find.call(document.querySelectorAll('[data-cat]'), function (element) {
+        return element.dataset.cat === cat.id;
+      });
+      if (!categoryElement) return;
+      var count = countItems(categoryItems(cat));
+      var complete = count.total > 0 && count.done === count.total;
+      categoryElement.classList.toggle('cat-complete', complete);
+      var categoryProgress = categoryElement.querySelector('.cat-progress');
+      if (categoryProgress) categoryProgress.textContent = count.done + ' / ' + count.total;
+      var meter = categoryElement.querySelector('.cat-meter > span');
+      if (meter) meter.style.width = (count.total ? 100 * count.done / count.total : 0) + '%';
+      if (cat.id === 'TC') updateProgressRing(categoryElement.querySelector('.progress-block'), count.done, count.total, count.done + ' / ' + count.total);
+    });
+
+    var overall = countAll();
+    updateProgressRing(document.querySelector('.topbar > .progress-block'), overall.done, overall.total, overall.done + ' / ' + overall.total + ' ' + L('已完成', 'done'));
+
+    var compendiumSaved = readCompendiumState();
+    var compendiumDone = 0;
+    Object.keys(compendiumSaved).forEach(function (id) {
+      if (compendiumSaved[id] && id !== 'equipment-33' && id !== 'equipment-35') compendiumDone += 1;
+    });
+    var compendiumCard = document.querySelector('.compendium-card');
+    if (compendiumCard) {
+      compendiumCard.classList.toggle('cat-complete', compendiumDone === 560);
+      updateProgressRing(compendiumCard.querySelector('.progress-block'), compendiumDone, 560, compendiumDone + ' / 560');
+    }
+
+    var nowAllComplete = allBoardsComplete();
+    var wrap = document.querySelector('.wrap');
+    if (wrap) wrap.classList.toggle('is-legend', nowAllComplete);
+    var brand = document.querySelector('.brand');
+    var legendBadge = brand && brand.querySelector('.legend-badge');
+    if (nowAllComplete && brand && !legendBadge) brand.insertAdjacentHTML('beforeend', '<span class="legend-badge">🏆 ' + L('传奇亡命之徒 · 全部完成', 'Legendary Outlaw · 100% Complete') + '</span>');
+    else if (!nowAllComplete && legendBadge) legendBadge.remove();
+    if (legendToastSeen === false && nowAllComplete) showLegendToast();
+    legendToastSeen = nowAllComplete;
+
+    var alertSlot = document.getElementById('alert-slot');
+    if (alertSlot) alertSlot.innerHTML = renderAlert();
+    applyFilter();
+    syncOpenHeights();
+  }
+
+  function updateProgressRing(block, done, total, subText) {
+    if (!block) return;
+    var pct = pctFor(done, total);
+    var circle = block.querySelector('.ring-progress');
+    if (circle) {
+      circle.style.strokeDasharray = RING_C.toFixed(2);
+      circle.style.strokeDashoffset = (RING_C * (1 - pct / 100)).toFixed(2);
+    }
+    var label = block.querySelector('.ring-pct');
+    if (label) label.textContent = pct + '%';
+    var sub = block.querySelector('.overall-sub');
+    if (sub) sub.textContent = subText;
+  }
+
   function applyFilter() {
     document.getElementById('root').classList.toggle('is-searching', !!searchText);
     document.querySelectorAll('.row').forEach(function (row) {
@@ -3285,14 +3416,14 @@ function doSave() {
     }
   });
   window.addEventListener('pagehide', doSave);
-  function refreshCompendiumLinks(){ paint(); }
-  window.addEventListener('pageshow', refreshCompendiumLinks);
-  window.addEventListener('focus', refreshCompendiumLinks);
+  function refreshExternalProgress(){ mergeSavedChecklistState(); paint(); }
+  window.addEventListener('pageshow', refreshExternalProgress);
+  window.addEventListener('focus', refreshExternalProgress);
   window.addEventListener('storage', function (e) {
-    if (!e.key || e.key === 'rdr2-compendium-v1') refreshCompendiumLinks();
+    if (!e.key || e.key === 'rdr2-compendium-v1' || e.key === 'rdr2-full-checklist-v2') refreshExternalProgress();
   });
   document.addEventListener('visibilitychange', function () {
-    if (!document.hidden) refreshCompendiumLinks();
+    if (!document.hidden) refreshExternalProgress();
   });
   document.getElementById('root').addEventListener('wheel', onFilterWheel, {passive:false});
 
@@ -3303,13 +3434,13 @@ function doSave() {
     if (COMPENDIUM_ITEM_LINKS[id]) {
       saveCompendiumLinkedItem(id, cb.checked);
       st(id).c = cb.checked;
-      paint();
+      refreshProgressUI();
       scheduleSave();
       return;
     }
     if (cb.disabled || THRESHOLD_LINKS[id]) {
       // read-only / auto-computed: also has the `disabled` attribute, this is belt-and-suspenders
-      paint();
+      refreshProgressUI();
       return;
     }
     var parentsWithDetails = detailParents();
@@ -3329,7 +3460,7 @@ function doSave() {
     } else {
       st(id).c = cb.checked;
     }
-    paint();
+    refreshProgressUI();
     scheduleSave();
   });
 
