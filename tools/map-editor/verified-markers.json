@@ -4,7 +4,7 @@
     "width": 21617,
     "height": 16785
   },
-  "exportedAt": "2026-09-14T20:45:22.489Z",
+  "exportedAt": "2026-09-15T13:58:53.753Z",
   "entries": [
     {
       "markerId": "rc1",
@@ -2645,6 +2645,4074 @@
         {
           "x": 24.866464,
           "y": 80.830868
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-1",
+      "sourceIds": [
+        "cards-1"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "弗兰克·赫克（No. 1 Frank Heck）",
+      "nameEn": "No. 1 Frank Heck",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 61.295875,
+          "y": 30.535023
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-2",
+      "sourceIds": [
+        "cards-2"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "奥蒂斯·米勒帮（No. 2 Otis Miller Boys）",
+      "nameEn": "No. 2 Otis Miller Boys",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 63.382624,
+          "y": 25.640935
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-3",
+      "sourceIds": [
+        "cards-3"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "杰克·霍尔帮（No. 3 Jack Hall Gang）",
+      "nameEn": "No. 3 Jack Hall Gang",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 59.592132,
+          "y": 19.705465
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-4",
+      "sourceIds": [
+        "cards-4"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "屠夫兄弟（No. 4 Butcher Brothers）",
+      "nameEn": "No. 4 Butcher Brothers",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.880394,
+          "y": 31.147653
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-5",
+      "sourceIds": [
+        "cards-5"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "弗拉科·埃尔南德斯（No. 5 Flaco Hernández）",
+      "nameEn": "No. 5 Flaco Hernández",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.286713,
+          "y": 55.524951
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-6",
+      "sourceIds": [
+        "cards-6"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "斯利姆·格兰特（No. 6 Slim Grant）",
+      "nameEn": "No. 6 Slim Grant",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 77.982271,
+          "y": 14.314313
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-7",
+      "sourceIds": [
+        "cards-7"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "兰登·里基茨（No. 7 Landon Ricketts）",
+      "nameEn": "No. 7 Landon Ricketts",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 30.012309,
+          "y": 71.254087
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-8",
+      "sourceIds": [
+        "cards-8"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "黑衣美人（No. 8 Black Belle）",
+      "nameEn": "No. 8 Black Belle",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 56.817425,
+          "y": 54.993097
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-9",
+      "sourceIds": [
+        "cards-9"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "比利·米德奈特（No. 9 Billy Midnight）",
+      "nameEn": "No. 9 Billy Midnight",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 13.760267,
+          "y": 75.240808
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-10",
+      "sourceIds": [
+        "cards-10"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "埃米特·格兰杰（No. 10 Emmet Granger）",
+      "nameEn": "No. 10 Emmet Granger",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.316689,
+          "y": 45.136619
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-11",
+      "sourceIds": [
+        "cards-11"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "“小鬼”吉姆·卡洛威（No. 11 Jim ‘Boy’ Calloway）",
+      "nameEn": "No. 11 Jim ‘Boy’ Calloway",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.200384,
+          "y": 52.716107
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-12",
+      "sourceIds": [
+        "cards-12"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "巴特·洛夫（No. 12 Bart Love）",
+      "nameEn": "No. 12 Bart Love",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 43.49656,
+          "y": 31.656697
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-13",
+      "sourceIds": [
+        "cards-13"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "伊迪丝·科琳（No. 1 Edith Corinne）",
+      "nameEn": "No. 1 Edith Corinne",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 73.037593,
+          "y": 61.725114
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-14",
+      "sourceIds": [
+        "cards-14"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "埃尔西·露丝（No. 2 Elsie Rose）",
+      "nameEn": "No. 2 Elsie Rose",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 46.782873,
+          "y": 44.5977
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-15",
+      "sourceIds": [
+        "cards-15"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "W·G·霍伊特（No. 3 W. G. Hoyt）",
+      "nameEn": "No. 3 W. G. Hoyt",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 76.846302,
+          "y": 30.635674
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-16",
+      "sourceIds": [
+        "cards-16"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "奥尔德斯·布拉姆利（No. 4 Aldous Bramley）",
+      "nameEn": "No. 4 Aldous Bramley",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 56.047428,
+          "y": 57.902169
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-17",
+      "sourceIds": [
+        "cards-17"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "普雷斯顿·T·斯蒂芬森（No. 5 Preston T. Stephenson）",
+      "nameEn": "No. 5 Preston T. Stephenson",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 90.223499,
+          "y": 23.902883
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-18",
+      "sourceIds": [
+        "cards-18"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "艾夫林·米勒（No. 6 Evelyn Miller）",
+      "nameEn": "No. 6 Evelyn Miller",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 54.546547,
+          "y": 55.109206
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-19",
+      "sourceIds": [
+        "cards-19"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "斯利克·赫顿（No. 7 Slick Hutton）",
+      "nameEn": "No. 7 Slick Hutton",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 89.281492,
+          "y": 36.891819
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-20",
+      "sourceIds": [
+        "cards-20"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "劳伦斯·卡尔森（No. 8 Laurence Carson）",
+      "nameEn": "No. 8 Laurence Carson",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 89.415233,
+          "y": 54.92208
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-21",
+      "sourceIds": [
+        "cards-21"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "莫德·德兰西小姐（No. 9 Miss Maud Delancey）",
+      "nameEn": "No. 9 Miss Maud Delancey",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 84.617165,
+          "y": 44.104076
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-22",
+      "sourceIds": [
+        "cards-22"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "查尔斯·夏特奈（No. 10 Charles Châtenay）",
+      "nameEn": "No. 10 Charles Châtenay",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 59.928929,
+          "y": 29.360468
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-23",
+      "sourceIds": [
+        "cards-23"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "乔治·迪克西（No. 11 George Dixie）",
+      "nameEn": "No. 11 George Dixie",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 73.704049,
+          "y": 34.420352
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-24",
+      "sourceIds": [
+        "cards-24"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "理查德·麦卡洛（No. 12 Richard McCullough）",
+      "nameEn": "No. 12 Richard McCullough",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 87.358697,
+          "y": 52.440694
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-25",
+      "sourceIds": [
+        "cards-25"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "纽约（No. 1 New York）",
+      "nameEn": "No. 1 New York",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 80.231898,
+          "y": 56.996616
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-26",
+      "sourceIds": [
+        "cards-26"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "圣丹尼斯（No. 2 Saint Denis）",
+      "nameEn": "No. 2 Saint Denis",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.690476,
+          "y": 56.655614
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-27",
+      "sourceIds": [
+        "cards-27"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "黑水镇（No. 3 Blackwater）",
+      "nameEn": "No. 3 Blackwater",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 55.844703,
+          "y": 55.412352
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-28",
+      "sourceIds": [
+        "cards-28"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "犰狳镇（No. 4 Armadillo）",
+      "nameEn": "No. 4 Armadillo",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 29.196085,
+          "y": 70.687536
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-29",
+      "sourceIds": [
+        "cards-29"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "里奥布拉沃（No. 5 Rio Bravo）",
+      "nameEn": "No. 5 Rio Bravo",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 60.508687,
+          "y": 44.090177
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-30",
+      "sourceIds": [
+        "cards-30"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "格里兹里（No. 6 The Grizzlies）",
+      "nameEn": "No. 6 The Grizzlies",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 30.929329,
+          "y": 75.723307
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-31",
+      "sourceIds": [
+        "cards-31"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "旧金山（No. 7 San Francisco）",
+      "nameEn": "No. 7 San Francisco",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.009196,
+          "y": 36.900147
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-32",
+      "sourceIds": [
+        "cards-32"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "高树（No. 8 Tall Trees）",
+      "nameEn": "No. 8 Tall Trees",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 60.466557,
+          "y": 44.519019
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-33",
+      "sourceIds": [
+        "cards-33"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "瓦伦丁（No. 9 Valentine）",
+      "nameEn": "No. 9 Valentine",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 61.872388,
+          "y": 32.729439
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-34",
+      "sourceIds": [
+        "cards-34"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "芝加哥（No. 10 Chicago）",
+      "nameEn": "No. 10 Chicago",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 76.77479,
+          "y": 36.793248
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-35",
+      "sourceIds": [
+        "cards-35"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "罗兹（No. 11 Rhodes）",
+      "nameEn": "No. 11 Rhodes",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.396798,
+          "y": 54.599508
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-36",
+      "sourceIds": [
+        "cards-36"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "安尼斯堡（No. 12 Annesburg）",
+      "nameEn": "No. 12 Annesburg",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 89.529708,
+          "y": 24.029893
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-37",
+      "sourceIds": [
+        "cards-37"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "莱拉·丝特森（No. 1 Leila Stetson）",
+      "nameEn": "No. 1 Leila Stetson",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 70.588963,
+          "y": 30.201526
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-38",
+      "sourceIds": [
+        "cards-38"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "伊莎贝尔·巴洛（No. 2 Isabelle Barlow）",
+      "nameEn": "No. 2 Isabelle Barlow",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.902896,
+          "y": 15.445295
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-39",
+      "sourceIds": [
+        "cards-39"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "海蒂·兰特里（No. 3 Hattie Langtry）",
+      "nameEn": "No. 3 Hattie Langtry",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.136699,
+          "y": 16.60173
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-40",
+      "sourceIds": [
+        "cards-40"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "伊莎贝尔·斯坦迪什（No. 4 Isabelle Standish）",
+      "nameEn": "No. 4 Isabelle Standish",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.486139,
+          "y": 24.532447
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-41",
+      "sourceIds": [
+        "cards-41"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "莫德·恩格尔（No. 5 Maud Engel）",
+      "nameEn": "No. 5 Maud Engel",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 68.068485,
+          "y": 32.823321
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-42",
+      "sourceIds": [
+        "cards-42"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "萨迪·拉塞尔（No. 6 Sadie Russell）",
+      "nameEn": "No. 6 Sadie Russell",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 55.857363,
+          "y": 56.106901
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-43",
+      "sourceIds": [
+        "cards-43"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "杰拉尔丁·爱默生（No. 7 Geraldine Emerson）",
+      "nameEn": "No. 7 Geraldine Emerson",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 43.145484,
+          "y": 31.534132
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-44",
+      "sourceIds": [
+        "cards-44"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "艾格尼丝·盖恩（No. 8 Agnès Guyon）",
+      "nameEn": "No. 8 Agnès Guyon",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 50.763171,
+          "y": 26.564708
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-45",
+      "sourceIds": [
+        "cards-45"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "詹妮·威利茨（No. 9 Jennie Willetts）",
+      "nameEn": "No. 9 Jennie Willetts",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 90.487807,
+          "y": 33.469387
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-46",
+      "sourceIds": [
+        "cards-46"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "伊尔嘉·戈尔默（No. 10 Ilga Ulmer）",
+      "nameEn": "No. 10 Ilga Ulmer",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.51231,
+          "y": 54.585289
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-47",
+      "sourceIds": [
+        "cards-47"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "菲伊·德拉罗（No. 11 Fay Delaro）",
+      "nameEn": "No. 11 Fay Delaro",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 61.085897,
+          "y": 32.622588
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-48",
+      "sourceIds": [
+        "cards-48"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "波林·亨德森（No. 12 Pauline Henderson）",
+      "nameEn": "No. 12 Pauline Henderson",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 68.718192,
+          "y": 20.268718
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-49",
+      "sourceIds": [
+        "cards-49"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "金茶藨子（No. 1 Golden Currant）",
+      "nameEn": "No. 1 Golden Currant",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 84.165649,
+          "y": 49.189948
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-50",
+      "sourceIds": [
+        "cards-50"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "蜂鸟鼠尾草（No. 2 Hummingbird Sage）",
+      "nameEn": "No. 2 Hummingbird Sage",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.348824,
+          "y": 31.81995
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-51",
+      "sourceIds": [
+        "cards-51"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "夹竹桃鼠尾草（No. 3 Oleander Sage）",
+      "nameEn": "No. 3 Oleander Sage",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.58929,
+          "y": 54.300155
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-52",
+      "sourceIds": [
+        "cards-52"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "蓍草（No. 4 Yarrow）",
+      "nameEn": "No. 4 Yarrow",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.182441,
+          "y": 50.366245
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-53",
+      "sourceIds": [
+        "cards-53"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "半边莲（No. 5 Indian Tobacco）",
+      "nameEn": "No. 5 Indian Tobacco",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.126772,
+          "y": 50.319638
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-54",
+      "sourceIds": [
+        "cards-54"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "海榄雌木（No. 6 Black Mangrove）",
+      "nameEn": "No. 6 Black Mangrove",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 77.392069,
+          "y": 35.030327
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-55",
+      "sourceIds": [
+        "cards-55"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "长叶松（No. 7 Longleaf Pine）",
+      "nameEn": "No. 7 Longleaf Pine",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.398827,
+          "y": 24.727264
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-56",
+      "sourceIds": [
+        "cards-56"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "沙漠蒲葵（No. 8 Desert Fan Palm）",
+      "nameEn": "No. 8 Desert Fan Palm",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 11.953723,
+          "y": 74.880349
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-57",
+      "sourceIds": [
+        "cards-57"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "海岸红杉（No. 9 Coastal Redwood）",
+      "nameEn": "No. 9 Coastal Redwood",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 47.320198,
+          "y": 45.26488
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-58",
+      "sourceIds": [
+        "cards-58"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "金琥仙人掌（No. 10 Horse Crippler Cactus）",
+      "nameEn": "No. 10 Horse Crippler Cactus",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 80.183942,
+          "y": 54.883906
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-59",
+      "sourceIds": [
+        "cards-59"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "耀星花（No. 11 Blazing Star）",
+      "nameEn": "No. 11 Blazing Star",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 41.746106,
+          "y": 34.549889
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-60",
+      "sourceIds": [
+        "cards-60"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "卡罗莱纳羽扇豆（No. 12 Carolina Lupine）",
+      "nameEn": "No. 12 Carolina Lupine",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 12.765644,
+          "y": 75.003258
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-61",
+      "sourceIds": [
+        "cards-61"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "劳伦斯·邓恩（No. 1 Laurence Dunn）",
+      "nameEn": "No. 1 Laurence Dunn",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 73.86043,
+          "y": 51.738022
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-62",
+      "sourceIds": [
+        "cards-62"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "路易斯·杜兰德（No. 2 Louis Durand）",
+      "nameEn": "No. 2 Louis Durand",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 89.028958,
+          "y": 33.940327
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-63",
+      "sourceIds": [
+        "cards-63"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "杰西·雷蒙德（No. 3 Jesse Raymond）",
+      "nameEn": "No. 3 Jesse Raymond",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 13.017264,
+          "y": 74.16951
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-64",
+      "sourceIds": [
+        "cards-64"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "奥古斯塔·特雷姆洛（No. 4 Augusta Tremlow）",
+      "nameEn": "No. 4 Augusta Tremlow",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 42.943605,
+          "y": 31.535019
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-65",
+      "sourceIds": [
+        "cards-65"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "梅布尔·波特（No. 5 Mabel Potter）",
+      "nameEn": "No. 5 Mabel Potter",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.779141,
+          "y": 55.446465
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-66",
+      "sourceIds": [
+        "cards-66"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "罗宾·柯因斯基（No. 6 Robin Koninsky）",
+      "nameEn": "No. 6 Robin Koninsky",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.845187,
+          "y": 55.453862
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-67",
+      "sourceIds": [
+        "cards-67"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "伊萨多·里德（No. 7 Isadore Reid）",
+      "nameEn": "No. 7 Isadore Reid",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 59.972362,
+          "y": 31.624285
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-68",
+      "sourceIds": [
+        "cards-68"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "艾琳·格拉布（No. 8 Irene Grubb）",
+      "nameEn": "No. 8 Irene Grubb",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 40.538361,
+          "y": 68.664532
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-69",
+      "sourceIds": [
+        "cards-69"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "内蒂·帕尔默（No. 9 Nettie Palmer）",
+      "nameEn": "No. 9 Nettie Palmer",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 60.27773,
+          "y": 31.955012
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-70",
+      "sourceIds": [
+        "cards-70"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "吉姆·柯布（No. 10 Jim Cobb）",
+      "nameEn": "No. 10 Jim Cobb",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.023701,
+          "y": 44.942825
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-71",
+      "sourceIds": [
+        "cards-71"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "米蒂·康斯托克（No. 11 Mittie Comstock）",
+      "nameEn": "No. 11 Mittie Comstock",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 71.697904,
+          "y": 37.123317
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-72",
+      "sourceIds": [
+        "cards-72"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "罗伯特·艾略特·帕琴（No. 12 Robert Elliot Patchen）",
+      "nameEn": "No. 12 Robert Elliot Patchen",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.360709,
+          "y": 53.462583
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-73",
+      "sourceIds": [
+        "cards-73"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "黑寡妇蜘蛛（No. 1 Black Widow Spider）",
+      "nameEn": "No. 1 Black Widow Spider",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 41.749558,
+          "y": 34.630242
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-74",
+      "sourceIds": [
+        "cards-74"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "寻血猎犬（No. 2 Bloodhound）",
+      "nameEn": "No. 2 Bloodhound",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 76.922033,
+          "y": 60.548846
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-75",
+      "sourceIds": [
+        "cards-75"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "蓝松鸦（No. 3 Blue Jay）",
+      "nameEn": "No. 3 Blue Jay",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 81.892649,
+          "y": 32.841946
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-76",
+      "sourceIds": [
+        "cards-76"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "鲇鱼（No. 4 Catfish）",
+      "nameEn": "No. 4 Catfish",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 84.256297,
+          "y": 54.53261
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-77",
+      "sourceIds": [
+        "cards-77"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "珊瑚蛇（No. 5 Coral Snake）",
+      "nameEn": "No. 5 Coral Snake",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 84.094339,
+          "y": 49.496456
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-78",
+      "sourceIds": [
+        "cards-78"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "石斑鱼（No. 6 Grouper）",
+      "nameEn": "No. 6 Grouper",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 82.613533,
+          "y": 47.41545
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-79",
+      "sourceIds": [
+        "cards-79"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "大口黑鲈（No. 7 Large Mouth Bass）",
+      "nameEn": "No. 7 Large Mouth Bass",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 66.599147,
+          "y": 48.067176
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-80",
+      "sourceIds": [
+        "cards-80"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "山狮（No. 8 Panther）",
+      "nameEn": "No. 8 Panther",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.931748,
+          "y": 36.741946
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-81",
+      "sourceIds": [
+        "cards-81"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "鹦鹉（No. 9 Parrot）",
+      "nameEn": "No. 9 Parrot",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 80.694426,
+          "y": 49.31194
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-82",
+      "sourceIds": [
+        "cards-82"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "雉鸡（No. 10 Pheasant）",
+      "nameEn": "No. 10 Pheasant",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 81.904956,
+          "y": 32.855496
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-83",
+      "sourceIds": [
+        "cards-83"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "鳄龟（No. 11 Snapping Turtle）",
+      "nameEn": "No. 11 Snapping Turtle",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 65.518623,
+          "y": 28.57371
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-84",
+      "sourceIds": [
+        "cards-84"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "火鸡（No. 12 Turkey）",
+      "nameEn": "No. 12 Turkey",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 90.715587,
+          "y": 34.315751
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-85",
+      "sourceIds": [
+        "cards-85"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "班轮（No. 1 Packet Ship）",
+      "nameEn": "No. 1 Packet Ship",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 91.126202,
+          "y": 24.255017
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-86",
+      "sourceIds": [
+        "cards-86"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "双桅帆船（No. 2 Schooner）",
+      "nameEn": "No. 2 Schooner",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 90.914846,
+          "y": 34.56916
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-87",
+      "sourceIds": [
+        "cards-87"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "骆驼队（No. 3 Camel Caravan）",
+      "nameEn": "No. 3 Camel Caravan",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.778483,
+          "y": 55.940015
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-88",
+      "sourceIds": [
+        "cards-88"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "象车（No. 4 Elephant Carriage）",
+      "nameEn": "No. 4 Elephant Carriage",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 47.270189,
+          "y": 44.562205
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-89",
+      "sourceIds": [
+        "cards-89"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "羊车（No. 5 Goat Carriage）",
+      "nameEn": "No. 5 Goat Carriage",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 76.169636,
+          "y": 35.999269
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-90",
+      "sourceIds": [
+        "cards-90"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "热气球（No. 6 Hot Air Balloon）",
+      "nameEn": "No. 6 Hot Air Balloon",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 89.043725,
+          "y": 53.974638
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-91",
+      "sourceIds": [
+        "cards-91"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "美国护卫舰（No. 7 U.S. Frigate）",
+      "nameEn": "No. 7 U.S. Frigate",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 71.699987,
+          "y": 61.258776
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-92",
+      "sourceIds": [
+        "cards-92"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "水上演艺舫（No. 8 The Showboat）",
+      "nameEn": "No. 8 The Showboat",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.003635,
+          "y": 58.594334
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-93",
+      "sourceIds": [
+        "cards-93"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "捕鲸船（No. 9 Balener Whaling Vessel）",
+      "nameEn": "No. 9 Balener Whaling Vessel",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 89.522398,
+          "y": 56.96034
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-94",
+      "sourceIds": [
+        "cards-94"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "驿站马车（No. 10 Stagecoach）",
+      "nameEn": "No. 10 Stagecoach",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 53.443764,
+          "y": 46.962522
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-95",
+      "sourceIds": [
+        "cards-95"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "蒸汽机车（No. 11 Steam Locomotive）",
+      "nameEn": "No. 11 Steam Locomotive",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 70.405585,
+          "y": 51.675398
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-96",
+      "sourceIds": [
+        "cards-96"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "脚踏车（No. 12 Velocipede）",
+      "nameEn": "No. 12 Velocipede",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.218362,
+          "y": 53.246309
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-97",
+      "sourceIds": [
+        "cards-97"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "古典式摔跤手——珀西·伍德（No. 1 Greco Roman Wrestler – Percy Wood）",
+      "nameEn": "No. 1 Greco Roman Wrestler – Percy Wood",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.683926,
+          "y": 31.789671
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-98",
+      "sourceIds": [
+        "cards-98"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "桌球手——艾德温·A·罗威（No. 2 Billiards – Edwin A. Rowe）",
+      "nameEn": "No. 2 Billiards – Edwin A. Rowe",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 57.137447,
+          "y": 27.873852
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-99",
+      "sourceIds": [
+        "cards-99"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "拳击手——西奥博瓦德·盖琴（No. 3 Pugilist – Theobaud Getzin）",
+      "nameEn": "No. 3 Pugilist – Theobaud Getzin",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 76.686921,
+          "y": 35.829841
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-100",
+      "sourceIds": [
+        "cards-100"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "划桨手——H·T·斯洛克姆（No. 4 Oarsman – H. T. Slocum）",
+      "nameEn": "No. 4 Oarsman – H. T. Slocum",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.341904,
+          "y": 45.116803
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-101",
+      "sourceIds": [
+        "cards-101"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "自行车手——R·S·哈洛顿（No. 5 Cyclist – R. S. Harradon）",
+      "nameEn": "No. 5 Cyclist – R. S. Harradon",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 83.951423,
+          "y": 41.92792
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-102",
+      "sourceIds": [
+        "cards-102"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "走钢丝选手——E·D·尤因（No. 6 Walker – E. D. Ewing）",
+      "nameEn": "No. 6 Walker – E. D. Ewing",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 74.279976,
+          "y": 41.400569
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-103",
+      "sourceIds": [
+        "cards-103"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "草地网球手——派西·希尔（No. 7 Lawn Tennis – Patsey Hill）",
+      "nameEn": "No. 7 Lawn Tennis – Patsey Hill",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 89.212021,
+          "y": 52.711472
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-104",
+      "sourceIds": [
+        "cards-104"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "举重运动员——威廉·斯莱彻（No. 8 Weightlifter – William Sleicher）",
+      "nameEn": "No. 8 Weightlifter – William Sleicher",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 68.016797,
+          "y": 32.80483
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-105",
+      "sourceIds": [
+        "cards-105"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "射鸽选手——艾德温·辛格利（No. 9 Pigeon Shooting – Edwin Singerly）",
+      "nameEn": "No. 9 Pigeon Shooting – Edwin Singerly",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 89.853085,
+          "y": 23.845961
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-106",
+      "sourceIds": [
+        "cards-106"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "溜冰手——费利克斯·霍利（No. 10 Skater – Felix Hawley）",
+      "nameEn": "No. 10 Skater – Felix Hawley",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 54.117169,
+          "y": 20.238316
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-107",
+      "sourceIds": [
+        "cards-107"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "链球手——杰克·佩奇上尉（No. 11 Hammer Thrower – Capt. Jack Page）",
+      "nameEn": "No. 11 Hammer Thrower – Capt. Jack Page",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 57.14785,
+          "y": 27.870424
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-108",
+      "sourceIds": [
+        "cards-108"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "瓶状棍体操手——阿克塞尔·麦科马克（No. 12 Club Swinger – Axel McCormack）",
+      "nameEn": "No. 12 Club Swinger – Axel McCormack",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 87.752839,
+          "y": 54.937178
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-109",
+      "sourceIds": [
+        "cards-109"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "蒸汽机车，1814——乔治·史蒂芬森（No. 1 Steam Locomotive – 1814 – George Stephenson）",
+      "nameEn": "No. 1 Steam Locomotive – 1814 – George Stephenson",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 78.042783,
+          "y": 61.9511
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-110",
+      "sourceIds": [
+        "cards-110"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "相机，1814——约瑟夫·尼瑟福·尼埃普斯（No. 2 Camera – 1814 – Joseph Nicephore Niepce）",
+      "nameEn": "No. 2 Camera – 1814 – Joseph Nicephore Niepce",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.482509,
+          "y": 53.473062
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-111",
+      "sourceIds": [
+        "cards-111"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "电刑装置，1888——H·P·布朗、A·肯内利（No. 3 Electrical Execution Apparatus – 1888- H.P. Brown, A. Kennelly）",
+      "nameEn": "No. 3 Electrical Execution Apparatus – 1888- H.P. Brown, A. Kennelly",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 43.516699,
+          "y": 31.722094
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-112",
+      "sourceIds": [
+        "cards-112"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "打字机，1829——W·A·伯特（No. 4 Typewriter – 1829 – W. A. Burt）",
+      "nameEn": "No. 4 Typewriter – 1829 – W. A. Burt",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 54.710226,
+          "y": 55.748999
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-113",
+      "sourceIds": [
+        "cards-113"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "左轮手枪，1836——丹尼尔·巴克（No. 5 Revolver – 1836 – Daniel Buck）",
+      "nameEn": "No. 5 Revolver – 1836 – Daniel Buck",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 90.557445,
+          "y": 24.647203
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-114",
+      "sourceIds": [
+        "cards-114"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "电报，1837——塞缪尔·莫尔斯（No. 6 Telegraph – 1837 – Samuel Morse）",
+      "nameEn": "No. 6 Telegraph – 1837 – Samuel Morse",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 90.001067,
+          "y": 32.735457
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-115",
+      "sourceIds": [
+        "cards-115"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "载人滑翔器，1885——查尔斯·金尼尔（No. 7 Manned Glider – 1885 – Charles Kinnear）",
+      "nameEn": "No. 7 Manned Glider – 1885 – Charles Kinnear",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 80.731721,
+          "y": 56.015913
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-116",
+      "sourceIds": [
+        "cards-116"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "炸药，1866——阿尔弗雷德·诺贝尔（No. 8 Dynamite – 1866 – Alfred Nobel）",
+      "nameEn": "No. 8 Dynamite – 1866 – Alfred Nobel",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 80.832227,
+          "y": 62.162042
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-117",
+      "sourceIds": [
+        "cards-117"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "圆筒留声机，1877——托马斯·爱迪生（No. 9 Cylinder Phonograph – 1877 – Thomas Edison）",
+      "nameEn": "No. 9 Cylinder Phonograph – 1877 – Thomas Edison",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 60.644691,
+          "y": 30.775134
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-118",
+      "sourceIds": [
+        "cards-118"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "自动演奏钢琴，1881——爱德华·莱维奥克斯（No. 10 Player Piano – 1881 – Edward Leveaux）",
+      "nameEn": "No. 10 Player Piano – 1881 – Edward Leveaux",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 87.604898,
+          "y": 54.667004
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-119",
+      "sourceIds": [
+        "cards-119"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "电灯泡，1878——托马斯·爱迪生（No. 11 Electric Light Bulb – 1878 – Thomas Edison）",
+      "nameEn": "No. 11 Electric Light Bulb – 1878 – Thomas Edison",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.552103,
+          "y": 13.143784
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-120",
+      "sourceIds": [
+        "cards-120"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "钢笔，1884——刘易斯·沃特曼（No. 12 Fountain Pen -1884 – Lewis Waterman）",
+      "nameEn": "No. 12 Fountain Pen -1884 – Lewis Waterman",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 79.746488,
+          "y": 45.741091
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-121",
+      "sourceIds": [
+        "cards-121"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "美国花马（No. 1 American Paint）",
+      "nameEn": "No. 1 American Paint",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 76.425406,
+          "y": 55.30894
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-122",
+      "sourceIds": [
+        "cards-122"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "阿帕卢萨马（No. 2 Appaloosa）",
+      "nameEn": "No. 2 Appaloosa",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.828162,
+          "y": 58.739932
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-123",
+      "sourceIds": [
+        "cards-123"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "安达卢西亚马（No. 3 Andalusian）",
+      "nameEn": "No. 3 Andalusian",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 57.716647,
+          "y": 41.059251
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-124",
+      "sourceIds": [
+        "cards-124"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "美国标准种马（No. 4 American Standardbred）",
+      "nameEn": "No. 4 American Standardbred",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.570825,
+          "y": 67.104905
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-125",
+      "sourceIds": [
+        "cards-125"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "北达科他马（No. 5 Nokota）",
+      "nameEn": "No. 5 Nokota",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.474944,
+          "y": 56.161176
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-126",
+      "sourceIds": [
+        "cards-126"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "阿尔登马（No. 6 Ardennes）",
+      "nameEn": "No. 6 Ardennes",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 51.540682,
+          "y": 35.485684
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-127",
+      "sourceIds": [
+        "cards-127"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "荷兰温血马（No. 7 Dutch Warmblood）",
+      "nameEn": "No. 7 Dutch Warmblood",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 55.927613,
+          "y": 36.022667
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-128",
+      "sourceIds": [
+        "cards-128"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "土库曼马（No. 8 Turkoman）",
+      "nameEn": "No. 8 Turkoman",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 79.066646,
+          "y": 22.404247
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-129",
+      "sourceIds": [
+        "cards-129"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "匈牙利混种马（No. 9 Hungarian Halfbred）",
+      "nameEn": "No. 9 Hungarian Halfbred",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 29.68378,
+          "y": 70.435331
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-130",
+      "sourceIds": [
+        "cards-130"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "美洲野马（No. 10 Mustang）",
+      "nameEn": "No. 10 Mustang",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 55.548946,
+          "y": 36.217262
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-131",
+      "sourceIds": [
+        "cards-131"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "纯血马（No. 11 Thoroughbred）",
+      "nameEn": "No. 11 Thoroughbred",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 74.633391,
+          "y": 55.262632
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-132",
+      "sourceIds": [
+        "cards-132"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "密苏里狐步马（No. 12 Missouri Fox Trotter）",
+      "nameEn": "No. 12 Missouri Fox Trotter",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.514706,
+          "y": 67.059763
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-133",
+      "sourceIds": [
+        "cards-133"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "费舍尔总统（No. 1 President Fisher）",
+      "nameEn": "No. 1 President Fisher",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 73.16351,
+          "y": 53.414368
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-134",
+      "sourceIds": [
+        "cards-134"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "哈丁总统（No. 2 President Hardin）",
+      "nameEn": "No. 2 President Hardin",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 83.072274,
+          "y": 47.660366
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-135",
+      "sourceIds": [
+        "cards-135"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "莉莲·鲍威尔（No. 3 Lillian Powell）",
+      "nameEn": "No. 3 Lillian Powell",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 79.132413,
+          "y": 44.738863
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-136",
+      "sourceIds": [
+        "cards-136"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "利维提克斯·康沃尔（No. 4 Leviticus Cornwall）",
+      "nameEn": "No. 4 Leviticus Cornwall",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 59.734855,
+          "y": 32.357732
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-137",
+      "sourceIds": [
+        "cards-137"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "J·D·麦克奈特（No. 5 J. D. McKnight）",
+      "nameEn": "No. 5 J. D. McKnight",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 76.452846,
+          "y": 56.754319
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-138",
+      "sourceIds": [
+        "cards-138"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "路德·卡温顿（No. 6 Luther Covington）",
+      "nameEn": "No. 6 Luther Covington",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 84.386074,
+          "y": 58.191444
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-139",
+      "sourceIds": [
+        "cards-139"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "哈维·格里格斯（No. 7 Harvey Griggs）",
+      "nameEn": "No. 7 Harvey Griggs",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.419839,
+          "y": 57.348248
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-140",
+      "sourceIds": [
+        "cards-140"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "海丽特·比阿特丽斯·伍兹（No. 8 Henrietta Beatrice Woods）",
+      "nameEn": "No. 8 Henrietta Beatrice Woods",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 87.574878,
+          "y": 51.149089
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-141",
+      "sourceIds": [
+        "cards-141"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "昆西·哈里斯将军（No. 9 General Quincy Harris）",
+      "nameEn": "No. 9 General Quincy Harris",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 68.906109,
+          "y": 31.830731
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-142",
+      "sourceIds": [
+        "cards-142"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "科尼利厄斯·帕尔默将军（No. 10 General Cornelius Palmer）",
+      "nameEn": "No. 10 General Cornelius Palmer",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 76.158451,
+          "y": 50.075719
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-143",
+      "sourceIds": [
+        "cards-143"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "撒迪厄斯·沃克斯曼参议员（No. 11 Senator Thaddeus Waxman）",
+      "nameEn": "No. 11 Senator Thaddeus Waxman",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 78.319679,
+          "y": 44.513489
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "map-cards-144",
+      "sourceIds": [
+        "cards-144"
+      ],
+      "category": "cigarette-cards",
+      "nameZh": "阿尔弗雷德·麦卡利斯特总统（No. 12 President Alfred Macalister）",
+      "nameEn": "No. 12 President Alfred Macalister",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 82.602621,
+          "y": 61.63366
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-argil-rise",
+      "sourceIds": [
+        "shack-argil-rise"
+      ],
+      "category": "shacks",
+      "nameZh": "阿吉尔高地（Argil Rise）",
+      "nameEn": "Argil Rise",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 76.605893,
+          "y": 58.864469
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-bayall-edge",
+      "sourceIds": [
+        "shack-bayall-edge"
+      ],
+      "category": "shacks",
+      "nameZh": "巴约尔边缘（Bayall Edge）",
+      "nameEn": "Bayall Edge",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 79.116487,
+          "y": 52.052643
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-bear-claw-camp",
+      "sourceIds": [
+        "shack-bear-claw-camp"
+      ],
+      "category": "shacks",
+      "nameZh": "熊爪营地（Bear Claw Camp）",
+      "nameEn": "Bear Claw Camp",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 44.448472,
+          "y": 62.454047
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-clawsons-rest",
+      "sourceIds": [
+        "shack-clawsons-rest"
+      ],
+      "category": "shacks",
+      "nameZh": "克劳森歇脚处（Clawson’s Rest）",
+      "nameEn": "Clawson’s Rest",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 57.163994,
+          "y": 27.844134
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-crawdad-willies",
+      "sourceIds": [
+        "shack-crawdad-willies"
+      ],
+      "category": "shacks",
+      "nameZh": "小龙虾威利斯（Crawdad Willies）",
+      "nameEn": "Crawdad Willies",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 82.619839,
+          "y": 61.610442
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-dodds-bluff",
+      "sourceIds": [
+        "shack-dodds-bluff"
+      ],
+      "category": "shacks",
+      "nameZh": "多德悬崖小屋（Dodd’s Bluff Cabin）",
+      "nameEn": "Dodd’s Bluff Cabin",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 62.022157,
+          "y": 22.59413
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-dormin-crest",
+      "sourceIds": [
+        "shack-dormin-crest"
+      ],
+      "category": "shacks",
+      "nameZh": "多明山脊棚屋（Dormin Crest Shack）",
+      "nameEn": "Dormin Crest Shack",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 45.47685,
+          "y": 14.725491
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-fairwale-shanty",
+      "sourceIds": [
+        "shack-fairwale-shanty"
+      ],
+      "category": "shacks",
+      "nameZh": "费尔韦尔棚屋（Fairwale Shanty）",
+      "nameEn": "Fairwale Shanty",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 77.978676,
+          "y": 14.266304
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-hanis-bethel",
+      "sourceIds": [
+        "shack-hanis-bethel"
+      ],
+      "category": "shacks",
+      "nameZh": "哈尼的伯特利（Hani’s Bethel）",
+      "nameEn": "Hani’s Bethel",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 76.870251,
+          "y": 30.663614
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-lenora-view",
+      "sourceIds": [
+        "shack-lenora-view"
+      ],
+      "category": "shacks",
+      "nameZh": "莱诺拉观景小屋（Lenora View Cabin）",
+      "nameEn": "Lenora View Cabin",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 47.61933,
+          "y": 41.202778
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-marthas-swain",
+      "sourceIds": [
+        "shack-marthas-swain"
+      ],
+      "category": "shacks",
+      "nameZh": "玛莎的斯温小屋（Martha’s Swain Cabin）",
+      "nameEn": "Martha’s Swain Cabin",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 81.625886,
+          "y": 26.135836
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-old-harry-fen",
+      "sourceIds": [
+        "shack-old-harry-fen"
+      ],
+      "category": "shacks",
+      "nameZh": "老哈里沼泽棚屋（Old Harry Fen Shack）",
+      "nameEn": "Old Harry Fen Shack",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 76.173594,
+          "y": 64.788454
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-old-trail-rise",
+      "sourceIds": [
+        "shack-old-trail-rise"
+      ],
+      "category": "shacks",
+      "nameZh": "老路高地（Old Trail Rise）",
+      "nameEn": "Old Trail Rise",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 74.315497,
+          "y": 41.364589
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-osman-grove",
+      "sourceIds": [
+        "shack-osman-grove"
+      ],
+      "category": "shacks",
+      "nameZh": "奥斯曼树林（Osman Grove）",
+      "nameEn": "Osman Grove",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 80.776258,
+          "y": 36.647091
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-ridge-view",
+      "sourceIds": [
+        "shack-ridge-view"
+      ],
+      "category": "shacks",
+      "nameZh": "山脊景观小屋（Ridge View Cabin）",
+      "nameEn": "Ridge View Cabin",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 79.928349,
+          "y": 34.445948
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-robard-farm",
+      "sourceIds": [
+        "shack-robard-farm"
+      ],
+      "category": "shacks",
+      "nameZh": "罗巴德农场（Robard Farm）",
+      "nameEn": "Robard Farm",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 73.860093,
+          "y": 51.732459
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-shepherds-rise",
+      "sourceIds": [
+        "shack-shepherds-rise"
+      ],
+      "category": "shacks",
+      "nameZh": "牧羊人高地小屋（Shepherd’s Rise Cabin）",
+      "nameEn": "Shepherd’s Rise Cabin",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 49.037729,
+          "y": 37.641548
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-snowfield",
+      "sourceIds": [
+        "shack-snowfield"
+      ],
+      "category": "shacks",
+      "nameZh": "雪原棚屋（Snowfield Shack）",
+      "nameEn": "Snowfield Shack",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 44.135707,
+          "y": 18.444965
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "shack-vetters-echo",
+      "sourceIds": [
+        "shack-vetters-echo"
+      ],
+      "category": "shacks",
+      "nameZh": "维特回声（Vetter’s Echo）",
+      "nameEn": "Vetter’s Echo",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 41.766712,
+          "y": 34.593207
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-tiny-church",
+      "sourceIds": [
+        "poi-tiny-church"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "微型教堂（Tiny Church）",
+      "nameEn": "Tiny Church",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.596885,
+          "y": 48.910772
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-bolger-glade",
+      "sourceIds": [
+        "poi-bolger-glade"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "博尔格林地（Bolger Glade）",
+      "nameEn": "Bolger Glade",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 77.387016,
+          "y": 61.381857
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-abandoned-church",
+      "sourceIds": [
+        "poi-abandoned-church"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "废弃教堂（Abandoned Church）",
+      "nameEn": "Abandoned Church",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 78.016637,
+          "y": 62.016096
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-grays-secret",
+      "sourceIds": [
+        "poi-grays-secret"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "格雷家的秘密（Gray’s Secret）",
+      "nameEn": "Gray’s Secret",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 79.74967,
+          "y": 56.252851
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-braithwaites-secret",
+      "sourceIds": [
+        "poi-braithwaites-secret"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "布雷斯韦特家的秘密（Braithwaites’ Secret）",
+      "nameEn": "Braithwaites’ Secret",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 71.660978,
+          "y": 63.424994
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-painting-in-cabin",
+      "sourceIds": [
+        "poi-painting-in-cabin"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "小屋里的画（Painting in Cabin）",
+      "nameEn": "Painting in Cabin",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 79.106925,
+          "y": 52.05007
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-pleasance",
+      "sourceIds": [
+        "poi-pleasance"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "普莱森斯（Pleasance）",
+      "nameEn": "Pleasance",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 79.214452,
+          "y": 44.988103
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-withered-arm",
+      "sourceIds": [
+        "poi-withered-arm"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "枯萎的手臂（Withered Arm）",
+      "nameEn": "Withered Arm",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 82.030171,
+          "y": 60.337889
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-phonograph",
+      "sourceIds": [
+        "poi-phonograph"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "留声机（Phonograph）",
+      "nameEn": "Phonograph",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 84.658214,
+          "y": 44.049218
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-abandoned-trading-post",
+      "sourceIds": [
+        "poi-abandoned-trading-post"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "废弃贸易站（Abandoned Trading Post）",
+      "nameEn": "Abandoned Trading Post",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.856747,
+          "y": 15.437627
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-brush-fire",
+      "sourceIds": [
+        "poi-brush-fire"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "火灾遗迹（Brush Fire）",
+      "nameEn": "Brush Fire",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 60.574224,
+          "y": 37.907418
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-fossilized-man",
+      "sourceIds": [
+        "poi-fossilized-man"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "化石人（Fossilized Man）",
+      "nameEn": "Fossilized Man",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 83.090443,
+          "y": 17.444742
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-manmade-mutant",
+      "sourceIds": [
+        "poi-manmade-mutant"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "人造变异体（Manmade Mutant）",
+      "nameEn": "Manmade Mutant",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 88.982476,
+          "y": 33.916148
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-meteor-house",
+      "sourceIds": [
+        "poi-meteor-house"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "陨石屋（Meteor House）",
+      "nameEn": "Meteor House",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 86.141176,
+          "y": 16.602371
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-meteorite",
+      "sourceIds": [
+        "poi-meteorite"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "陨石（Meteorite）",
+      "nameEn": "Meteorite",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 84.400501,
+          "y": 15.658361
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-oil-derrick",
+      "sourceIds": [
+        "poi-oil-derrick"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "石油钻井架（Oil Derrick）",
+      "nameEn": "Oil Derrick",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 66.734591,
+          "y": 40.390279
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-old-tomb",
+      "sourceIds": [
+        "poi-old-tomb"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "古墓（Old Tomb）",
+      "nameEn": "Old Tomb",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 85.448359,
+          "y": 20.373196
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-old-world-scripts",
+      "sourceIds": [
+        "poi-old-world-scripts"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "旧世界文字（Old World Scripts）",
+      "nameEn": "Old World Scripts",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 92.914616,
+          "y": 22.85386
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-register-rock",
+      "sourceIds": [
+        "poi-register-rock"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "登记岩（Register Rock）",
+      "nameEn": "Register Rock",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 69.917018,
+          "y": 35.16375
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-serpent-mound",
+      "sourceIds": [
+        "poi-serpent-mound"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "蛇形土丘（Serpent Mound）",
+      "nameEn": "Serpent Mound",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 87.957951,
+          "y": 35.227809
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-strange-statues-cave-painting",
+      "sourceIds": [
+        "poi-strange-statues-cave-painting"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "奇异雕像（洞穴壁画）（Strange Statues (Cave Painting)）",
+      "nameEn": "Strange Statues (Cave Painting)",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 61.920137,
+          "y": 21.06883
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-trading-post",
+      "sourceIds": [
+        "poi-trading-post"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "贸易站（Trading Post）",
+      "nameEn": "Trading Post",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 65.226211,
+          "y": 45.042834
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-trail-trees-1",
+      "sourceIds": [
+        "poi-trail-trees-1"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "路标树 I（Trail Trees I）",
+      "nameEn": "Trail Trees I",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 82.907444,
+          "y": 27.705062
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-trail-trees-2",
+      "sourceIds": [
+        "poi-trail-trees-2"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "路标树 II（Trail Trees II）",
+      "nameEn": "Trail Trees II",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 83.232735,
+          "y": 26.941379
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-trail-trees-3",
+      "sourceIds": [
+        "poi-trail-trees-3"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "路标树 III（Trail Trees III）",
+      "nameEn": "Trail Trees III",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 83.700341,
+          "y": 26.77555
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-trail-trees-4",
+      "sourceIds": [
+        "poi-trail-trees-4"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "路标树 IV（Trail Trees IV）",
+      "nameEn": "Trail Trees IV",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 84.062906,
+          "y": 26.107873
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-warped-tree",
+      "sourceIds": [
+        "poi-warped-tree"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "扭曲树（Warped Tree）",
+      "nameEn": "Warped Tree",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 71.993719,
+          "y": 37.298223
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-barrel-rider",
+      "sourceIds": [
+        "poi-barrel-rider"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "木桶骑手（Barrel Rider）",
+      "nameEn": "Barrel Rider",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 68.580524,
+          "y": 18.719031
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-defaced-grave",
+      "sourceIds": [
+        "poi-defaced-grave"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "被毁容的坟墓（Defaced Grave）",
+      "nameEn": "Defaced Grave",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 54.41073,
+          "y": 20.231898
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-face-in-cliff",
+      "sourceIds": [
+        "poi-face-in-cliff"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "悬崖人脸（Face in Cliff）",
+      "nameEn": "Face in Cliff",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 75.015536,
+          "y": 24.821633
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-frozen-settler",
+      "sourceIds": [
+        "poi-frozen-settler"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "冰冻拓荒者（Frozen Settler）",
+      "nameEn": "Frozen Settler",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 48.659395,
+          "y": 24.120057
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-mammoth",
+      "sourceIds": [
+        "poi-mammoth"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "猛犸象（Mammoth）",
+      "nameEn": "Mammoth",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 47.633897,
+          "y": 14.171303
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-meditating-monk",
+      "sourceIds": [
+        "poi-meditating-monk"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "冥想僧侣（Meditating Monk）",
+      "nameEn": "Meditating Monk",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 72.879337,
+          "y": 21.421146
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-mysterious-hill-home",
+      "sourceIds": [
+        "poi-mysterious-hill-home"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "神秘山地小屋（Mysterious Hill Home）",
+      "nameEn": "Mysterious Hill Home",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 70.331405,
+          "y": 18.672476
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-strange-statues",
+      "sourceIds": [
+        "poi-strange-statues"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "奇异雕像（Strange Statues）",
+      "nameEn": "Strange Statues",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 70.882967,
+          "y": 17.819963
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-circus-wagons",
+      "sourceIds": [
+        "poi-circus-wagons"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "马戏团马车（Circus Wagons）",
+      "nameEn": "Circus Wagons",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 47.390211,
+          "y": 59.831849
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-faces-in-trees",
+      "sourceIds": [
+        "poi-faces-in-trees"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "树中面孔（Faces in Trees）",
+      "nameEn": "Faces in Trees",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 37.865768,
+          "y": 44.491651
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-flying-machine-west-elizabeth",
+      "sourceIds": [
+        "poi-flying-machine-west-elizabeth"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "飞行器（西伊丽莎白）（Flying Machine (West Elizabeth)）",
+      "nameEn": "Flying Machine (West Elizabeth)",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 39.854642,
+          "y": 31.017429
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-giant-remains",
+      "sourceIds": [
+        "poi-giant-remains"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "巨人遗骸（Giant Remains）",
+      "nameEn": "Giant Remains",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 46.148379,
+          "y": 40.681553
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-hermit-woman",
+      "sourceIds": [
+        "poi-hermit-woman"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "隐居女人（Hermit Woman）",
+      "nameEn": "Hermit Woman",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 40.265324,
+          "y": 26.343306
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-hidden-tunnel",
+      "sourceIds": [
+        "poi-hidden-tunnel"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "隐藏隧道（Hidden Tunnel）",
+      "nameEn": "Hidden Tunnel",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 39.21157,
+          "y": 31.925692
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-native-burial",
+      "sourceIds": [
+        "poi-native-burial"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "原住民墓葬（Native Burial）",
+      "nameEn": "Native Burial",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 39.833481,
+          "y": 41.292813
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-obelisk",
+      "sourceIds": [
+        "poi-obelisk"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "方尖碑（Obelisk）",
+      "nameEn": "Obelisk",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 36.566124,
+          "y": 41.80847
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-pagan-ritual",
+      "sourceIds": [
+        "poi-pagan-ritual"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "异教仪式（Pagan Ritual）",
+      "nameEn": "Pagan Ritual",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 37.085878,
+          "y": 43.579919
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-whale-bones",
+      "sourceIds": [
+        "poi-whale-bones"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "鲸骨（Whale Bones）",
+      "nameEn": "Whale Bones",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 38.109409,
+          "y": 45.282139
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-wickiup",
+      "sourceIds": [
+        "poi-wickiup"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "圆锥棚屋（Wickiup）",
+      "nameEn": "Wickiup",
+      "pointType": "single",
+      "chapterTags": [],
+      "status": "verified",
+      "points": [
+        {
+          "x": 38.779685,
+          "y": 57.924511
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-crashed-airship-new-austin",
+      "sourceIds": [
+        "poi-crashed-airship-new-austin"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "坠毁飞艇（新奥斯汀）（Crashed Airship (New Austin)）",
+      "nameEn": "Crashed Airship (New Austin)",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 23.575954,
+          "y": 70.925634
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-donkey-lady",
+      "sourceIds": [
+        "poi-donkey-lady"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "驴夫人（Donkey Lady）",
+      "nameEn": "Donkey Lady",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 28.477119,
+          "y": 75.895076
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-jesuit-missionary",
+      "sourceIds": [
+        "poi-jesuit-missionary"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "耶稣会传教士（Jesuit Missionary）",
+      "nameEn": "Jesuit Missionary",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 5.771602,
+          "y": 80.982891
+        }
+      ],
+      "evidence": ""
+    },
+    {
+      "markerId": "poi-sperm-whale-bones",
+      "sourceIds": [
+        "poi-sperm-whale-bones"
+      ],
+      "category": "points-of-interest",
+      "nameZh": "抹香鲸骨（Sperm Whale Bones）",
+      "nameEn": "Sperm Whale Bones",
+      "pointType": "single",
+      "chapterTags": [
+        "epi1",
+        "epi2"
+      ],
+      "status": "verified",
+      "points": [
+        {
+          "x": 20.536137,
+          "y": 80.547706
         }
       ],
       "evidence": ""

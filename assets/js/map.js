@@ -13,6 +13,7 @@
   var lang = readSetting(LANG_KEY, "zh") === "en" ? "en" : "zh";
   var theme = readSetting(THEME_KEY, "");
   var filter = "";
+  var subfilter = "";
   var query = "";
   var selectedId = "";
   var view = { scale: 1, fit: 1, x: 0, y: 0 };
@@ -52,18 +53,24 @@
 
   function checklistId(marker) { return (marker.sourceIds && marker.sourceIds[0]) || marker.groupId || marker.id; }
 
+  function compendiumId(id) {
+    return COMPENDIUM_LINKS[id] || (/^cards-\d+$/.test(id) ? id : "");
+  }
+
   function isComplete(marker) {
     var id = checklistId(marker);
-    var linked = COMPENDIUM_LINKS[id];
+    var linked = compendiumId(id);
     return linked ? !!compendiumState[linked] : !!(checklistState[id] && checklistState[id].c);
   }
 
   function setComplete(marker, complete) {
     var id = checklistId(marker);
-    var previous = checklistState[id] || {};
-    checklistState[id] = { c: !!complete, m: typeof previous.m === "string" ? previous.m : "" };
-    writeJson(CHECKLIST_KEY, checklistState);
-    var linked = COMPENDIUM_LINKS[id];
+    var linked = compendiumId(id);
+    if (!linked) {
+      var previous = checklistState[id] || {};
+      checklistState[id] = { c: !!complete, m: typeof previous.m === "string" ? previous.m : "" };
+      writeJson(CHECKLIST_KEY, checklistState);
+    }
     if (linked) {
       if (complete) compendiumState[linked] = true;
       else delete compendiumState[linked];
@@ -109,7 +116,7 @@
     if (!filter) return [];
     var normalized = query.trim().toLocaleLowerCase();
     return DATA.markers.filter(function (marker) {
-      var categoryMatch = marker.category === filter;
+      var categoryMatch = marker.category === filter && (!subfilter || marker.subgroupId === subfilter);
       var haystack = [marker.zh, marker.en, marker.detailZh, marker.detailEn].join(" ").toLocaleLowerCase();
       return categoryMatch && (!normalized || haystack.indexOf(normalized) !== -1);
     });
@@ -133,7 +140,7 @@
         '<section class="map-shell">' +
           '<aside class="map-panel"><div class="map-panel-head"><h2>' + L("西部世界", "The Frontier") + '</h2></div>' +
             '<div class="map-tools"><input class="map-search" id="map-search" type="search" autocomplete="off" placeholder="' + L("搜索地点或物品", "Search locations or items") + '" aria-label="' + L("搜索地图", "Search map") + '" value="' + escapeHtml(query) + '"></div>' +
-            '<div class="map-categories" id="map-categories"></div><div class="map-list" id="map-list"></div></aside>' +
+            '<div class="map-categories" id="map-categories"></div><div class="map-subcategories" id="map-subcategories" hidden></div><div class="map-list" id="map-list"></div></aside>' +
           '<section class="map-stage"><div class="map-viewport" id="map-viewport" tabindex="0" aria-label="' + L("可拖动和缩放的高清游戏地图", "Draggable high-resolution game map") + '"><canvas class="map-canvas" id="map-canvas" aria-hidden="true"></canvas><div class="marker-layer" id="marker-layer"></div></div>' +
             '<div class="map-controls" aria-label="' + L("地图缩放", "Map zoom") + '"><button id="zoom-in" type="button" aria-label="' + L("放大", "Zoom in") + '">+</button><button id="zoom-out" type="button" aria-label="' + L("缩小", "Zoom out") + '">−</button><button id="reset-view" type="button" aria-label="' + L("重置视图", "Reset view") + '">⌂</button></div>' +
             '<article class="map-detail" id="map-detail" hidden></article></section>' +
@@ -150,22 +157,47 @@
 
   function renderCategories() {
     var host = document.getElementById("map-categories");
-    var html = "";
+    var html = '<label><span>' + L("选择分类", "Choose a category") + '</span><select id="map-category"><option value="">' + L("请选择分类", "Choose a category") + '</option>';
     DATA.categories.forEach(function (category) {
       var count = DATA.markers.filter(function (marker) { return marker.category === category.id; }).length;
-      html += '<button class="category-chip ' + (filter === category.id ? "is-active" : "") + '" type="button" data-category="' + category.id + '" aria-pressed="' + (filter === category.id ? "true" : "false") + '">' + escapeHtml(categoryName(category)) + ' ' + count + '</button>';
+      html += '<option value="' + escapeHtml(category.id) + '"' + (filter === category.id ? ' selected' : '') + '>' + escapeHtml(categoryName(category)) + ' (' + count + ')</option>';
     });
-    host.innerHTML = html;
-    host.querySelectorAll("[data-category]").forEach(function (button) { button.addEventListener("click", function () {
-      filter = filter === button.dataset.category ? "" : button.dataset.category;
+    host.innerHTML = html + '</select></label>';
+    document.getElementById("map-category").addEventListener("change", function (event) {
+      filter = event.target.value;
+      subfilter = "";
       selectedId = "";
       query = "";
       var search = document.getElementById("map-search");
       if (search) search.value = "";
       renderMarkerViews();
-      renderCategories();
+      renderSubcategories();
       resetView();
-    }); });
+    });
+    renderSubcategories();
+  }
+
+  function renderSubcategories() {
+    var host = document.getElementById("map-subcategories");
+    if (!host) return;
+    var groups = [];
+    DATA.markers.forEach(function (marker) {
+      if (marker.category !== filter || !marker.subgroupId || groups.some(function (group) { return group.id === marker.subgroupId; })) return;
+      groups.push({ id: marker.subgroupId, zh: marker.subgroupZh, en: marker.subgroupEn });
+    });
+    if (!groups.length) { host.hidden = true; host.innerHTML = ""; subfilter = ""; return; }
+    host.hidden = false;
+    var isCards = filter === "cigarette-cards";
+    var label = isCards ? L("选择香烟卡套组", "Choose a cigarette card set") : L("选择藏宝图", "Choose a treasure map");
+    host.innerHTML = '<label><span>' + label + '</span><select id="map-subcategory"><option value="">' + L("全部", "All") + '</option>' + groups.map(function (group) {
+      return '<option value="' + escapeHtml(group.id) + '"' + (subfilter === group.id ? ' selected' : '') + '>' + escapeHtml(lang === "en" ? group.en : group.zh) + '</option>';
+    }).join("") + '</select></label>';
+    document.getElementById("map-subcategory").addEventListener("change", function (event) {
+      subfilter = event.target.value;
+      selectedId = "";
+      renderMarkerViews();
+      resetView();
+    });
   }
 
   function renderMarkerViews() {
@@ -344,7 +376,7 @@
       var marker = markerById(button.dataset.markerId);
       var x = view.x + DATA.image.width * marker.x / 100 * view.scale;
       var y = view.y + DATA.image.height * marker.y / 100 * view.scale;
-      button.hidden = x < -22 || y < -22 || x > viewport.clientWidth + 22 || y > viewport.clientHeight + 22;
+      button.hidden = x < -18 || y < -18 || x > viewport.clientWidth + 18 || y > viewport.clientHeight + 18;
       // Off-screen markers must not expand the overlay's paintable bounds.
       button.style.left = (button.hidden ? 0 : x) + "px";
       button.style.top = (button.hidden ? 0 : y) + "px";

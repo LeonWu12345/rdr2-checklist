@@ -49,8 +49,8 @@ for (let zoom = data.image.tiles.minZoom; zoom <= data.image.tiles.maxZoom; zoom
 }
 const tileFiles = fs.readdirSync(tileRoot, { recursive: true, withFileTypes: true }).filter((entry) => entry.isFile() && entry.name.endsWith('.jpg'));
 assert.equal(tileFiles.length, expectedTiles, 'Unexpected map tile count');
-assert.equal(data.markers.length, 151, 'Verified marker count changed');
-assert.equal(data.categories.length, 10, 'Verified marker category count changed');
+assert.equal(data.markers.length, 364, 'Verified marker count changed');
+assert.equal(data.categories.length, 13, 'Verified marker category count changed');
 assert.equal(new Set(data.markers.map((marker) => marker.id)).size, data.markers.length, 'Duplicate map marker ID');
 data.markers.forEach((marker) => {
   assert(marker.id && marker.zh && marker.en, `Incomplete marker: ${marker.id || 'unknown'}`);
@@ -67,7 +67,11 @@ assert(html.indexOf('assets/js/map-renderer.js') < html.indexOf('assets/js/map.j
 assert(appSource.includes('<canvas class="map-canvas"') && !appSource.includes('translate3d('), 'World-sized transformed map must not return');
 assert(!read('assets/css/map.css').includes('will-change:transform'), 'Map must not force an oversized GPU layer');
 assert(rendererSource.includes('?v=" + version'), 'Map tile cache version missing');
-assert(appSource.includes('map-search') && appSource.includes('data-category'), 'Map search or category filtering missing');
+assert(appSource.includes('map-search') && appSource.includes('id="map-category"') && appSource.includes('Choose a category'), 'Map search or category dropdown missing');
+assert(appSource.includes('map-subcategories') && appSource.includes('subgroupId') && appSource.includes('Choose a cigarette card set') && appSource.includes('Choose a treasure map'), 'Cigarette-card or treasure-map submenu missing');
+assert.equal(new Set(data.markers.filter((marker) => marker.category === 'cigarette-cards').map((marker) => marker.subgroupId)).size, 12, 'Cigarette-card set groups missing');
+assert.equal(new Set(data.markers.filter((marker) => marker.category === 'treasures').map((marker) => marker.subgroupId)).size, 7, 'Treasure-map groups missing');
+assert(data.markers.filter((marker) => marker.category === 'cigarette-cards').every((marker) => marker.detailZh && marker.detailEn && !marker.zh.includes('（')), 'Cigarette-card bilingual descriptions are incomplete or mixed');
 assert(checklistSource.includes('href="map.html"'), 'Checklist map entry missing');
 assert(checklistSource.includes('id="map-preview-expand"'), 'Checklist map preview expansion control missing');
 assert(checklistSource.includes("'collapse' : 'expand'") && checklistSource.includes('-50.png'), 'State-aware Icons8 map expansion assets missing from control');
@@ -104,7 +108,9 @@ assert(read('assets/css/map.css').includes(':root[data-embed="true"] .map-panel{
 assert(read('assets/css/map.css').includes('url("../images/placeholder.png")'), 'Embedded checklist maps must use the requested placeholder pin');
 assert(fs.existsSync(path.join(here, 'assets/images/placeholder.png')), 'Placeholder map pin asset file missing');
 assert(read('assets/css/map.css').includes(':root[data-embed-view="compact"] .map-viewport{pointer-events:none'), 'Compact map must be non-interactive');
-assert(read('assets/css/map.css').includes('.map-categories{flex:0 0 176px;display:grid') && read('assets/css/map.css').includes('overflow-x:hidden'), 'Map categories must keep a stable visible area within the panel');
+assert(read('assets/css/map.css').includes('.map-categories select,.map-subcategories select') && !read('assets/css/map.css').includes('.category-chip'), 'Map categories must use a compact dropdown menu');
+assert(read('assets/css/map.css').includes('font-family:"RDR Lino"') && read('assets/css/map.css').includes('.map-categories option'), 'English map dropdowns must use the site body font');
+assert(read('assets/css/map.css').includes('.marker{position:absolute;width:32px;height:32px;margin:-16px'), 'Standalone map marker size changed unexpectedly');
 assert(checklistCss.includes('.map-preview-card:not(.is-expanded) .map-preview-media iframe{pointer-events:none}'), 'Checklist must prevent compact iframe pointer interaction');
 const mapInventory = read('docs/map-content-inventory.md');
 assert(mapInventory.includes('| 石雕 | 10 |') && mapInventory.includes('| 捕梦网 | 20 |') && mapInventory.includes('| 恐龙骨 | 30 |'), 'Core map inventory collections missing');

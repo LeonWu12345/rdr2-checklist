@@ -1,10 +1,10 @@
 (() => {
   const entries = Object.freeze([
     Object.freeze({
-      date: Object.freeze({ zh: '9月15日', en: 'September 15' }),
+      date: Object.freeze({ zh: '9月16日', en: 'September 16' }),
       content: Object.freeze({
-        zh: '新增可互动地图',
-        en: 'Added: Interactive map'
+        zh: '互动地图新增香烟卡、棚屋与兴趣点，并加入香烟卡套组与藏宝图筛选',
+        en: 'Interactive map: added Cigarette Cards, Shacks, and Points of Interest, plus card-set and treasure-map filters'
       })
     })
   ]);

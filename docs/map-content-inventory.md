@@ -1,6 +1,6 @@
 # 互动地图内容清单
 
-状态：第二步确认范围（尚未录入坐标）  
+状态：地图页专属条目已完成坐标校准并接入正式地图
 基线：`develop` 分支当前主清单与图鉴数据  
 用途：作为下一步地图标点编辑器的条目来源和验收基准
 
@@ -77,12 +77,21 @@
 - 9座坟墓：`tc13_jenny`、`tc13_davey`、`tc13_eagle_flies`、`tc13_arthur`、`tc13_susan`、`tc13_hosea`、`tc13_lenny`、`tc13_kieran`、`tc13_sean`。
 - 6个帮派老巢：`tc5_six_point`、`tc5_shady_belle`、`tc5_beaver_hollow`、`tc5_hanging_dog`、`tc5_thieves_landing`、`tc5_fort_mercer`。
 
-## 暂不加入，但以后可单独决定
+## 地图页专属内容
 
-- 香烟卡：当前清单只有12套进度，没有144张卡的逐项地点数据；若以后补全，可作为独立图层。
-- 棚屋和兴趣点：当前主清单没有逐项子条目，暂不生成无名称标点。
+- 地图香烟卡、棚屋和兴趣点已经作为地图页专属分类加入正式地图。
+- 香烟卡目录包含 144 张卡的固定世界拾取位置；高级香烟盒产生的随机卡牌不作为地图地点。
+- 棚屋目录包含 19 处，兴趣点目录包含 50 处；中文界面同时保留英文原名，便于对照可靠指南。
 - 动植物与普通马匹图鉴：广泛栖息地不冒充精确刷新点；以后可设计“栖息范围”图层。
 - 特殊路人：属于活动类内容，按当前规则不标点。
+
+资料核对来源：
+
+- 香烟卡名称、套组与固定拾取规则：https://gamefaqs.gamespot.com/xboxone/200180-red-dead-redemption-2/faqs/76594/cigarette-cards
+- 144 张香烟卡的分区路线与拾取位置：https://gamers.wiki/en/games/red-dead-redemption-2/guides/rdr2-cigarette-cards-all-144-locations-and-set-rewards
+- 19 处棚屋名称、位置提示与尾声限制：https://gamefaqs.gamespot.com/xboxone/200180-red-dead-redemption-2/faqs/76594/miscellaneous
+- 50 处固定兴趣点的范围、区域与检查目标：https://gamers.wiki/en/games/red-dead-redemption-2/lists/rdr2-points-of-interest-journal-sketches-and-100-tracking
+- 兴趣点位置交叉核对：https://www.rdr2.org/guides/points-of-interest-guide/
 
 ## 明确排除
 
