@@ -1750,9 +1750,7 @@ function mainApp(initialState){
   })();
 
   var state = {};
-  (function loadInitial(){
-    var src = initialState || {};
-    for (var k in src) { state[k] = { c: !!src[k].c, m: src[k].m || '' }; }
+  function mergeSavedChecklistState(){
     try {
       var saved = JSON.parse(localStorage.getItem('rdr2-full-checklist-v2') || 'null');
       if (saved && typeof saved === 'object' && !Array.isArray(saved)) {
@@ -1763,6 +1761,11 @@ function mainApp(initialState){
         });
       }
     } catch (e) {}
+  }
+  (function loadInitial(){
+    var src = initialState || {};
+    for (var k in src) { state[k] = { c: !!src[k].c, m: src[k].m || '' }; }
+    mergeSavedChecklistState();
   })();
 
   function st(id){
@@ -1884,6 +1887,24 @@ function mainApp(initialState){
     if (lang !== 'en' || !it.n) return it.n;
     return englishText(it.nEn || NOTE_EN[it.n] || it.n);
   }
+  var mapMarkerSourceLookup = (function () {
+    var lookup = Object.create(null);
+    var markerData = window.RDR2VerifiedMapMarkers;
+    if (!markerData || !Array.isArray(markerData.markers)) return lookup;
+    markerData.markers.forEach(function (marker) {
+      lookup[marker.id] = true;
+      if (marker.groupId) lookup[marker.groupId] = true;
+      (marker.sourceIds || []).forEach(function (sourceId) { lookup[sourceId] = true; });
+    });
+    return lookup;
+  })();
+  function hasMapMarker(sourceId){ return !!mapMarkerSourceLookup[sourceId]; }
+  function renderMapLocation(sourceId, location, detail){
+    var copy = '📍 ' + escapeHtml(location);
+    if (!hasMapMarker(sourceId)) return detail ? '<small>' + copy + '</small>' : copy;
+    var label = L('在地图中查看 ', 'Show on map: ') + location;
+    return '<button type="button" class="map-location-link' + (detail ? ' is-detail' : '') + '" data-map-marker="' + escapeAttr(sourceId) + '" aria-label="' + escapeAttr(label) + '">' + copy + '</button>';
+  }
   function catName(cat){
     if (lang !== 'en') return cat.name;
     return englishText((CAT_EN[cat.id] || {}).name || cat.name);
@@ -1910,6 +1931,9 @@ function mainApp(initialState){
   var resetConfirmTimer = null;
   var themeMenuOpen = false;
   var langMenuOpen = false;
+  var mapPreviewOpen = false;
+  var mapPreviewMarkerId = '';
+  var mapPreviewAnimation = null;
   var filterInlineOpen = false;
   var filterDrag = null; // in-progress drag state; see startFilterDrag()
   var suppressNextFilterClick = false; // set when a drag actually moved, so the browser's
@@ -2657,6 +2681,7 @@ function mainApp(initialState){
       BOUNTY:'<rect x="5" y="2" width="14" height="20" rx="3"/><circle cx="12" cy="9" r="3"/><path d="M8 17h8M9 20h6"/>',
       SAT:'<rect x="4" y="7" width="16" height="15" rx="4"/><path d="M8 7V5a4 4 0 0 1 8 0v2M4 13h16m-10 0v3h4v-3"/>',
       D:'<circle cx="12" cy="12" r="9"/><path d="m16 8-3 5-5 3 3-5z"/>',
+      MAP:'<path d="m3 6 5-3 8 3 5-3v15l-5 3-8-3-5 3z"/><path d="M8 3v15M16 6v15"/>',
       TC:'<circle cx="12" cy="12" r="9"/><path d="m7 12 3 3 7-7"/>'
     };
     return '<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">'+(paths[name]||paths.list)+'</svg>';
@@ -2676,6 +2701,123 @@ function mainApp(initialState){
       '<span class="chev" aria-hidden="true"></span>' +
       renderRingBlock(pctFor(done, 560), done + ' / 560') + '</a>';
   }
+
+  function renderMapCard() {
+    return '<section class="glass map-preview-card' + (mapPreviewOpen ? ' is-expanded' : '') + '" id="map-preview-card" aria-labelledby="map-preview-title">' +
+      '<div class="map-preview-media">' +
+        '<iframe id="map-preview-frame" title="' + L('RDR2 互动地图', 'RDR2 interactive map') + '" src="map.html?embed=1&amp;compact=1" loading="lazy"></iframe>' +
+        '<button type="button" class="map-preview-expand-icon" id="map-preview-expand" aria-expanded="' + String(mapPreviewOpen) + '" aria-controls="map-preview-frame" aria-label="' + (mapPreviewOpen ? L('收起地图', 'Collapse Map') : L('展开地图', 'Expand Map')) + '" title="' + (mapPreviewOpen ? L('收起地图', 'Collapse Map') : L('展开地图', 'Expand Map')) + '"><img src="assets/images/icons8-' + (mapPreviewOpen ? 'collapse' : 'expand') + '-50.png" alt=""></button>' +
+      '</div>' +
+      '<div class="map-preview-content">' +
+        '<div class="map-preview-heading"><span class="map-preview-icon" aria-hidden="true">' + uiIcon('MAP') + '</span>' +
+          '<span><h2 id="map-preview-title">' + L('地图', 'Map') + '</h2><span class="map-preview-desc">' + L('在清单中查找地点', 'Locate checklist activities') + '</span></span></div>' +
+        '<div class="map-preview-actions">' +
+          '<a class="map-preview-button" href="map.html">' + L('进入地图页', 'Open Map Page') + '</a>' +
+        '</div>' +
+      '</div>' +
+    '</section>';
+  }
+
+  function sendMapPreviewMessage(message) {
+    var frame = document.getElementById('map-preview-frame');
+    if (!frame || !frame.contentWindow) return;
+    try { frame.contentWindow.postMessage(message, '*'); } catch (e) {}
+  }
+
+  function attachMapFrameEscape(frame) {
+    if (!frame || frame.dataset.escapeBound === 'true') return;
+    frame.dataset.escapeBound = 'true';
+    frame.addEventListener('load', function () {
+      sendMapPreviewMessage({ type: 'rdr2-map-layout', expanded: mapPreviewOpen });
+      if (mapPreviewMarkerId) sendMapPreviewMessage({ type: 'rdr2-map-focus', markerId: mapPreviewMarkerId });
+      try {
+        frame.contentWindow.addEventListener('keydown', function (event) {
+          if (event.key === 'Escape') closeMapPreview();
+        });
+      } catch (e) {}
+    });
+  }
+
+  function syncMapPreview() {
+    var card = document.getElementById('map-preview-card');
+    var frame = document.getElementById('map-preview-frame');
+    document.body.classList.toggle('map-preview-lock', mapPreviewOpen);
+    if (!card) return;
+    card.classList.toggle('is-expanded', mapPreviewOpen);
+    var toggle = document.getElementById('map-preview-expand');
+    if (toggle) {
+      toggle.setAttribute('aria-expanded', String(mapPreviewOpen));
+      var toggleLabel = mapPreviewOpen ? L('收起地图', 'Collapse Map') : L('展开地图', 'Expand Map');
+      toggle.setAttribute('aria-label', toggleLabel);
+      toggle.setAttribute('title', toggleLabel);
+      var toggleIcon = toggle.querySelector('img');
+      if (toggleIcon) toggleIcon.src = 'assets/images/icons8-' + (mapPreviewOpen ? 'collapse' : 'expand') + '-50.png';
+    }
+    attachMapFrameEscape(frame);
+    sendMapPreviewMessage({ type: 'rdr2-map-layout', expanded: mapPreviewOpen });
+  }
+
+  function collapsedMapPreviewHeight(card) {
+    if (window.innerWidth <= 850) return card.getBoundingClientRect().height;
+    var clone = card.cloneNode(true);
+    clone.classList.remove('is-expanded');
+    clone.removeAttribute('id');
+    clone.querySelectorAll('[id]').forEach(function (node) { node.removeAttribute('id'); });
+    var frame = clone.querySelector('iframe');
+    if (frame) frame.remove();
+    clone.style.cssText = 'position:absolute;visibility:hidden;pointer-events:none;left:-10000px;top:0;width:310px;height:auto;min-height:0;margin:0;transition:none;';
+    document.body.appendChild(clone);
+    var height = clone.getBoundingClientRect().height;
+    clone.remove();
+    return height;
+  }
+
+  function animateMapPreview(expanded) {
+    var card = document.getElementById('map-preview-card');
+    if (!card || mapPreviewOpen === expanded) return;
+    if (mapPreviewAnimation) mapPreviewAnimation.finish();
+    var startHeight = card.getBoundingClientRect().height;
+    mapPreviewOpen = expanded;
+    syncMapPreview();
+    var reduced = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (reduced) return;
+    var targetHeight = expanded ? card.getBoundingClientRect().height : collapsedMapPreviewHeight(card);
+    card.style.height = startHeight + 'px';
+    void card.offsetHeight;
+    var finished = false;
+    var finish = function () {
+      if (finished) return;
+      finished = true;
+      card.removeEventListener('transitionend', onEnd);
+      clearTimeout(timer);
+      card.style.removeProperty('height');
+      if (mapPreviewAnimation && mapPreviewAnimation.finish === finish) mapPreviewAnimation = null;
+    };
+    var onEnd = function (event) { if (event.target === card && event.propertyName === 'height') finish(); };
+    var timer = setTimeout(finish, 460);
+    mapPreviewAnimation = { finish:finish };
+    card.addEventListener('transitionend', onEnd);
+    requestAnimationFrame(function () { card.style.height = targetHeight + 'px'; });
+  }
+
+  function openMapPreview() {
+    animateMapPreview(true);
+  }
+
+  function closeMapPreview() {
+    if (!mapPreviewOpen) return;
+    animateMapPreview(false);
+  }
+
+  function focusMapPreviewMarker(markerId) {
+    if (!markerId) return;
+    mapPreviewMarkerId = markerId;
+    sendMapPreviewMessage({ type: 'rdr2-map-focus', markerId: markerId });
+    var card = document.getElementById('map-preview-card');
+    if (card) card.scrollIntoView({ behavior: window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches ? 'auto' : 'smooth', block: 'center' });
+  }
+
+  window.RDR2MapPreview = { focusMarker: focusMapPreviewMarker };
 
   function renderUpdateTicker() {
     var text = window.RDR2Updates.latestText(lang);
@@ -2812,7 +2954,7 @@ function mainApp(initialState){
         return '<label class="row-detail-item' + (childState.c ? ' is-done' : '') + '" for="' + childId + '">' +
           '<input type="checkbox" id="' + childId + '" data-id="' + child.id + '"' + (childState.c ? ' checked' : '') + '>' +
           '<span class="row-detail-copy"><span>' + escapeHtml(rowTitle(child)) + '</span>' +
-            (childLoc ? '<small>📍 ' + escapeHtml(childLoc) + '</small>' : '') +
+            (childLoc ? renderMapLocation(child.id, childLoc, true) : '') +
             (childNote ? '<small class="row-detail-materials">' + escapeHtml(childNote) + '</small>' : '') + '</span>' +
         '</label>';
       }).join('');
@@ -2851,7 +2993,7 @@ function mainApp(initialState){
     var loc = rowLoc(it);
     var note = rowNote(it);
     var metaBits = [];
-    if (loc) metaBits.push('📍 ' + escapeHtml(loc));
+    if (loc) metaBits.push(renderMapLocation(it.id, loc, false));
     // For most items, it.c only ever held chapter/timing info, which the structured chapter
     // badges below already convey in English — so it.c itself was zh-only. A few categories
     // (背包升级/SAT's "解锁:…" unlock conditions, and a handful of kept prerequisite notes
@@ -3025,7 +3167,7 @@ function mainApp(initialState){
         renderLangMenu() +
         '<div id="alert-slot">' + renderAlert() + '</div>' +
         '<div class="split">' +
-          '<div class="col-tc">' + (tcCat ? renderCategory(tcCat) : '') + renderCompendiumCard() + '</div>' +
+          '<div class="col-tc">' + (tcCat ? renderCategory(tcCat) : '') + renderCompendiumCard() + renderMapCard() + '</div>' +
           '<div class="col-main">' + mainCats.map(renderCategory).join('') + '</div>' +
         '</div>' +
         '<p class="footnote">' + L(
@@ -3045,6 +3187,7 @@ function mainApp(initialState){
     // Doing the height/filter sync first means scroll is restored against the final layout.
     applyFilter();
     syncOpenHeights();
+    syncMapPreview();
     if (prevTcScrollTop) {
       var newTcBody = document.querySelector('.col-tc .cat-body');
       if (newTcBody) newTcBody.scrollTop = prevTcScrollTop;
@@ -3056,6 +3199,116 @@ function mainApp(initialState){
     var nowAllComplete = allBoardsComplete();
     if (legendToastSeen === false && nowAllComplete) showLegendToast();
     legendToastSeen = nowAllComplete;
+  }
+
+  // Checkbox changes are frequent and must not rebuild #root. Replacing root.innerHTML
+  // destroys the embedded map iframe and makes its canvas flash while it reloads. This
+  // updater keeps every existing node alive and patches only completion-related UI.
+  function refreshProgressUI() {
+    syncCompendiumItems();
+    syncComputedItems();
+
+    document.querySelectorAll('input[type=checkbox][data-id]').forEach(function (checkbox) {
+      var complete = !!st(checkbox.dataset.id).c;
+      checkbox.checked = complete;
+      var row = checkbox.closest('.row');
+      if (row) row.classList.toggle('is-done', complete);
+      var detailItem = checkbox.closest('.row-detail-item');
+      if (detailItem) detailItem.classList.toggle('is-done', complete);
+    });
+
+    document.querySelectorAll('.hunting-request').forEach(function (request) {
+      var boxes = request.querySelectorAll('input[type=checkbox][data-id]');
+      var done = 0;
+      boxes.forEach(function (checkbox) { if (checkbox.checked) done += 1; });
+      request.classList.toggle('is-complete', boxes.length > 0 && done === boxes.length);
+      var meta = request.querySelector('.hunting-request-head > span');
+      if (meta) meta.textContent = meta.textContent.replace(/\d+\s*\/\s*\d+\s*$/, done + '/' + boxes.length);
+    });
+
+    document.querySelectorAll('[data-item-detail]').forEach(function (details) {
+      var boxes = details.querySelectorAll('.row-detail-item input[type=checkbox][data-id]');
+      var done = 0;
+      boxes.forEach(function (checkbox) { if (checkbox.checked) done += 1; });
+      var progress = details.querySelector('.row-detail-progress');
+      if (progress) progress.textContent = done + ' / ' + boxes.length;
+    });
+
+    CATS.forEach(function (cat) {
+      if (cat.kind !== 'flat') cat.groups.forEach(function (group) {
+        var groupElement = Array.prototype.find.call(document.querySelectorAll('[data-group]'), function (element) {
+          return element.dataset.group === cat.id + ':' + group.id;
+        });
+        if (!groupElement) return;
+        var count = countItems(group.items);
+        var complete = count.total > 0 && count.done === count.total;
+        var progress = groupElement.querySelector('.group-progress');
+        if (progress) {
+          progress.textContent = count.done + ' / ' + count.total;
+          progress.classList.toggle('group-complete', complete);
+        }
+        var heading = groupElement.querySelector('.group-head h3');
+        var mark = heading && heading.querySelector('.group-complete');
+        if (complete && heading && !mark) heading.insertAdjacentHTML('beforeend', ' <span class="group-complete">✓</span>');
+        else if (!complete && mark) mark.remove();
+      });
+
+      var categoryElement = Array.prototype.find.call(document.querySelectorAll('[data-cat]'), function (element) {
+        return element.dataset.cat === cat.id;
+      });
+      if (!categoryElement) return;
+      var count = countItems(categoryItems(cat));
+      var complete = count.total > 0 && count.done === count.total;
+      categoryElement.classList.toggle('cat-complete', complete);
+      var categoryProgress = categoryElement.querySelector('.cat-progress');
+      if (categoryProgress) categoryProgress.textContent = count.done + ' / ' + count.total;
+      var meter = categoryElement.querySelector('.cat-meter > span');
+      if (meter) meter.style.width = (count.total ? 100 * count.done / count.total : 0) + '%';
+      if (cat.id === 'TC') updateProgressRing(categoryElement.querySelector('.progress-block'), count.done, count.total, count.done + ' / ' + count.total);
+    });
+
+    var overall = countAll();
+    updateProgressRing(document.querySelector('.topbar > .progress-block'), overall.done, overall.total, overall.done + ' / ' + overall.total + ' ' + L('已完成', 'done'));
+
+    var compendiumSaved = readCompendiumState();
+    var compendiumDone = 0;
+    Object.keys(compendiumSaved).forEach(function (id) {
+      if (compendiumSaved[id] && id !== 'equipment-33' && id !== 'equipment-35') compendiumDone += 1;
+    });
+    var compendiumCard = document.querySelector('.compendium-card');
+    if (compendiumCard) {
+      compendiumCard.classList.toggle('cat-complete', compendiumDone === 560);
+      updateProgressRing(compendiumCard.querySelector('.progress-block'), compendiumDone, 560, compendiumDone + ' / 560');
+    }
+
+    var nowAllComplete = allBoardsComplete();
+    var wrap = document.querySelector('.wrap');
+    if (wrap) wrap.classList.toggle('is-legend', nowAllComplete);
+    var brand = document.querySelector('.brand');
+    var legendBadge = brand && brand.querySelector('.legend-badge');
+    if (nowAllComplete && brand && !legendBadge) brand.insertAdjacentHTML('beforeend', '<span class="legend-badge">🏆 ' + L('传奇亡命之徒 · 全部完成', 'Legendary Outlaw · 100% Complete') + '</span>');
+    else if (!nowAllComplete && legendBadge) legendBadge.remove();
+    if (legendToastSeen === false && nowAllComplete) showLegendToast();
+    legendToastSeen = nowAllComplete;
+
+    var alertSlot = document.getElementById('alert-slot');
+    if (alertSlot) alertSlot.innerHTML = renderAlert();
+    applyFilter();
+    syncOpenHeights();
+  }
+
+  function updateProgressRing(block, done, total, subText) {
+    if (!block) return;
+    var pct = pctFor(done, total);
+    var circle = block.querySelector('.ring-progress');
+    if (circle) {
+      circle.style.strokeDasharray = RING_C.toFixed(2);
+      circle.style.strokeDashoffset = (RING_C * (1 - pct / 100)).toFixed(2);
+    }
+    var label = block.querySelector('.ring-pct');
+    if (label) label.textContent = pct + '%';
+    var sub = block.querySelector('.overall-sub');
+    if (sub) sub.textContent = subText;
   }
 
   function applyFilter() {
@@ -3156,20 +3409,21 @@ function doSave() {
     var head = e.target.closest && e.target.closest('.cat-head,.group-head');
     if (head && (e.key === 'Enter' || e.key === ' ')) { e.preventDefault(); head.click(); }
     if (e.key === 'Escape') {
+      if (mapPreviewOpen) { closeMapPreview(); return; }
       if (themeMenuOpen) { themeMenuOpen=false; document.getElementById('theme-picker-menu').hidden=true; var tb=document.getElementById('theme-picker-btn'); tb.setAttribute('aria-expanded','false'); tb.focus(); }
       if (langMenuOpen) { langMenuOpen=false; document.getElementById('lang-picker-menu').hidden=true; var lb=document.getElementById('lang-picker-btn'); lb.setAttribute('aria-expanded','false'); lb.focus(); }
       if (filterInlineOpen) closeFilterInline();
     }
   });
   window.addEventListener('pagehide', doSave);
-  function refreshCompendiumLinks(){ paint(); }
-  window.addEventListener('pageshow', refreshCompendiumLinks);
-  window.addEventListener('focus', refreshCompendiumLinks);
+  function refreshExternalProgress(){ mergeSavedChecklistState(); paint(); }
+  window.addEventListener('pageshow', refreshExternalProgress);
+  window.addEventListener('focus', refreshExternalProgress);
   window.addEventListener('storage', function (e) {
-    if (!e.key || e.key === 'rdr2-compendium-v1') refreshCompendiumLinks();
+    if (!e.key || e.key === 'rdr2-compendium-v1' || e.key === 'rdr2-full-checklist-v2') refreshExternalProgress();
   });
   document.addEventListener('visibilitychange', function () {
-    if (!document.hidden) refreshCompendiumLinks();
+    if (!document.hidden) refreshExternalProgress();
   });
   document.getElementById('root').addEventListener('wheel', onFilterWheel, {passive:false});
 
@@ -3180,13 +3434,13 @@ function doSave() {
     if (COMPENDIUM_ITEM_LINKS[id]) {
       saveCompendiumLinkedItem(id, cb.checked);
       st(id).c = cb.checked;
-      paint();
+      refreshProgressUI();
       scheduleSave();
       return;
     }
     if (cb.disabled || THRESHOLD_LINKS[id]) {
       // read-only / auto-computed: also has the `disabled` attribute, this is belt-and-suspenders
-      paint();
+      refreshProgressUI();
       return;
     }
     var parentsWithDetails = detailParents();
@@ -3206,7 +3460,7 @@ function doSave() {
     } else {
       st(id).c = cb.checked;
     }
-    paint();
+    refreshProgressUI();
     scheduleSave();
   });
 
@@ -3260,6 +3514,10 @@ function doSave() {
       var insideFilterSlot = e.target.closest && e.target.closest('#filter-slot');
       if (!insideFilterSlot) { closeFilterInline(); }
     }
+    var mapLocationLink = e.target.closest ? e.target.closest('[data-map-marker]') : null;
+    if (mapLocationLink) { e.preventDefault(); focusMapPreviewMarker(mapLocationLink.dataset.mapMarker); return; }
+    var mapPreviewExpand = e.target.closest ? e.target.closest('#map-preview-expand') : null;
+    if (mapPreviewExpand) { if (mapPreviewOpen) closeMapPreview(); else openMapPreview(); return; }
     var themePickerBtn = e.target.closest ? e.target.closest('#theme-picker-btn') : null;
     if (themePickerBtn) {
       themeMenuOpen = !themeMenuOpen;
