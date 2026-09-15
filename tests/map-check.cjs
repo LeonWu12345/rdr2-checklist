@@ -86,6 +86,8 @@ assert(checklistSource.includes("L('地图', 'Map')") && checklistSource.include
 assert(checklistSource.includes("L('进入地图页', 'Open Map Page')"), 'Map page button copy is stale');
 assert(checklistSource.includes('animateMapPreview') && checklistSource.includes('prefers-reduced-motion: reduce'), 'Map expansion animation or reduced-motion fallback missing');
 assert(!checklistSource.includes('renderMapDialog'), 'Expanded map must reuse the compact map instead of rendering a second window');
+const compactChecklistSource = checklistSource.replace(/\s+/g, ' ');
+assert(compactChecklistSource.includes('function refreshExternalProgress(){ mergeSavedChecklistState(); refreshProgressUI(); }') && !compactChecklistSource.includes('function refreshExternalProgress(){ mergeSavedChecklistState(); paint(); }'), 'Returning to the checklist must not rebuild the ticker or embedded map');
 assert(appSource.includes('dataset.embed') && appSource.includes('URLSearchParams'), 'Map embedded mode detection missing');
 assert(appSource.includes('rdr2-map-layout') && appSource.includes('rdr2-map-focus'), 'Embedded map message handlers missing');
 assert(appSource.includes('(marker.sourceIds || []).indexOf(id)'), 'Checklist item aliases must resolve to shared map markers');

@@ -3416,7 +3416,15 @@ function doSave() {
     }
   });
   window.addEventListener('pagehide', doSave);
-  function refreshExternalProgress(){ mergeSavedChecklistState(); paint(); }
+  // Returning from the Compendium or map can fire pageshow, focus and
+  // visibilitychange almost back-to-back. Rebuilding #root here used to restart
+  // the ticker animation and destroy/reload the embedded map iframe on every
+  // event, which made both surfaces visibly flash. Keep the existing DOM alive
+  // and patch only the progress state that may have changed on the other page.
+  function refreshExternalProgress(){
+    mergeSavedChecklistState();
+    refreshProgressUI();
+  }
   window.addEventListener('pageshow', refreshExternalProgress);
   window.addEventListener('focus', refreshExternalProgress);
   window.addEventListener('storage', function (e) {
