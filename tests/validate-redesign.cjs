@@ -8,14 +8,13 @@ const baseline = path.resolve(here, '..', 'rdr2-checklist-phase1');
 const read = (dir, file) => fs.readFileSync(path.join(dir, file), 'utf8');
 
 const mainHtml = read(here, 'index.html');
-const updatesJs = read(here, 'assets/js/updates.js');
 const mainJs = read(here, 'assets/js/checklist.js');
 const mainCss = read(here, 'assets/css/shared.css') + read(here, 'assets/css/checklist.css');
-const newMain = mainHtml + updatesJs + mainJs + mainCss;
+const newMain = mainHtml + mainJs + mainCss;
 const compHtml = read(here, 'compendium.html');
 const compJs = read(here, 'assets/js/compendium.js');
 const compCss = read(here, 'assets/css/shared.css') + read(here, 'assets/css/compendium.css');
-const newComp = compHtml + updatesJs + compJs + compCss;
+const newComp = compHtml + compJs + compCss;
 const hasBaseline = fs.existsSync(path.join(baseline, 'index.html')) &&
   fs.existsSync(path.join(baseline, 'compendium.html'));
 const oldMain = hasBaseline ? read(baseline, 'index.html') : newMain;
@@ -75,7 +74,7 @@ assert.equal(compData(newComp), compData(oldComp), 'Compendium base entries chan
 assert.equal(compPlants(newComp), compPlants(oldComp), 'Compendium plant entries changed');
 assert.equal(compZh(newComp), compZh(oldComp), 'Compendium Chinese names changed');
 
-for (const [name, html, scripts] of [['main', newMain, [updatesJs, mainJs]], ['compendium', newComp, [updatesJs, compJs]]]) {
+for (const [name, html, scripts] of [['main', newMain, [mainJs]], ['compendium', newComp, [compJs]]]) {
   scripts.forEach((source, index) => new vm.Script(source, { filename: `${name}-${index}.js` }));
   assert(html.includes('prefers-reduced-motion'), `${name}: reduced-motion support missing`);
   assert(html.includes('forced-colors'), `${name}: forced-colors support missing`);
@@ -123,12 +122,7 @@ const standardTotal = Object.values(data).flat().filter((item) => typeof item ==
 assert.equal(standardTotal, 560, 'Standard compendium total changed');
 assert(newComp.includes('const PAGE_SIZE=30'), '30-item pagination changed');
 assert(newComp.includes('class="entry-memo"'), 'Compendium notes field missing');
-assert(newMain.includes('class="update-ticker"') && newComp.includes('id="update-ticker"'), 'Shared update ticker missing');
-const updateContext = { window: {} };
-vm.runInNewContext(updatesJs, updateContext);
-assert(/^\d{1,2}月\d{1,2}日更新：\[.+\]$/.test(updateContext.window.RDR2Updates.latestText('zh')), 'Chinese update ticker format changed');
-assert(/^[A-Z][a-z]+ \d{1,2} update: \[.+\]$/.test(updateContext.window.RDR2Updates.latestText('en')), 'English update ticker format changed');
-assert(mainJs.includes('window.RDR2Updates.latestText(lang)') && compJs.includes('window.RDR2Updates.latestText(lang)'), 'Pages must read shared update data');
+assert(!newMain.includes('update-ticker') && !newComp.includes('update-ticker') && !fs.existsSync(path.join(here, 'assets/js/updates.js')), 'Removed update announcement assets or markup returned');
 assert(newComp.includes('width:100%!important') && newComp.includes('cursor:text!important'), 'Compendium notes field sizing regression');
 assert(newComp.includes('const HORSE_COATS={'), 'Horse coat checklists missing');
 for (let i = 1; i <= 19; i++) assert(newComp.includes(`"horses-${i}":[`), `Horse coat list missing: horses-${i}`);

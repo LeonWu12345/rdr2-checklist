@@ -2819,16 +2819,6 @@ function mainApp(initialState){
 
   window.RDR2MapPreview = { focusMarker: focusMapPreviewMarker };
 
-  function renderUpdateTicker() {
-    var text = window.RDR2Updates.latestText(lang);
-    return '<aside class="update-ticker" aria-label="' + escapeAttr(text) + '">' +
-      '<div class="update-ticker-track" aria-hidden="true">' +
-        '<span class="update-ticker-copy">' + escapeHtml(text) + '</span>' +
-        '<span class="update-ticker-copy">' + escapeHtml(text) + '</span>' +
-      '</div>' +
-    '</aside>';
-  }
-
   function renderShell() {
     var c = countAll();
     var pct = pctFor(c.done, c.total);
@@ -3161,7 +3151,6 @@ function mainApp(initialState){
     root.innerHTML =
       '<div class="scene-backdrop" aria-hidden="true"><div class="scene-ground"></div><div class="scene-art"><img src="assets/images/rdr2-background.jpg" alt="" width="2000" height="1000" decoding="async"></div></div>' +
       '<div class="wrap' + (allBoardsComplete() ? ' is-legend' : '') + '">' +
-        renderUpdateTicker() +
         renderShell() +
         renderThemeMenu() +
         renderLangMenu() +
