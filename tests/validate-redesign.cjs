@@ -67,9 +67,9 @@ preservedItems.forEach((item) => {
   const signature = new RegExp("\\b(?:I|T)\\('" + item.id.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "'\\s*,\\s*'" + item.title.replace(/[.*+?^${}()|[\]\\]/g, '\\$&') + "'");
   assert(signature.test(newMain), `Existing checklist item changed or disappeared: ${item.id}`);
 });
-const compData = (html) => html.match(/const DATA=(\{[\s\S]*?\});\nconst META=/)?.[1];
-const compPlants = (html) => html.match(/const PLANT_NAMES=(\[[\s\S]*?\]);\nDATA\.plants=/)?.[1];
-const compZh = (html) => html.match(/const ZH_NAMES=(\{[\s\S]*?\});\nObject\.entries/)?.[1];
+const compData = (html) => html.match(/const DATA=(\{[\s\S]*?\});\r?\nconst META=/)?.[1];
+const compPlants = (html) => html.match(/const PLANT_NAMES=(\[[\s\S]*?\]);\r?\nDATA\.plants=/)?.[1];
+const compZh = (html) => html.match(/const ZH_NAMES=(\{[\s\S]*?\});\r?\nObject\.entries/)?.[1];
 assert.equal(compData(newComp), compData(oldComp), 'Compendium base entries changed');
 assert.equal(compPlants(newComp), compPlants(oldComp), 'Compendium plant entries changed');
 assert.equal(compZh(newComp), compZh(oldComp), 'Compendium Chinese names changed');
@@ -111,10 +111,10 @@ for (let i = 1; i <= 36; i++) assert(newMain.includes(`re${i}:'equipment-${i + 4
 });
 assert(newMain.includes('src="assets/images/compendium-icon.jpg"'), 'Checklist Compendium entry icon path is invalid');
 
-const dataMatch = newComp.match(/const DATA=(\{[\s\S]*?\});\nconst META=/);
+const dataMatch = newComp.match(/const DATA=(\{[\s\S]*?\});\r?\nconst META=/);
 assert(dataMatch, 'Compendium data block not found');
 const data = JSON.parse(dataMatch[1]);
-const plantsMatch = newComp.match(/const PLANT_NAMES=(\[[\s\S]*?\]);\nDATA\.plants=/);
+const plantsMatch = newComp.match(/const PLANT_NAMES=(\[[\s\S]*?\]);\r?\nDATA\.plants=/);
 assert(plantsMatch, 'Plant data block not found');
 data.plants = JSON.parse(plantsMatch[1]);
 assert(newComp.includes('const KEYS=["animals","equipment","fish","gangs","plants","horses","weapons","cards"]'), 'Eight-category order changed');
