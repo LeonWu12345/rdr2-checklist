@@ -32,12 +32,11 @@ compendium.html                  图鉴页面骨架
 map.html                         互动地图页面骨架
 assets/
   css/
-    shared.css                   两页共用的字体与更新公告样式
+    shared.css                   页面共用的本地字体
     checklist.css                主清单样式
     compendium.css               图鉴样式
     map.css                      互动地图样式
   js/
-    updates.js                   两页共用的更新公告数据
     checklist.js                 主清单数据、渲染与交互
     compendium.js                图鉴数据、渲染与交互
     map-data.js                  可独立扩展和校准的地图标记数据
@@ -73,8 +72,6 @@ tools/
 本项目没有安装步骤，也不需要执行构建命令。
 
 ## 内容更新
-
-网站顶部的更新公告集中保存在 `assets/js/updates.js`。把最新公告放在 `entries` 数组第一项，并填写中英文日期与内容，主清单和图鉴页便会自动显示同一条公告。
 
 修改任务或图鉴数据时，应保留现有条目 ID。纯 UI 调整不应改变条目文字、数量、顺序、联动关系或存档格式。
 

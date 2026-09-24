@@ -379,5 +379,3 @@ body.map-preview-lock .col-tc>.cat{width:310px;margin-left:auto}
 @media(max-width:520px){.map-preview-content{padding:13px}.map-preview-heading h2{font-size:16px}.map-preview-actions{grid-template-columns:1fr}.map-preview-card.is-expanded{height:min(600px,74svh);min-height:500px;border-radius:5px}.map-preview-card.is-expanded .map-preview-content{padding:8px}.map-preview-card.is-expanded .map-preview-heading{display:none}.map-preview-card.is-expanded .map-preview-actions{grid-template-columns:1fr}}
 @media(prefers-reduced-motion:reduce){.map-preview-card,body .wrap,body .split{transition:none}}
 @media(forced-colors:active){.map-preview-card{border:1px solid CanvasText}.map-preview-primary{forced-color-adjust:none}}
-
-:root{--ticker-border:var(--glass-border);--ticker-accent:var(--ui-gold);--ticker-radius:var(--ui-radius-control)}

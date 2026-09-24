@@ -90,10 +90,6 @@
     document.title = L("RDR2 互动地图", "RDR2 Interactive Map");
   }
 
-  function latestUpdate() {
-    return window.RDR2Updates && window.RDR2Updates.latestText ? window.RDR2Updates.latestText(lang) : "";
-  }
-
   function mapIsInteractive() {
     return !embedded || embedExpanded;
   }
@@ -131,10 +127,8 @@
     if (renderer) renderer.destroy();
     pointers = {};
     drag = null;
-    var update = escapeHtml(latestUpdate());
     root.innerHTML =
       '<main class="map-page">' +
-        '<aside class="update-ticker" aria-label="' + update + '"><div class="update-ticker-track" aria-hidden="true"><span class="update-ticker-copy">' + update + '</span><span class="update-ticker-copy">' + update + '</span></div></aside>' +
         '<header class="map-topbar"><div class="map-brand">' + icon() + '<h1>' + L("互动地图", "Interactive Map") + '</h1></div>' +
           '<div class="map-actions"><button class="map-button map-icon-button" id="theme-toggle" type="button" title="' + (theme === "light" ? L("切换至深色模式", "Switch to dark mode") : L("切换至浅色模式", "Switch to light mode")) + '" aria-label="' + (theme === "light" ? L("切换至深色模式", "Switch to dark mode") : L("切换至浅色模式", "Switch to light mode")) + '">' + (theme === "light" ? "🌙" : "☀️") + '</button><button class="map-button map-icon-button" id="lang-toggle" type="button" title="' + (lang === "en" ? "切换至中文" : "Switch to English") + '" aria-label="' + (lang === "en" ? "切换至中文" : "Switch to English") + '">' + flagIcon(lang === "en" ? "cn" : "gb") + '</button><a class="map-back" href="index.html">' + L("返回", "Back") + '</a></div></header>' +
         '<section class="map-shell">' +
